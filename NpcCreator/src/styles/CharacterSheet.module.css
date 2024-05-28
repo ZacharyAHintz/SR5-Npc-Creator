@@ -1,0 +1,58 @@
+.container {
+  color: #181610;
+  padding: 30px;
+}
+.blockTabs {
+  flex-wrap: wrap;
+  white-space: pre-wrap;
+  color: #3d382a;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-shadow: 2px, 4px, 4px;
+}
+.tabs {
+  flex: 1;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
+  margin: 5px;
+  padding: 4px;
+  border-radius: 4px;
+  background-color: rgb(123, 109, 136);
+  transition: opacity 0.2s ease;
+}
+.tabs:hover {
+  opacity: 0.8;
+
+  cursor: pointer;
+}
+.contentTabs {
+}
+
+.activeTab {
+  border-radius: 4px;
+  margin: 5px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
+  flex: 1;
+  padding: 4px;
+  background-color: rgb(117, 163, 117);
+  transition: opacity 0.2s ease;
+}
+.activeTab:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.image {
+  width: 80px;
+}
+.activecontent {
+  flex: 1;
+}
+.content {
+  display: none;
+}
+.text {
+  color: blueviolet;
+  flex: 1;
+  white-space: pre-wrap;
+}

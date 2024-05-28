@@ -1,0 +1,29 @@
+.navbar {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: rgb(46, 46, 46);
+  height: 80px;
+  display: flex;
+
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5px;
+  position: fixed;
+  margin: 10px;
+  right: 0;
+  top: 0;
+  left: 0;
+}
+.button {
+  color: #e6e6e6;
+  font-size: 18px;
+
+  height: 40px;
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 30%);
+  border: none;
+}
+.logo {
+  height: 50px;
+  position: fixed;
+  left: 5%;
+}
