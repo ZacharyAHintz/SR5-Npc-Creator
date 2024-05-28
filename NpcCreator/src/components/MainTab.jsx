@@ -1,3 +1,9 @@
+importa;
 export default function MainTab() {
-  return <div>{/* <Attributes /> */}</div>;
+  let name;
+  return (
+    <div>
+      <Attributes />
+    </div>
+  );
 }
