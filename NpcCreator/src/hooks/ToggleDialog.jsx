@@ -1,7 +1,7 @@
 import React, { useState, useRef, Children } from "react";
 import styles from "../styles/ToggleDialog.module.css";
 
-export default function toggleDialog({ children }) {
+export default function toggleDialog({ children, name }) {
   const targetRef = React.useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -10,7 +10,7 @@ export default function toggleDialog({ children }) {
   };
   return (
     <div>
-      <button onClick={toggleDialog}>Character Name</button>
+      <button onClick={toggleDialog}>{name}</button>
       {isVisible && (
         <div>
           <div

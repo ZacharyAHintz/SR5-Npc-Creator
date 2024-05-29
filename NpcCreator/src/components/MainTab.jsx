@@ -1,4 +1,4 @@
-importa;
+import Attributes from "./Attributes";
 export default function MainTab() {
   let name;
   return (
