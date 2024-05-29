@@ -1,6 +1,9 @@
 import { useState } from "react";
 import styles from "../styles/NpcOptions.module.css";
-export default function NpcOptions() {
+import NewCharacterButton from "./NewCharacterButton";
+import ToggleDialog from "../hooks/ToggleDialog";
+
+export default function NpcOptions({ toggleDialog }) {
   const [name, setName] = useState("");
   const [race, setRace] = useState("Random");
   const [rating, setRating] = useState("Random");
@@ -28,12 +31,19 @@ export default function NpcOptions() {
       storedCharacters.push(character);
       localStorage.setItem("characters", JSON.stringify(storedCharacters));
     }
+
     console.log(JSON.parse(localStorage.getItem("characters")));
   }
 
   return (
     <main className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form
+        onSubmit={(e) => {
+          handleSubmit(e);
+          toggleDialog(e);
+        }}
+        className={styles.form}
+      >
         <div className={styles.header}>
           <label className={styles.label} htmlFor="name">
             Name
