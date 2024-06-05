@@ -8,16 +8,6 @@ import Navbar from "../components/Navbar";
 export default function GetCharacters() {
   const [characters, setCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
-
-  const updateCharactersFromLocalStorage = () => {
-    const storedCharacters = JSON.parse(localStorage.getItem("characters"));
-    if (storedCharacters) {
-      setCharacters(storedCharacters);
-    } else {
-      setCharacters([]);
-    }
-  };
-
   useEffect(() => {
     updateCharactersFromLocalStorage();
 
@@ -39,6 +29,15 @@ export default function GetCharacters() {
       );
     };
   }, []);
+
+  const updateCharactersFromLocalStorage = () => {
+    const storedCharacters = JSON.parse(localStorage.getItem("characters"));
+    if (storedCharacters) {
+      setCharacters(storedCharacters);
+    } else {
+      setCharacters([]);
+    }
+  };
 
   const handleButtonPress = (id) => {
     const character = characters.find((char) => char.id === id);
