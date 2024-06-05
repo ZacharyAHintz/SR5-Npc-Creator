@@ -30,9 +30,12 @@ export default function NpcOptions({ toggleDialog }) {
     if (!characterExists) {
       storedCharacters.push(character);
       localStorage.setItem("characters", JSON.stringify(storedCharacters));
-    }
 
-    console.log(JSON.parse(localStorage.getItem("characters")));
+      const event = new CustomEvent("characterAdded", {
+        detail: { character },
+      });
+      window.dispatchEvent(event);
+    }
   }
 
   return (

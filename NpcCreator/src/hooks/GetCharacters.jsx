@@ -1,24 +1,52 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/GetCharacters.module.css";
 import CharacterSheetButtons from "../components/CharacterSheetButton";
+import ToggleDialog from "./ToggleDialog";
+import CharacterSheet from "../components/CharacterSheet";
+import Navbar from "../components/Navbar";
 
 export default function GetCharacters() {
   const [characters, setCharacters] = useState([]);
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
 
-  useEffect(() => {
+  const updateCharactersFromLocalStorage = () => {
     const storedCharacters = JSON.parse(localStorage.getItem("characters"));
     if (storedCharacters) {
       setCharacters(storedCharacters);
+    } else {
+      setCharacters([]);
     }
-  }, []);
-  // when handleButtonPress is called, it open CharacterSheetButtons with the character's id
+  };
 
-  // const handleButtonPress = (id) => {
-  //   const character = characters.find((char) => char.id === id);
-  //   if (character && !sidebarButtons.some((button) => button.id === id)) {
-  //     setSidebarButtons([...sidebarButtons, character]);
-  //   }
-  // };
+  useEffect(() => {
+    updateCharactersFromLocalStorage();
+
+    const handleCharacterAdded = (e) => {
+      updateCharactersFromLocalStorage();
+    };
+    const handleLocalStorageCleared = () => {
+      setCharacters([]);
+    };
+
+    window.addEventListener("characterAdded", handleCharacterAdded);
+    window.addEventListener("localStorageCleared", handleLocalStorageCleared);
+
+    return () => {
+      window.removeEventListener("characterAdded", handleCharacterAdded);
+      window.removeEventListener(
+        "localStorageCleared",
+        handleLocalStorageCleared,
+      );
+    };
+  }, []);
+
+  const handleButtonPress = (id) => {
+    const character = characters.find((char) => char.id === id);
+    if (character) {
+      setSelectedCharacter(character);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -29,6 +57,11 @@ export default function GetCharacters() {
           </button>
         ))}
       </div>
+      {selectedCharacter && (
+        <ToggleDialog name={selectedCharacter.name}>
+          <CharacterSheet character={selectedCharacter} />
+        </ToggleDialog>
+      )}
     </div>
   );
 }
