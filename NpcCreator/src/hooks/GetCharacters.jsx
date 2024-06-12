@@ -53,7 +53,7 @@ export default function GetCharacters() {
           <button key={char.id} onClick={() => handleButtonPress(char.id)}>
             {selectedCharacter && (
               <ToggleDialog name={char.name ? char.name : "name"}>
-                <CharacterSheet character={selectedCharacter} />
+                <CharacterSheet character={char} />
               </ToggleDialog>
             )}
           </button>
