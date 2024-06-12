@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import styles from "../styles/CharacterSheet.module.css";
 import MainTab from "./MainTab";
 
-export default function CharacterSheet() {
+export default function CharacterSheet({ name, character }) {
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
     setToggleState(index);
@@ -10,6 +10,8 @@ export default function CharacterSheet() {
 
   return (
     <div className={styles.container}>
+      <h3>{character.name}</h3>
+      <hr />
       <div className={styles.blockTabs}>
         <div
           onClick={() => toggleTab(1)}

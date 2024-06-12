@@ -36,6 +36,7 @@ export default function NpcOptions({ toggleDialog }) {
       });
       window.dispatchEvent(event);
     }
+    console.log(JSON.parse(localStorage.getItem("characters")));
   }
 
   return (
