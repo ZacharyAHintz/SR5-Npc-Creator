@@ -1,4 +1,4 @@
-import GetCharacters from "../hooks/GetCharacters";
+import GetCharacters from "./GetCharacters";
 import styles from "../styles/Sidebar.module.css";
 export default function Sidebar() {
   return (

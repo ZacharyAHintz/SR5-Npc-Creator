@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/GetCharacters.module.css";
-import CharacterSheetButtons from "../components/CharacterSheetButton";
+import CharacterSheetButtons from "./CharacterSheetButton";
 import ToggleDialog from "./ToggleDialog";
-import CharacterSheet from "../components/CharacterSheet";
-import Navbar from "../components/Navbar";
+import CharacterSheet from "./CharacterSheet";
+import Navbar from "./Navbar";
 
 export default function GetCharacters() {
   const [characters, setCharacters] = useState([]);

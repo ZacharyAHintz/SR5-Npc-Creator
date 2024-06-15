@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <div className={styles.navbar}>
       <img className={styles.logo} src={logo} alt="" />
-      <CharacterSheetButton />
+
       <button
         onClick={() => {
           localStorage.clear();
