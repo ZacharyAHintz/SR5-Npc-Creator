@@ -60,6 +60,7 @@ export default function CharacterSheet({ name, character }) {
           className={toggleState === 2 ? styles.activecontent : styles.content}
         >
           <h2>Stats</h2>
+          <div>{character.stats}</div>
         </div>
         <div
           className={toggleState === 3 ? styles.activecontent : styles.content}

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-// Helper function to recursively iterate and collect objects at a specific depth
 const collectObjectsAtDepth = (obj, depth) => {
   if (depth === 0 && typeof obj === "object" && obj !== null) {
     return [obj];
@@ -15,7 +14,6 @@ const collectObjectsAtDepth = (obj, depth) => {
   return [];
 };
 
-// Helper function to get a random item from an array
 const getRandomItem = (items) => {
   const randomIndex = Math.floor(Math.random() * items.length);
   return items[randomIndex];

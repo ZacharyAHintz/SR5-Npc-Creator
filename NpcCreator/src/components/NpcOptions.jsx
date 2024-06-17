@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from "../styles/NpcOptions.module.css";
 import NewCharacterButton from "./NewCharacterButton";
 import ToggleDialog from "./ToggleDialog";
-import { setRaceBaseline } from "../hooks/SetRace";
 
 export default function NpcOptions({ toggleDialog }) {
   const [name, setName] = useState("");
@@ -33,7 +32,7 @@ export default function NpcOptions({ toggleDialog }) {
       storedCharacters.push(character);
       localStorage.setItem("characters", JSON.stringify(storedCharacters));
 
-      setRaceBaseline(id);
+      // setRaceBaseline(id);
 
       const event = new CustomEvent("characterAdded", {
         detail: { character },
