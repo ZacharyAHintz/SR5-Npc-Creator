@@ -1,5 +1,9 @@
+import { useSetRaceBaseline } from "../../hooks/useSetRaceBaseline";
+import { createContext } from "react";
+
+export const RaceContext = createContext();
 export default function RaceList() {
-  const race = {
+  const races = {
     metatypes: {
       human: {
         metatype: "Human",
@@ -618,5 +622,8 @@ export default function RaceList() {
     },
   };
 
-  return races;
+  return;
+  <UserContext.Provider value={{ races }}>
+    <SetRace races={races} />;
+  </UserContext.Provider>;
 }

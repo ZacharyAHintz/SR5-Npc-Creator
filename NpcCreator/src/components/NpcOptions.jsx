@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "../styles/NpcOptions.module.css";
 import NewCharacterButton from "./NewCharacterButton";
 import ToggleDialog from "./ToggleDialog";
+import { useSetRaceBaseline } from "../hooks/useSetRaceBaseline";
 
 export default function NpcOptions({ toggleDialog }) {
   const [name, setName] = useState("");
@@ -9,6 +10,7 @@ export default function NpcOptions({ toggleDialog }) {
   const [rating, setRating] = useState("Random");
   const [gender, setGender] = useState("Random");
   const [archetype, setArchetype] = useState("Random");
+  const setRaceBaseline = useSetRaceBaseline();
 
   function handleSubmit(e) {
     let id = crypto.randomUUID();
@@ -32,7 +34,7 @@ export default function NpcOptions({ toggleDialog }) {
       storedCharacters.push(character);
       localStorage.setItem("characters", JSON.stringify(storedCharacters));
 
-      // setRaceBaseline(id);
+      setRaceBaseline(character.id);
 
       const event = new CustomEvent("characterAdded", {
         detail: { character },
