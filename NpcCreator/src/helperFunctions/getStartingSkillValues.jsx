@@ -19,7 +19,7 @@ const getStartingSkillValues = (skills, rating) => {
     minRank = 3;
     maxRank = 8;
   } else if (rating === 6) {
-    minRank = 3;
+    minRank = 4;
     maxRank = 12;
   } else {
     throw new Error("Rating must be either 1 - 6");

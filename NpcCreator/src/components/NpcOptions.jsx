@@ -18,6 +18,7 @@ export default function NpcOptions({ toggleDialog }) {
 
   const races = returnRaces();
   const skills = returnSkills();
+
   const archetypes = [
     "Shaman",
     "Street Samurai",
@@ -28,6 +29,7 @@ export default function NpcOptions({ toggleDialog }) {
     "Physical Adept",
     "Corpo",
   ];
+
   function handleSubmit(e) {
     let id = crypto.randomUUID();
     e.preventDefault();
@@ -39,6 +41,7 @@ export default function NpcOptions({ toggleDialog }) {
       gender,
       archetype,
     };
+
     if (rating === "Random") {
       character.rating = Math.floor(Math.random() * 6) + 1;
     }
@@ -55,8 +58,29 @@ export default function NpcOptions({ toggleDialog }) {
       const raceSelection = getRandomObjectFromDepth(races, 2, 1);
       character.race = raceSelection.metatype;
     }
+
+    // prettier-ignore
+    const archetypeSkillFunctions = {
+      "Shaman": returnShamanArchetypeSkills,
+      "Street Samurai": returnStreetSamuraiArchetypeSkills,
+      "Decker": returnDeckerArchetypeSkills,
+      "Technomancer": returnTechnomancerArchetypeSkills,
+      "Face": returnFaceArchetypeSkills,
+      "Rigger": returnRiggerArchetypeSkills,
+      "Physical Adept": returnPhysicalAdeptArchetypeSkills,
+      "Corpo": returnCorpoArchetypeSkills,
+    };
+
+    const archetypeSkills = archetypeSkillFunctions[character.archetype]();
+    const skillAmount = character.rating * 3 + 5;
+    const archetypeSkillAmount = character.rating + 2;
+    const archetypeSkillSelection = getStartingSkillValues(
+      getRandomObjectFromDepth(archetypeSkills, 1, archetypeSkillAmount),
+      Number(character.rating),
+    );
+    character.skill = archetypeSkillSelection;
     const skillSelection = getStartingSkillValues(
-      getRandomObjectFromDepth(skills, 2, 8),
+      getRandomObjectFromDepth(skills, 2, skillAmount),
       Number(character.rating),
     );
     character.skill = skillSelection;
