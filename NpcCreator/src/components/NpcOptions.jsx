@@ -3,6 +3,8 @@ import styles from "../styles/NpcOptions.module.css";
 import NewCharacterButton from "./NewCharacterButton";
 import ToggleDialog from "./ToggleDialog";
 import { useSetRaceBaseline } from "../hooks/useSetRaceBaseline";
+import useReturnRaces from "../hooks/useReturnRaces";
+import getRandomObjectFromDepth from "../hooks/GetRandomObjectFromDepth";
 
 export default function NpcOptions({ toggleDialog }) {
   const [name, setName] = useState("");
@@ -12,6 +14,7 @@ export default function NpcOptions({ toggleDialog }) {
   const [archetype, setArchetype] = useState("Random");
   const setRaceBaseline = useSetRaceBaseline();
 
+  const races = useReturnRaces();
   function handleSubmit(e) {
     let id = crypto.randomUUID();
     e.preventDefault();
@@ -23,6 +26,8 @@ export default function NpcOptions({ toggleDialog }) {
       gender,
       archetype,
     };
+    const raceSelection = getRandomObjectFromDepth(races, 2);
+    character.race = raceSelection.metatype;
 
     const storedCharacters =
       JSON.parse(localStorage.getItem("characters")) || [];
@@ -34,14 +39,13 @@ export default function NpcOptions({ toggleDialog }) {
       storedCharacters.push(character);
       localStorage.setItem("characters", JSON.stringify(storedCharacters));
 
-      setRaceBaseline(character.id);
-
       const event = new CustomEvent("characterAdded", {
         detail: { character },
       });
       window.dispatchEvent(event);
     }
-
+    // setRaceBaseline(character.id);
+    // console.log(character.id);
     console.log(JSON.parse(localStorage.getItem("characters")));
   }
 
