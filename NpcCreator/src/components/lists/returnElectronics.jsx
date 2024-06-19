@@ -1,4 +1,4 @@
-export default function Electronics() {
+export default function returnElectronics() {
   const electronics = {
     comlinks: {
       metaLink: {

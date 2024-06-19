@@ -1,4 +1,4 @@
-export default function ArmorList() {
+export default function returnArmor() {
   const armors = {
     clothingAndArmor: {
       clothing: {

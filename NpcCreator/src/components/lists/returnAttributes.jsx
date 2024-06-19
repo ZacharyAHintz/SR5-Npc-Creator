@@ -1,4 +1,4 @@
-export default function AttributeList() {
+export default function returnAttributes() {
   const attributes = [
     body,
     agility,

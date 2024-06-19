@@ -2,9 +2,9 @@ import { useState } from "react";
 import styles from "../styles/NpcOptions.module.css";
 import NewCharacterButton from "./NewCharacterButton";
 import ToggleDialog from "./ToggleDialog";
-import { useSetRaceBaseline } from "../hooks/useSetRaceBaseline";
-import useReturnRaces from "../hooks/useReturnRaces";
-import getRandomObjectFromDepth from "../hooks/GetRandomObjectFromDepth";
+import returnRaces from "./lists/returnRaces";
+import returnSkills from "./lists/returnSkills";
+import getRandomObjectFromDepth from "../helperFunctions/getRandomObjectFromDepth";
 
 export default function NpcOptions({ toggleDialog }) {
   const [name, setName] = useState("");
@@ -12,9 +12,9 @@ export default function NpcOptions({ toggleDialog }) {
   const [rating, setRating] = useState("Random");
   const [gender, setGender] = useState("Random");
   const [archetype, setArchetype] = useState("Random");
-  const setRaceBaseline = useSetRaceBaseline();
 
-  const races = useReturnRaces();
+  const races = returnRaces();
+  const skills = returnSkills();
   function handleSubmit(e) {
     let id = crypto.randomUUID();
     e.preventDefault();
@@ -28,6 +28,8 @@ export default function NpcOptions({ toggleDialog }) {
     };
     const raceSelection = getRandomObjectFromDepth(races, 2);
     character.race = raceSelection.metatype;
+    const skillSelection = getRandomObjectFromDepth(skills, 2);
+    character.skill = skillSelection;
 
     const storedCharacters =
       JSON.parse(localStorage.getItem("characters")) || [];
@@ -44,8 +46,7 @@ export default function NpcOptions({ toggleDialog }) {
       });
       window.dispatchEvent(event);
     }
-    // setRaceBaseline(character.id);
-    // console.log(character.id);
+
     console.log(JSON.parse(localStorage.getItem("characters")));
   }
 

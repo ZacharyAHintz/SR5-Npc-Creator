@@ -1,4 +1,4 @@
-export default function DroneList() {
+export default function returnDrones() {
   const drones = {
     microDrones: {
       shiawaseKanmushi: {

@@ -1,8 +1,4 @@
-import { useContext, useState, useEffect } from "react";
-
-import useRandomObjectFromDepth from "./GetRandomObjectFromDepth";
-
-export function useSetRaceBaseline() {
+export default function returnRaces() {
   const races = {
     metatypes: {
       human: {
@@ -621,31 +617,5 @@ export function useSetRaceBaseline() {
       },
     },
   };
-  const [randomRace, setRandomRace] = useState(null);
-
-  // useEffect(() => {
-  //   if (races) {
-  //     const race = useRandomObjectFromDepth(races, 2);
-  //     setRandomRace(race);
-  //     console.log(race);
-  //   }
-  // }, [races]);
-
-  return function setRaceBaseline(id) {
-    const storedCharacters =
-      JSON.parse(localStorage.getItem("characters")) || [];
-
-    if (!storedCharacters) {
-      console.error("No characters found in localStorage");
-      return;
-    }
-
-    const character = storedCharacters.find((char) => char.id === id);
-
-    if (character && character.race === "Random" && randomRace) {
-      character.race = randomRace;
-      localStorage.setItem("characters", JSON.stringify(storedCharacters));
-      console.log("Race set to AssignedRace for character ID:", id);
-    }
-  };
+  return races;
 }

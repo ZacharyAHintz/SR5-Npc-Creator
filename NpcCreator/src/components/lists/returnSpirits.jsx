@@ -1,4 +1,4 @@
-export default function SpiritList() {
+export default function returnSpirits() {
   const spirits = {
     basic: {
       air: {

@@ -1,4 +1,4 @@
-export default function WeaponList() {
+export default function returnWeapons() {
   const weapons = {
     clubs: {
       club: {
@@ -1100,7 +1100,6 @@ export default function WeaponList() {
         Source: "Core",
       },
     },
-
     assaultRifles: {
       ak97: {
         Name: "AK-97",
@@ -1259,7 +1258,6 @@ export default function WeaponList() {
         Source: "SR5:GH3",
       },
     },
-
     sniperRifles: {
       aresDesertStrike: {
         Name: "Ares Desert Strike",
@@ -1382,7 +1380,6 @@ export default function WeaponList() {
         Source: "SR5:R&G",
       },
     },
-
     sportingRifles: {
       m1Garand: {
         Name: "M1 Garand",
@@ -1505,7 +1502,6 @@ export default function WeaponList() {
         Source: "SR5:GH3",
       },
     },
-
     shotguns: {
       autoAssault16: {
         Name: "Auto-Assault 16",
@@ -1656,7 +1652,6 @@ export default function WeaponList() {
         Source: "SR5:R&G",
       },
     },
-
     exoticFirearms: {
       aresArmatus: {
         Name: "Ares Armatus",
@@ -1788,7 +1783,6 @@ export default function WeaponList() {
         Source: "SR5:R&G",
       },
     },
-
     lasers: {
       aresArchonHeavyMPLaser: {
         Name: "Ares Archon Heavy MP Laser",
@@ -1827,7 +1821,6 @@ export default function WeaponList() {
         Source: "SR5:R&G",
       },
     },
-
     assaultCannons: {
       aresThunderstruckGaussRifle: {
         Name: "Ares Thunderstruck Gauss Rifle",

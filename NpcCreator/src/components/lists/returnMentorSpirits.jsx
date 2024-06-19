@@ -1,4 +1,4 @@
-export default function MentorSpiritList() {
+export default function returnMentorSpirits() {
   const mentorSpirits = {
     adversary: {
       name: "Adversary",

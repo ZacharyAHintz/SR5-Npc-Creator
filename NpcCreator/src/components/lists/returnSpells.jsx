@@ -1,4 +1,4 @@
-export default function SpellList() {
+export default function returnSpells() {
   const spells = {
     combatSpells: {
       acidStream: {

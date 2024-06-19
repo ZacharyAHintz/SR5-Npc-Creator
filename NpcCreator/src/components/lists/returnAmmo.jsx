@@ -1,4 +1,4 @@
-export default function AmmoList() {
+export default function returnAmmo() {
   const ammo = {
     ammunition: {
       APDS: {

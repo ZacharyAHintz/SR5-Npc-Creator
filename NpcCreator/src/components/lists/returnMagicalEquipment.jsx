@@ -1,4 +1,4 @@
-export default function MagicalEquipmentList() {
+export default function returnMagicalEquipment() {
   const magicalEquipment = {
     foci: {
       enchantingFocus: {

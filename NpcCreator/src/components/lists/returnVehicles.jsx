@@ -1,4 +1,4 @@
-export default function VehicleList() {
+export default function returnVehicles() {
   const vehicles = {
     bikes: {
       dodgeScoot: {

@@ -1,4 +1,4 @@
-export default function VehiclemodsList() {
+export default function returnVehiclemods() {
   const vehicleMods = {
     powerTrainMods: {
       accelerationEnhancementR1: {

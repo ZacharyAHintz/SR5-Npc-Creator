@@ -1,4 +1,4 @@
-export default function AdeptPowersList() {
+export default function returnAdeptPowers() {
   const powers = {
     adeptSpell: {
       power: "Adept Spell",

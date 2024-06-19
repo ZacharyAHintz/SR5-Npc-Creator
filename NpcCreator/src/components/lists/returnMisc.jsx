@@ -1,4 +1,4 @@
-export default function MiscList() {
+export default function returnMisc() {
   const misc = {
     explosives: {
       ammoniumNitrate: {

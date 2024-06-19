@@ -1,4 +1,4 @@
-export default function Traditions() {
+export default function returnTraditions() {
   const traditions = {
     traditions: {
       theHermeticMage: {

@@ -1,4 +1,4 @@
-export default function SecurityList() {
+export default function returnSecurity() {
   const security = {
     devices: {
       keyCombinationLock: {

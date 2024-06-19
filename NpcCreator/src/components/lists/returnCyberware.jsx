@@ -1,4 +1,4 @@
-export default function CyberwareList() {
+export default function returnCyberware() {
   const cyberware = {
     wareGrades: {
       standard: {
