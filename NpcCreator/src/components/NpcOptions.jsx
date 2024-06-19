@@ -5,6 +5,9 @@ import ToggleDialog from "./ToggleDialog";
 import returnRaces from "./lists/returnRaces";
 import returnSkills from "./lists/returnSkills";
 import getRandomObjectFromDepth from "../helperFunctions/getRandomObjectFromDepth";
+import getStartingSkillValues from "../helperFunctions/getStartingSkillValues";
+
+//enter need to finish the submit every time
 
 export default function NpcOptions({ toggleDialog }) {
   const [name, setName] = useState("");
@@ -15,6 +18,16 @@ export default function NpcOptions({ toggleDialog }) {
 
   const races = returnRaces();
   const skills = returnSkills();
+  const archetypes = [
+    "Shaman",
+    "Street Samurai",
+    "Decker",
+    "Technomancer",
+    "Face",
+    "Rigger",
+    "Physical Adept",
+    "Corpo",
+  ];
   function handleSubmit(e) {
     let id = crypto.randomUUID();
     e.preventDefault();
@@ -26,9 +39,26 @@ export default function NpcOptions({ toggleDialog }) {
       gender,
       archetype,
     };
-    const raceSelection = getRandomObjectFromDepth(races, 2);
-    character.race = raceSelection.metatype;
-    const skillSelection = getRandomObjectFromDepth(skills, 2);
+    if (rating === "Random") {
+      character.rating = Math.floor(Math.random() * 6) + 1;
+    }
+
+    if (gender === "Random") {
+      character.gender = Math.random() < 0.5 ? "Male" : "Female";
+    }
+
+    if (archetype === "Random") {
+      const randomIndex = Math.floor(Math.random() * 8);
+      character.archetype = archetypes[randomIndex];
+    }
+    if (race === "Random") {
+      const raceSelection = getRandomObjectFromDepth(races, 2, 1);
+      character.race = raceSelection.metatype;
+    }
+    const skillSelection = getStartingSkillValues(
+      getRandomObjectFromDepth(skills, 2, 8),
+      Number(character.rating),
+    );
     character.skill = skillSelection;
 
     const storedCharacters =
@@ -140,7 +170,7 @@ export default function NpcOptions({ toggleDialog }) {
             <option value="Technomancer">Technomancer</option>
             <option value="Face">Face</option>
             <option value="Rigger">Rigger</option>
-            <option value="Physical adept">Physical adept</option>
+            <option value="Physical Adept">Physical adept</option>
             <option value="Corpo">Corpo</option>
           </select>
           <br />

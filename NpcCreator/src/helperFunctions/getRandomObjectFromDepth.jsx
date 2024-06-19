@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 const collectObjectsAtDepth = (obj, depth) => {
   if (depth === 0 && typeof obj === "object" && obj !== null) {
     return [obj];
@@ -14,14 +12,23 @@ const collectObjectsAtDepth = (obj, depth) => {
   return [];
 };
 
-const getRandomItem = (items) => {
-  const randomIndex = Math.floor(Math.random() * items.length);
-  return items[randomIndex];
+const getRandomItems = (items, amount) => {
+  if (amount >= items.length) {
+    return items;
+  }
+
+  const randomItems = new Set();
+  while (randomItems.size < amount) {
+    const randomIndex = Math.floor(Math.random() * items.length);
+    randomItems.add(items[randomIndex]);
+  }
+
+  return Array.from(randomItems);
 };
 
-const getRandomObjectFromDepth = (obj, depth) => {
+const getRandomObjectsFromDepth = (obj, depth, amount) => {
   const objectsAtDepth = collectObjectsAtDepth(obj, depth);
-  return getRandomItem(objectsAtDepth);
+  return getRandomItems(objectsAtDepth, amount);
 };
 
-export default getRandomObjectFromDepth;
+export default getRandomObjectsFromDepth;
