@@ -1,5 +1,5 @@
-export default function returnShamanArchitypeSkills() {
-  const shamanArchitypeSkills = {
+export default function returnDeckerArchetypeSkills() {
+  const deckerArchetypeSkills = {
     artificing: ["Artificing", "logic", "astral"],
     assensing: ["Assensing", "intuition", "mental"],
     astralCombat: ["Astral Combat", "willpower", "astral"],
@@ -9,8 +9,7 @@ export default function returnShamanArchitypeSkills() {
     banishing: ["Banishing", "magic", "astral"],
     binding: ["Binding", "magic", "astral"],
     ritualSpellcasting: ["Ritual Spellcasting", "magic", "astral"],
-    Spellcasting: ["Spellcasting", "magic", "astral"],
   };
 
-  return shamanArchitypeSkills;
+  return deckerArchetypeSkills;
 }

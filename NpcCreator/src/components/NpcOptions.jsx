@@ -6,6 +6,14 @@ import returnRaces from "./lists/returnRaces";
 import returnSkills from "./lists/returnSkills";
 import getRandomObjectFromDepth from "../helperFunctions/getRandomObjectFromDepth";
 import getStartingSkillValues from "../helperFunctions/getStartingSkillValues";
+import shamanArchetypeSkills from "./lists/returnShamanArchitypeSkills";
+import streetSamuraiArchetypeSkills from "./lists/returnStreetSamuraiArchetypeSkills";
+import deckerArchetypeSkills from "./lists/returnDeckerArchetypeSkills";
+import technomancerArchetypeSkills from "./lists/returnTechnomancerArchetypeSkills";
+import faceArchetypeSkills from "./lists/returnFaceArchetypeSkills";
+import riggerArchetypeSkills from "./lists/returnRiggerArchetypeSkills";
+import physicalAdeptArchetypeSkills from "./lists/returnPhysicalAdeptArchetypeSkills";
+import corpoArchetypeSkills from "./lists/returnCorpoArchetypeSkills";
 
 //enter need to finish the submit every time
 
@@ -61,14 +69,14 @@ export default function NpcOptions({ toggleDialog }) {
 
     // prettier-ignore
     const archetypeSkillFunctions = {
-      "Shaman": returnShamanArchetypeSkills,
-      "Street Samurai": returnStreetSamuraiArchetypeSkills,
-      "Decker": returnDeckerArchetypeSkills,
-      "Technomancer": returnTechnomancerArchetypeSkills,
-      "Face": returnFaceArchetypeSkills,
-      "Rigger": returnRiggerArchetypeSkills,
-      "Physical Adept": returnPhysicalAdeptArchetypeSkills,
-      "Corpo": returnCorpoArchetypeSkills,
+      "Shaman": shamanArchetypeSkills,
+      "Street Samurai": streetSamuraiArchetypeSkills,
+      "Decker": deckerArchetypeSkills,
+      "Technomancer": technomancerArchetypeSkills,
+      "Face": faceArchetypeSkills,
+      "Rigger": riggerArchetypeSkills,
+      "Physical Adept": physicalAdeptArchetypeSkills,
+      "Corpo": corpoArchetypeSkills,
     };
 
     const archetypeSkills = archetypeSkillFunctions[character.archetype]();
@@ -78,12 +86,30 @@ export default function NpcOptions({ toggleDialog }) {
       getRandomObjectFromDepth(archetypeSkills, 1, archetypeSkillAmount),
       Number(character.rating),
     );
-    character.skill = archetypeSkillSelection;
-    const skillSelection = getStartingSkillValues(
+
+    let skillSelection = getStartingSkillValues(
       getRandomObjectFromDepth(skills, 2, skillAmount),
       Number(character.rating),
     );
-    character.skill = skillSelection;
+
+    // Function to merge two skill objects with no overlap
+    function mergeSkills(archetypeSkills, skills) {
+      const combinedSkills = { ...archetypeSkills };
+
+      for (const skill in skills) {
+        if (!combinedSkills.hasOwnProperty(skill)) {
+          combinedSkills[skill] = skills[skill];
+        }
+      }
+
+      return combinedSkills;
+    }
+
+    const combinedSkillSelection = mergeSkills(
+      archetypeSkillSelection,
+      skillSelection,
+    );
+    character.skills = combinedSkillSelection;
 
     const storedCharacters =
       JSON.parse(localStorage.getItem("characters")) || [];
