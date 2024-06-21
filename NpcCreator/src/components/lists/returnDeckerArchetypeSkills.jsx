@@ -1,14 +1,12 @@
 export default function returnDeckerArchetypeSkills() {
   const deckerArchetypeSkills = {
-    artificing: ["Artificing", "logic", "astral"],
-    assensing: ["Assensing", "intuition", "mental"],
-    astralCombat: ["Astral Combat", "willpower", "astral"],
-    counterspelling: ["Counterspelling", "magic", "astral"],
-    alchemy: ["Alchemy", "magic", "astral"],
-    arcana: ["Arcana", "logic", "astral"],
-    banishing: ["Banishing", "magic", "astral"],
-    binding: ["Binding", "magic", "astral"],
-    ritualSpellcasting: ["Ritual Spellcasting", "magic", "astral"],
+    computer: ["Computer", "logic", "mental"],
+    cybertechnology: ["Cybertechnology", "logic", "mental"],
+    software: ["Software", "logic", "mental"],
+    forgery: ["Forgery", "agility", "mental"],
+    hacking: ["Hacking", "logic", "mental"],
+    medicine: ["Medicine", "logic", "mental"],
+    cybercombat: ["Cybercombat", "logic", "mental"],
   };
 
   return deckerArchetypeSkills;

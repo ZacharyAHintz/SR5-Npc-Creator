@@ -1,14 +1,15 @@
 export default function returnPhysicalAdeptArchetypeSkills() {
   const physicalAdeptArchetypeSkills = {
-    artificing: ["Artificing", "logic", "astral"],
-    assensing: ["Assensing", "intuition", "mental"],
-    astralCombat: ["Astral Combat", "willpower", "astral"],
-    counterspelling: ["Counterspelling", "magic", "astral"],
-    alchemy: ["Alchemy", "magic", "astral"],
-    arcana: ["Arcana", "logic", "astral"],
-    banishing: ["Banishing", "magic", "astral"],
-    binding: ["Binding", "magic", "astral"],
-    ritualSpellcasting: ["Ritual Spellcasting", "magic", "astral"],
+    gymnastics: ["Gymnastics", "agility", "physical"],
+    automatics: ["Automatics", "agility", "physical"],
+    blades: ["Blades", "agility", "physical"],
+    clubs: ["Clubs", "agility", "physical"],
+    heavyWeapons: ["Heavy Weapons", "agility", "physical"],
+    unarmedCombat: ["Unarmed Combat", "agility", "physical"],
+    longarms: ["Longarms", "agility", "physical"],
+    pistols: ["Pistols", "agility", "physical"],
+    running: ["Running", "strength", "physical"],
+    sneaking: ["Sneaking", "agility", "physical"],
   };
 
   return physicalAdeptArchetypeSkills;

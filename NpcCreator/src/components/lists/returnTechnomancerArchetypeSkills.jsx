@@ -1,14 +1,15 @@
 export default function returnTechnomancerArchetypeSkills() {
   const technomancerArchetypeSkills = {
-    artificing: ["Artificing", "logic", "astral"],
-    assensing: ["Assensing", "intuition", "mental"],
-    astralCombat: ["Astral Combat", "willpower", "astral"],
-    counterspelling: ["Counterspelling", "magic", "astral"],
-    alchemy: ["Alchemy", "magic", "astral"],
-    arcana: ["Arcana", "logic", "astral"],
-    banishing: ["Banishing", "magic", "astral"],
-    binding: ["Binding", "magic", "astral"],
-    ritualSpellcasting: ["Ritual Spellcasting", "magic", "astral"],
+    compiling: ["Compiling", "resonance", "mental"],
+    decompiling: ["Decompiling", "resonance", "mental"],
+    registering: ["Registering", "resonance", "mental"],
+    computer: ["Computer", "logic", "mental"],
+    cybertechnology: ["Cybertechnology", "logic", "mental"],
+    software: ["Software", "logic", "mental"],
+    forgery: ["Forgery", "agility", "mental"],
+    hacking: ["Hacking", "logic", "mental"],
+    disguise: ["Disguise", "intuition", "mental"],
+    etiquette: ["Etiquette", "charisma", "social"],
   };
 
   return technomancerArchetypeSkills;

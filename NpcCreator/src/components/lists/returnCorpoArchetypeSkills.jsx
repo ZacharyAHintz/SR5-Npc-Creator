@@ -1,14 +1,14 @@
 export default function returnCorpoArchetypeSkills() {
   const corpoArchetypeSkills = {
-    artificing: ["Artificing", "logic", "astral"],
-    assensing: ["Assensing", "intuition", "mental"],
-    astralCombat: ["Astral Combat", "willpower", "astral"],
-    counterspelling: ["Counterspelling", "magic", "astral"],
-    alchemy: ["Alchemy", "magic", "astral"],
-    arcana: ["Arcana", "logic", "astral"],
-    banishing: ["Banishing", "magic", "astral"],
-    binding: ["Binding", "magic", "astral"],
-    ritualSpellcasting: ["Ritual Spellcasting", "magic", "astral"],
+    palming: ["Palming", "agility", "physical"],
+    disguise: ["Disguise", "intuition", "mental"],
+    etiquette: ["Etiquette", "charisma", "social"],
+    instruction: ["Instruction", "charisma", "social"],
+    intimidation: ["Intimidation", "charisma", "social"],
+    impersonation: ["Impersonation", "charisma", "social"],
+    leadership: ["Leadership", "charisma", "social"],
+    negotiation: ["Negotiation", "charisma", "social"],
+    performance: ["Performance", "charisma", "social"],
   };
 
   return corpoArchetypeSkills;
