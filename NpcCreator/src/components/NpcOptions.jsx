@@ -14,6 +14,12 @@ import faceArchetypeSkills from "./lists/returnFaceArchetypeSkills";
 import riggerArchetypeSkills from "./lists/returnRiggerArchetypeSkills";
 import physicalAdeptArchetypeSkills from "./lists/returnPhysicalAdeptArchetypeSkills";
 import corpoArchetypeSkills from "./lists/returnCorpoArchetypeSkills";
+import getRandomObjectByKey from "../helperFunctions/getRandomeObjectByKey";
+import determineGearRequirements from "../helperFunctions/determineGearRequirements";
+import returnWeapons from "./lists/returnWeapon";
+import returnVehicles from "./lists/returnVehicles";
+import returnDrones from "./lists/returnDrones";
+import returnAmmo from "./lists/returnAmmo";
 
 //enter need to finish the submit every time
 
@@ -26,6 +32,10 @@ export default function NpcOptions({ toggleDialog }) {
 
   const races = returnRaces();
   const skills = returnSkills();
+  const weapons = returnWeapons();
+  const vehicles = returnVehicles();
+  const drones = returnDrones();
+  const ammo = returnAmmo();
 
   const archetypes = [
     "Shaman",
@@ -49,7 +59,7 @@ export default function NpcOptions({ toggleDialog }) {
       gender,
       archetype,
     };
-
+    // randomizers
     if (rating === "Random") {
       character.rating = Math.floor(Math.random() * 6) + 1;
     }
@@ -66,7 +76,7 @@ export default function NpcOptions({ toggleDialog }) {
       const raceSelection = getRandomObjectFromDepth(races, 2, 1);
       character.race = raceSelection.metatype;
     }
-
+    // skill selection
     // prettier-ignore
     const archetypeSkillFunctions = {
       "Shaman": shamanArchetypeSkills,
@@ -92,7 +102,6 @@ export default function NpcOptions({ toggleDialog }) {
       Number(character.rating),
     );
 
-    // Function to merge two skill objects with no overlap
     function mergeSkills(archetypeSkills, skills) {
       const combinedSkills = { ...archetypeSkills };
 
@@ -110,6 +119,44 @@ export default function NpcOptions({ toggleDialog }) {
       skillSelection,
     );
     character.skills = combinedSkillSelection;
+    //item selection based on skills
+    const gearList = determineGearRequirements(character);
+
+    function processGearRequirements(gearRequirementsList) {
+      const gear = [];
+      const vehicles = [];
+      const weapons = [];
+
+      for (const key in gearRequirementsList) {
+        if (gearRequirementsList.hasOwnProperty(key)) {
+          for (const item of gearRequirementsList[key]) {
+            const [obj, key, keyDepth, amount] = item;
+            const randomObject = getRandomObjectByKey(
+              obj,
+              key,
+              keyDepth,
+              amount,
+            );
+            if (key === "vehicles") {
+              vehicles.push(randomObject);
+            } else if (key === "weapons") {
+              weapons.push(randomObject);
+            } else {
+              gear.push(randomObject);
+            }
+          }
+        }
+      }
+
+      return { gear, vehicles, weapons };
+    }
+
+    character.gear = processGearRequirements(gearList);
+    // archetype specific selections
+
+    if (character.archetype === "Shaman") {
+      character.items = getRandomObjectByKey();
+    }
 
     const storedCharacters =
       JSON.parse(localStorage.getItem("characters")) || [];
