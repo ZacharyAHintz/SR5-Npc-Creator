@@ -21,6 +21,7 @@ function getArchetypeBaseline(archetype, rank) {
     "Shaman": {
       spells: { list: shamanSpells, depth: 2 },
       spirits: { list: shamanSpirits, depth: 2 },
+      mentorSpirit: { list: shamanMentorSpirits, depth: 2 },
     },
     "Street Samurai": {
       cyberware: { list: streetSamuraiCyberware, depth: 2 },

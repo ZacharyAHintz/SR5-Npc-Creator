@@ -119,6 +119,7 @@ export default function NpcOptions({ toggleDialog }) {
       skillSelection,
     );
     character.skills = combinedSkillSelection;
+
     //item selection based on skills
     const gearList = determineGearRequirements(character);
 
@@ -127,19 +128,21 @@ export default function NpcOptions({ toggleDialog }) {
       const vehicles = [];
       const weapons = [];
 
-      for (const key in gearRequirementsList) {
-        if (gearRequirementsList.hasOwnProperty(key)) {
-          for (const item of gearRequirementsList[key]) {
-            const [obj, key, keyDepth, amount] = item;
+      for (const category in gearRequirementsList) {
+        // console.log(gearRequirementsList);
+        if (gearRequirementsList.hasOwnProperty(category)) {
+          for (const item of gearRequirementsList[category]) {
+            const [obj, itemKey, keyDepth, amount] = item;
             const randomObject = getRandomObjectByKey(
               obj,
-              key,
+              itemKey,
               keyDepth,
               amount,
             );
-            if (key === "vehicles") {
+            console.log(category);
+            if (category === "vehicle") {
               vehicles.push(randomObject);
-            } else if (key === "weapons") {
+            } else if (category === "weapon" || category === "ammo") {
               weapons.push(randomObject);
             } else {
               gear.push(randomObject);
@@ -154,9 +157,9 @@ export default function NpcOptions({ toggleDialog }) {
     character.gear = processGearRequirements(gearList);
     // archetype specific selections
 
-    if (character.archetype === "Shaman") {
-      character.items = getRandomObjectByKey();
-    }
+    // if (character.archetype === "Shaman") {
+    //   character.items = getRandomObjectByKey();
+    // }
 
     const storedCharacters =
       JSON.parse(localStorage.getItem("characters")) || [];
