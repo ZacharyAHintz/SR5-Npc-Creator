@@ -39,7 +39,7 @@ export default function returnMentorSpirits() {
     berserker: {
       description:
         "Those who follow the path of Berserker love fighting just for the sake of fighting, be it with words, fists, or spells. He is the greatest of all warriors, capable of wading into battle without fear, and he will wage his war singlehandedly if necessary.",
-      all: "Composure Tests",
+      all: "Composure",
       magician: ["Physical-type Combat spells", "preparations", "rituals"],
       adept: "Mystic Armor and/or Pain Resistance",
       disadvantages:
@@ -87,7 +87,7 @@ export default function returnMentorSpirits() {
     chaos: {
       description:
         "Adherents of Chaos seemingly do things at random and love to start arguments or barroom brawls just for kicks, often through random trickery. While most people have a rather fixed sense of right and wrong, a Chaos follower’s moral compass points in a different direction from moment to moment.",
-      all: "Con Tests",
+      all: "Con",
       magician: ["Illusion spells", "preparations", "rituals"],
       adept: "Improved Potential (2)",
       disadvantages:
@@ -99,7 +99,7 @@ export default function returnMentorSpirits() {
     dog: {
       description:
         "Dog is a loyal friend. He fights ferociously to defend his home and those under his protection. Dog protects people from harmful magic and dangerous spirits. Dog is loyal, generous, and helpful to those who show him kindness. He is single-minded, often to the point of stubbornness.",
-      all: "Tracking tests",
+      all: "Tracking",
       magician: ["Detection spells", "preparations", "rituals"],
       adept: "Improved Sense (2)",
       disadvantages:
@@ -111,7 +111,7 @@ export default function returnMentorSpirits() {
     dolphin: {
       description:
         "Followers of Dolphin are graceful, free-spirited characters who enjoy playful banter and have to move when music plays. They see things optimistically and believe there is good in the world despite current conditions of corporate politics and pollution. They are not naïve—at least, they don’t believe they are. They just have faith in humanity. Somehow.",
-      all: "Artisan skill tests or Pilot (Watercraft) skill tests (choose one)",
+      all: "Artisan",
       magician: ["Health spells", "preparations", "spell rituals"],
       adept: "Flexibility (2)",
       disadvantages:
@@ -378,7 +378,7 @@ export default function returnMentorSpirits() {
     doomToxic: {
       description:
         "Doom embodies the desire of toxics to bring an end to all life on the planet, seeking to hasten the apocalypse and turn the world into a barren, polluted landscape. Followers of Doom see humanity as tragically flawed and carry out an agenda of total destruction, leading to isolationist and anti-social behavior.",
-      all: ["Demolitions", "a single Combat Skill of the character’s choice"],
+      all: ["Demolitions", "Blades", "Automatics"],
       magician:
         "+2 dice for spells, preparations, and spell rituals of the Combat category",
       adept: "Free Killing Hands power",
@@ -391,7 +391,7 @@ export default function returnMentorSpirits() {
     diseaseToxic: {
       description:
         "Disease embodies infection and virulence, subsisting off the waste of others and spreading its influence throughout the world. Followers of Disease collaborate and work in groups to achieve their goals, preferring subtle methods over direct confrontation.",
-      all: "+2 to resist all pathogens and toxins",
+      all: "Survival",
       magician:
         "+2 dice for summoning or binding plague spirits (toxic spirits of man)",
       adept: "Free Plague Cloud power (see p. 173)",
@@ -404,7 +404,7 @@ export default function returnMentorSpirits() {
     mutationToxic: {
       description:
         "Mutation seeks to alter every living thing into new forms, conspiring to control, manipulate, and change all life through pollution and corruption. Followers are obsessed with self-improvement.",
-      all: "+2 dice to a Physical skill of the character’s choice",
+      all: ["Palming", "Sneaking", "Unarmed Combat"],
       magician:
         "+2 dice for spells, preparations, and spell rituals of the Health category",
       adept:
@@ -418,7 +418,7 @@ export default function returnMentorSpirits() {
     pollutionToxic: {
       description:
         "Pollution embodies the defilement of the natural world and its destruction. Followers celebrate in the rape of nature, believing in pollution as the ultimate force.",
-      all: "+2 dice for Chemistry Tests dealing with pollutants; may default even without the Chemistry skill",
+      all: "Chemistry",
       magician:
         "+2 dice to summon or bind toxic spirits of air, earth, or water (choose one)",
       adept: "Free Toxic Strike power (see p. 176)",

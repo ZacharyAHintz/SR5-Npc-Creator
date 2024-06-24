@@ -20,6 +20,7 @@ import returnWeapons from "./lists/returnWeapon";
 import returnVehicles from "./lists/returnVehicles";
 import returnDrones from "./lists/returnDrones";
 import returnAmmo from "./lists/returnAmmo";
+import createShaman from "../helperFunctions/archetypeSpecific/createShaman";
 
 //enter need to finish the submit every time
 
@@ -157,9 +158,9 @@ export default function NpcOptions({ toggleDialog }) {
     character.gear = processGearRequirements(gearList);
     // archetype specific selections
 
-    // if (character.archetype === "Shaman") {
-    //   character.items = getRandomObjectByKey();
-    // }
+    if (character.archetype === "Shaman") {
+      createShaman(character);
+    }
 
     const storedCharacters =
       JSON.parse(localStorage.getItem("characters")) || [];

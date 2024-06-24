@@ -8,7 +8,7 @@ export default function returnSkills() {
       palming: ["Palming", "agility", "physical"],
       running: ["Running", "strength", "physical"],
       sneaking: ["Sneaking", "agility", "physical"],
-      survival: ["Survival", "willpower", "mental"],
+      survival: [["Survival"], "willpower", "mental"],
       swimming: ["Swimming", "strength", "physical"],
       tracking: ["Tracking", "intuition", "mental"],
       perception: ["Perception", "intuition", "mental"],
