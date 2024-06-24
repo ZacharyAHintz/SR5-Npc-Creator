@@ -15,33 +15,33 @@ import returnSecurity from "../components/lists/returnSecurity";
 import returnTraditions from "../components/lists/returnTraditions";
 import returnVehicleMods from "../components/lists/returnVehicleMods";
 function getArchetypeBaseline(archetype, rank) {
-  // Define the baseline lists for each archetype
+  // Define the baseline lists for each archetype with depths
   // prettier-ignore
   const archetypeBaselines = {
     "Shaman": {
-      spells: shamanSpells,
-      spirits: shamanSpirits,
+      spells: { list: shamanSpells, depth: 2 },
+      spirits: { list: shamanSpirits, depth: 2 },
     },
     "Street Samurai": {
-      cyberware: streetSamuraiCyberware,
+      cyberware: { list: streetSamuraiCyberware, depth: 2 },
     },
     "Decker": {
-      equipment: deckerEquipment,
+      equipment: { list: deckerEquipment, depth: 2 },
     },
     "Technomancer": {
-      equipment: technomancerEquipment,
+      equipment: { list: technomancerEquipment, depth: 2 },
     },
     "Face": {
-      equipment: faceEquipment,
+      equipment: { list: faceEquipment, depth: 2 },
     },
     "Rigger": {
-      drones: riggerDrones,
+      drones: { list: riggerDrones, depth: 2 },
     },
     "Physical Adept": {
-      powers: physicalAdeptPowers,
+      powers: { list: physicalAdeptPowers, depth: 2 },
     },
     "Corpo": {
-      equipment: corpoEquipment,
+      equipment: { list: corpoEquipment, depth: 2 },
     },
   };
 
@@ -63,9 +63,9 @@ function getArchetypeBaseline(archetype, rank) {
 
   // Roll on the lists using getRandomObjectFromDepth
   const results = {};
-  for (const [key, list] of Object.entries(baseline)) {
+  for (const [key, { list, depth }] of Object.entries(baseline)) {
     const amount = amounts[key];
-    results[key] = getRandomObjectFromDepth(list, 2, amount);
+    results[key] = getRandomObjectFromDepth(list, depth, amount);
   }
 
   return results;
