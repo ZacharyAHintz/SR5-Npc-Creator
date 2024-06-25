@@ -27,7 +27,6 @@ export default function determineGearRequirements(character) {
   ];
   const matchingSkills = [];
 
-  // Iterate over the keys of the skills object
   for (const key in character.skills) {
     if (character.skills.hasOwnProperty(key)) {
       const skillObj = character.skills[key];

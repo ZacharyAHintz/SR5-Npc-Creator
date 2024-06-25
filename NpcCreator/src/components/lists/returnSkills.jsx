@@ -79,7 +79,8 @@ export default function returnSkills() {
       binding: ["Binding", "magic", "astral"],
       disenchanting: ["Disenchanting", "magic", "astral"],
       ritualSpellcasting: ["Ritual Spellcasting", "magic", "astral"],
-      Spellcasting: ["Spellcasting", "magic", "astral"],
+      summoning: ["Summoning", "magic", "astral"],
+      spellcasting: ["Spellcasting", "magic", "astral"],
     },
     resonance: {
       compiling: ["Compiling", "resonance", "mental"],

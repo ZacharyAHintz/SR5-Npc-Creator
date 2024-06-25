@@ -159,7 +159,7 @@ export default function returnMentorSpirits() {
     giraffe: {
       description:
         "A follower of the Giraffe mentor spirit sees beyond the horizon. She seeks to see/hear the truth beyond what is presented. A giraffe follower may seem a little off as she either looks off into space and appears to not pay attention or looks too intently at you as if she’s judging your soul.",
-      all: "Judge Intentions",
+      all: "Perception",
       magician: "Conjuring",
       adept: "2 free levels of Piercing Senses",
       disadvantages:
