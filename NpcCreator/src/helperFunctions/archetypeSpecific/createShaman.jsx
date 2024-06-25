@@ -2,6 +2,7 @@ import returnTraditions from "../../components/lists/returnTraditions";
 import getRandomObjectsFromDepth from "../getRandomObjectFromDepth";
 import getMentorSpirit from "./getMentorSpirit";
 import getShamanStats from "./getShamanStats";
+import getSpells from "./getSpells";
 
 const traditions = returnTraditions();
 const specializations = [
@@ -23,7 +24,7 @@ const specializations = [
 // -- get their mentor spirit
 // -- add in their mentor spirit bonuses
 //create specialization
-//imput their stats
+// -- imput their stats
 //add in items / weapons / vehicles
 //add ammo
 //add armor
@@ -38,6 +39,6 @@ export default function createShaman(character) {
   } else {
     character.specialization = "Witch Doctor";
   }
-
   getShamanStats(character);
+  getSpells(character);
 }
