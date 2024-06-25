@@ -75,7 +75,7 @@ export default function returnMentorSpirits() {
     cat: {
       description:
         "Cat is honored in cultures around the world. Cat is often seen as the guardian of mystical secrets, including those involving the afterlife. She certainly knows many secrets but rarely decides to share them, and never with anyone who is not worthy. She is stealthy, sly, and arrogant. Cat toys with her prey—threatening, taunting, and confusing her targets—rather than going directly for the kill.",
-      all: "Infiltration",
+      all: "Sneaking",
       magician: ["Illusion spells", "preparations", "illusion spell rituals"],
       adept: "Light Body (2)",
       disadvantages:
@@ -147,7 +147,7 @@ export default function returnMentorSpirits() {
     fireBringer: {
       description:
         "The Fire-Bringer stole the secret of fire from the heavens and gave it to metahumanity as a gift and a tool. He is a figure of kindness and concern, but his good intentions sometimes get him into trouble and his plans may fail to work out the way he envisions them. He is a shaper and a creator, forming new things from the primal clay and breathing the fiery spark of life into them. Fire-Bringers devote themselves to the betterment of others, even at their own expense. Most followers of Fire-Bringer throw themselves into a particular cause with great zeal.",
-      all: ["Artisan", "Alchemy"],
+      all: "Alchemy",
       magician: "Manipulation",
       adept: "1 free level of Improved Ability on a non-combat skill",
       disadvantages:

@@ -76,7 +76,6 @@ export default function NpcOptions({ toggleDialog }) {
     if (race === "Random") {
       const raceSelection = getRandomObjectFromDepth(races, 2, 1);
       character.race = raceSelection;
-      console.log(character.race);
     }
 
     // Skill selection
@@ -159,9 +158,10 @@ export default function NpcOptions({ toggleDialog }) {
     character.gear = processGearRequirements(gearList);
 
     // Archetype specific selections
-    if (character.archetype === "Shaman") {
-      createShaman(character);
-    }
+    // if (character.archetype === "Shaman") {
+    //   createShaman(character);
+    // }
+    createShaman(character);
 
     // Save character to localStorage
     const storedCharacters =
