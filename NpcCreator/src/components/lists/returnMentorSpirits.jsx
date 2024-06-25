@@ -39,7 +39,7 @@ export default function returnMentorSpirits() {
     berserker: {
       description:
         "Those who follow the path of Berserker love fighting just for the sake of fighting, be it with words, fists, or spells. He is the greatest of all warriors, capable of wading into battle without fear, and he will wage his war singlehandedly if necessary.",
-      all: "Composure",
+      all: "Spellcasting",
       magician: ["Physical-type Combat spells", "preparations", "rituals"],
       adept: "Mystic Armor and/or Pain Resistance",
       disadvantages:

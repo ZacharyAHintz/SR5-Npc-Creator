@@ -25,6 +25,15 @@ export default function getShamanStats(character) {
     essence: 6,
   };
 
+  if (character.stats[character.drain.drainOne.toLowerCase()]) {
+    character.stats[character.drain.drainOne.toLowerCase()].baseStats +=
+      character.rating;
+  }
+  if (character.stats[character.drain.drainTwo.toLowerCase()]) {
+    character.stats[character.drain.drainTwo.toLowerCase()].baseStats +=
+      character.rating;
+  }
+
   console.log(character.stats);
 
   function distributePoints(totalPoints) {
@@ -62,5 +71,5 @@ export default function getShamanStats(character) {
     return statsArray;
   }
 
-  distributePoints(20);
+  distributePoints(character.rating * 2 + 4);
 }
