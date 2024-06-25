@@ -27,7 +27,7 @@ export default function returnMentorSpirits() {
     bear: {
       description:
         "This mentor symbolizes strength and protection. He is a healer and cannot turn down those in need without good reason, and he defends those under his care. Bear is more than a gentle healer; he is a ferocious protector, disregarding his own safety in combat if wounded or if someone he is protecting is injured.",
-      all: "Resist damage",
+      all: "Intimidation",
       magician: ["Health spells", "preparations", "health spell rituals"],
       adept: "Rapid Healing",
       disadvantages:
@@ -63,7 +63,7 @@ export default function returnMentorSpirits() {
     boar: {
       description:
         "Followers of the Boar are static in their ways. They keep to a daily routine and hold on to their stuff till it wears away. Some people would call them boring or unspontaneous, others would call them hoarders. Followers believe themselves to be loyal to the places that are part of their routine, and they are very protective of their territory.",
-      all: "Home Ground Quality",
+      all: "Blades",
       magician: "Additional services when summoning spirits",
       adept: "Rooting (2)",
       disadvantages:
@@ -75,7 +75,7 @@ export default function returnMentorSpirits() {
     cat: {
       description:
         "Cat is honored in cultures around the world. Cat is often seen as the guardian of mystical secrets, including those involving the afterlife. She certainly knows many secrets but rarely decides to share them, and never with anyone who is not worthy. She is stealthy, sly, and arrogant. Cat toys with her prey—threatening, taunting, and confusing her targets—rather than going directly for the kill.",
-      all: "Gymnastics or Infiltration Tests",
+      all: "Infiltration",
       magician: ["Illusion spells", "preparations", "illusion spell rituals"],
       adept: "Light Body (2)",
       disadvantages:
@@ -123,7 +123,7 @@ export default function returnMentorSpirits() {
     dragonslayer: {
       description:
         "This most heroic of mentor spirits is also the most fun loving. Though he fights to protect his own against all dangers, he loves a good party even more. He is a big brother who takes a friendly interest in everything his family does. Though sometimes naïve, he makes a staunch friend and a deadly enemy. The dragons he slays have changed with the times: current beasts include crime, pollution, corruption, and of course, actual dragons. Dragonslayer fights hard and plays hard. Once he has given his oath, he never breaks it. A Dragonslayer magician behaves with honor and respect, and demands the same from those around him.",
-      all: "One social skill of choice",
+      all: "Etiquette",
       magician: ["Combat spells", "preparations", "rituals"],
       adept: "Enhanced Accuracy (1) and Danger Sense (1)",
       disadvantages:

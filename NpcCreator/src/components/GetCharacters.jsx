@@ -50,16 +50,11 @@ export default function GetCharacters() {
     <div>
       <div>
         {characters.map((char) => (
-          <>
-            {/* <button
-              key={char.id}
-              onClick={() => handleButtonPress(char.id)}
-            ></button> */}
-
-            <ToggleDialog name={char.name ? char.name : "name"}>
+          <div key={char.id}>
+            <ToggleDialog name={char.name ? char.name : "Name"}>
               <CharacterSheet character={char} />
             </ToggleDialog>
-          </>
+          </div>
         ))}
       </div>
     </div>

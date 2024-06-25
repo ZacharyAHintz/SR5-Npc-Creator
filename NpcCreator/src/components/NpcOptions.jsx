@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "../styles/NpcOptions.module.css";
 import NewCharacterButton from "./NewCharacterButton";
 import ToggleDialog from "./ToggleDialog";
@@ -21,9 +21,7 @@ import returnVehicles from "./lists/returnVehicles";
 import returnDrones from "./lists/returnDrones";
 import returnAmmo from "./lists/returnAmmo";
 import createShaman from "../helperFunctions/archetypeSpecific/createShaman";
-
 //enter need to finish the submit every time
-
 export default function NpcOptions({ toggleDialog }) {
   const [name, setName] = useState("");
   const [race, setRace] = useState("Random");
@@ -60,7 +58,8 @@ export default function NpcOptions({ toggleDialog }) {
       gender,
       archetype,
     };
-    // randomizers
+
+    // Randomizers
     if (rating === "Random") {
       character.rating = Math.floor(Math.random() * 6) + 1;
     }
@@ -73,11 +72,14 @@ export default function NpcOptions({ toggleDialog }) {
       const randomIndex = Math.floor(Math.random() * 8);
       character.archetype = archetypes[randomIndex];
     }
+
     if (race === "Random") {
       const raceSelection = getRandomObjectFromDepth(races, 2, 1);
-      character.race = raceSelection.metatype;
+      character.race = raceSelection;
+      console.log(character.race);
     }
-    // skill selection
+
+    // Skill selection
     // prettier-ignore
     const archetypeSkillFunctions = {
       "Shaman": shamanArchetypeSkills,
@@ -121,7 +123,7 @@ export default function NpcOptions({ toggleDialog }) {
     );
     character.skills = combinedSkillSelection;
 
-    //item selection based on skills
+    // Item selection based on skills
     const gearList = determineGearRequirements(character);
 
     function processGearRequirements(gearRequirementsList) {
@@ -130,7 +132,6 @@ export default function NpcOptions({ toggleDialog }) {
       const weapons = [];
 
       for (const category in gearRequirementsList) {
-        // console.log(gearRequirementsList);
         if (gearRequirementsList.hasOwnProperty(category)) {
           for (const item of gearRequirementsList[category]) {
             const [obj, itemKey, keyDepth, amount] = item;
@@ -140,7 +141,7 @@ export default function NpcOptions({ toggleDialog }) {
               keyDepth,
               amount,
             );
-            console.log(category);
+
             if (category === "vehicle") {
               vehicles.push(randomObject);
             } else if (category === "weapon" || category === "ammo") {
@@ -156,12 +157,13 @@ export default function NpcOptions({ toggleDialog }) {
     }
 
     character.gear = processGearRequirements(gearList);
-    // archetype specific selections
 
+    // Archetype specific selections
     if (character.archetype === "Shaman") {
       createShaman(character);
     }
 
+    // Save character to localStorage
     const storedCharacters =
       JSON.parse(localStorage.getItem("characters")) || [];
     const characterExists = storedCharacters.some(
@@ -180,6 +182,44 @@ export default function NpcOptions({ toggleDialog }) {
 
     console.log(JSON.parse(localStorage.getItem("characters")));
   }
+
+  const handleRaceChange = (e) => {
+    const selectedRace = e.target.value;
+
+    if (selectedRace === "Metasapients") {
+      setRace("Centaur");
+      document.getElementById("Metasapients").classList.remove(styles.hidden);
+      document.getElementById("Metasapients").classList.add(styles.input);
+      document.getElementById("Infected").classList.remove(styles.input);
+      document.getElementById("Infected").classList.add(styles.hidden);
+      document.getElementById("Metavariants").classList.remove(styles.input);
+      document.getElementById("Metavariants").classList.add(styles.hidden);
+    } else if (selectedRace === "Metavariants") {
+      setRace("gnome");
+      document.getElementById("Metavariants").classList.remove(styles.hidden);
+      document.getElementById("Metavariants").classList.add(styles.input);
+      document.getElementById("Metasapients").classList.remove(styles.input);
+      document.getElementById("Metasapients").classList.add(styles.hidden);
+      document.getElementById("Infected").classList.remove(styles.input);
+      document.getElementById("Infected").classList.add(styles.hidden);
+    } else if (selectedRace === "Infected") {
+      setRace("Bandersnatch");
+      document.getElementById("Infected").classList.remove(styles.hidden);
+      document.getElementById("Infected").classList.add(styles.input);
+      document.getElementById("Metasapients").classList.remove(styles.input);
+      document.getElementById("Metasapients").classList.add(styles.hidden);
+      document.getElementById("Metavariants").classList.remove(styles.input);
+      document.getElementById("Metavariants").classList.add(styles.hidden);
+    } else {
+      setRace(selectedRace);
+      document.getElementById("Metasapients").classList.remove(styles.input);
+      document.getElementById("Metasapients").classList.add(styles.hidden);
+      document.getElementById("Metavariants").classList.remove(styles.input);
+      document.getElementById("Metavariants").classList.add(styles.hidden);
+      document.getElementById("Infected").classList.remove(styles.input);
+      document.getElementById("Infected").classList.add(styles.hidden);
+    }
+  };
 
   return (
     <main className={styles.container}>
@@ -226,7 +266,7 @@ export default function NpcOptions({ toggleDialog }) {
           <select
             className={styles.input}
             value={race}
-            onChange={(e) => setRace(e.target.value)}
+            onChange={handleRaceChange}
             id="race"
           >
             <option value="Random">Random</option>
@@ -235,10 +275,66 @@ export default function NpcOptions({ toggleDialog }) {
             <option value="Dwarf">Dwarf</option>
             <option value="Ork">Ork</option>
             <option value="Troll">Troll</option>
+            <option value="Metasapients">Metasapients</option>
+            <option value="Metavariants">Metavariants</option>
+            <option value="Infected">Infected</option>
+          </select>
+          <select
+            className={styles.hidden}
+            id="Metasapients"
+            onChange={(e) => setRace(e.target.value)}
+          >
             <option value="Centaur">Centaur</option>
             <option value="Naga">Naga</option>
             <option value="Pixie">Pixie</option>
             <option value="Sasquatch">Sasquatch</option>
+          </select>
+          <select
+            className={styles.hidden}
+            id="Metavariants"
+            onChange={(e) => setRace(e.target.value)}
+          >
+            <option value="Gnome">Gnome</option>
+            <option value="Hanuman">Hanuman</option>
+            <option value="Koborokuru">Koborokuru</option>
+            <option value="Menehune">Menehune</option>
+            <option value="Dryad">Dryad</option>
+            <option value="Nocturna">Nocturna</option>
+            <option value="Wakyambi">Wakyambi</option>
+            <option value="Xapiri Thëpë">Xapiri Thëpë</option>
+            <option value="Nartaki">Nartaki</option>
+            <option value="Hobgoblin">Hobgoblin</option>
+            <option value="Ogre">Ogre</option>
+            <option value="Oni">Oni</option>
+            <option value="Satyr">Satyr</option>
+            <option value="Cyclops">Cyclops</option>
+            <option value="Fomorian">Fomorian</option>
+            <option value="Giant">Giant</option>
+            <option value="Minotaur">Minotaur</option>
+          </select>
+          <select
+            className={styles.hidden}
+            id="Infected"
+            onChange={(e) => setRace(e.target.value)}
+          >
+            <option value="Bandersnatch">Bandersnatch</option>
+            <option value="Banshee">Banshee</option>
+            <option value="Dzoo-noo-qua">Dzoo-noo-qua</option>
+            <option value="Fomóraig">Fomóraig</option>
+            <option value="Ghoul (Dwarf)">Ghoul (Dwarf)</option>
+            <option value="Ghoul (Elf)">Ghoul (Elf)</option>
+            <option value="Ghoul (Human)">Ghoul (Human)</option>
+            <option value="Ghoul (Ork)">Ghoul (Ork)</option>
+            <option value="Ghoul (Sasquatch)">Ghoul (Sasquatch)</option>
+            <option value="Ghoul (Troll)">Ghoul (Troll)</option>
+            <option value="Goblin">Goblin</option>
+            <option value="Grendel">Grendel</option>
+            <option value="Harvester">Harvester</option>
+            <option value="Loup-garou">Loup-garou</option>
+            <option value="Mutaqua">Mutaqua</option>
+            <option value="Nosferatu">Nosferatu</option>
+            <option value="Vampire">Vampire</option>
+            <option value="Wendigo">Wendigo</option>
           </select>
           <br />
           <label className={styles.label} htmlFor="Gender">
@@ -275,7 +371,7 @@ export default function NpcOptions({ toggleDialog }) {
             <option value="Corpo">Corpo</option>
           </select>
           <br />
-          <input className={styles.input} type="submit"></input>
+          <input className={styles.input} type="submit" />
         </div>
       </form>
     </main>

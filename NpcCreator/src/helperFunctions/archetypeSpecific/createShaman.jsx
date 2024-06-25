@@ -6,15 +6,15 @@ const traditions = returnTraditions();
 const specializations = [
   "Summoner",
   "Anti-Magic",
-  "Astral",
-  "Ritual",
-  "Spellcasting",
+  "Astral Combatant",
+  "Ritualist",
+  "Spellcaster",
   "Alchemist",
-  "Manipulation",
+  "Manipulator",
   "Healer",
-  "Blood",
-  "Possession",
-  "Insect",
+  "Blood Mage",
+  "Witch Doctor",
+  "Insect Shaman",
 ];
 // roll randomely for specialization unless tradition.name is "Qabbalism"
 
@@ -34,6 +34,6 @@ export default function createShaman(character) {
   if (traditions.name !== "Qabbalism") {
     character.specialization = specializations[Math.floor(Math.random() * 11)];
   } else {
-    character.specialization = "Possession";
+    character.specialization = "Witch Doctor";
   }
 }
