@@ -4,6 +4,13 @@ export default function getShamanStats(character) {
     return { baseStats: Number(baseStats), limit: Number(limit) };
   }
 
+  function splitDrainStats(drain) {
+    const [drainOne, drainTwo] = drain.split("+").map((part) => part.trim());
+    return { drainOne: String(drainOne), drainTwo: String(drainTwo) };
+  }
+
+  character.drain = splitDrainStats(character.tradition[0].drain);
+
   character.stats = {
     body: splitStatsFromLimit(character.race[0].body),
     agility: splitStatsFromLimit(character.race[0].agility),

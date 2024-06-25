@@ -4,7 +4,7 @@ export default function returnMentorSpirits() {
       description:
         "Wherever there is cosmological order, there is an entity that wishes to overthrow it. The Adversary is the original rebel against the powers that be. Followers of the Adversary have serious issues with authority and conformity. Followers range from those dedicated to helping the underprivileged and abused (by “the man”) to the one who indulges his love of anarchy for its own sake. Free will and cynicism are the Adversary follower’s tools and trade.",
       all: "Demolition",
-      magician: ["Counterspelling", "Disenchanting"],
+      magician: "Counterspelling",
       adept: "One free level of Iron Will",
       disadvantages:
         "Because of their deep-seated hatred for authority, a teammate’s use of leadership skill is counterproductive to followers of Adversary, invoking either a negative dice penalty or loss of initiative. If the plan doesn’t go the way that the adversary follower wants it to go, it takes a Charisma + Willpower (3) Test for him to get him to cooperate.",
@@ -159,7 +159,7 @@ export default function returnMentorSpirits() {
     giraffe: {
       description:
         "A follower of the Giraffe mentor spirit sees beyond the horizon. She seeks to see/hear the truth beyond what is presented. A giraffe follower may seem a little off as she either looks off into space and appears to not pay attention or looks too intently at you as if she’s judging your soul.",
-      all: ["Assensing", "Judge Intentions"],
+      all: "Judge Intentions",
       magician: "Conjuring",
       adept: "2 free levels of Piercing Senses",
       disadvantages:
@@ -171,7 +171,7 @@ export default function returnMentorSpirits() {
     horse: {
       description:
         "Followers of the Horse mentor spirit are the embodiment of freedom. They must be out in the open air and allowed to roam the open road. Followers are never intentionally stubborn or malicious, but they do not like to feel impeded or confined by someone else. This unfortunately also means that followers of Horse may sacrifice personal relationships for freedom.",
-      all: ["Running", "Pilot Ground Craft"],
+      all: "Running",
       magician: "Reduce Drain Value from Reckless Summoning by 1",
       disadvantages:
         "Followers cannot sit still for long or be confined indoors. They must spend at least four hours a day outside and be able to run or drive around (any method of travel faster than walking). If followers are not able to meet this condition, they suffer –1 die to all action skill tests. This penalty is cumulative, meaning if the follower is stuck at a desk all day (indoors and not moving around) for two days in a row, they suffer –2 to all actions until they get that free time in.",
@@ -340,7 +340,7 @@ export default function returnMentorSpirits() {
     whale: {
       description:
         "Followers of Whale appreciate beauty and the long-time traditions of working in the arts. With a long life, they also hold personal honor and loyalty in high esteem. Those Whale adopts into her personal circle receive her total loyalty, and she expects the same in return. Followers of Whale are patient in their work and will take the time to make sure all the details are complete.",
-      all: ["Swimming", "Pilot Watercraft"],
+      all: "Swimming",
       magician: "+2 to Conjuring skill tests for spirits of water",
       adept: "Iron Lungs (2)",
       disadvantages:
@@ -352,7 +352,7 @@ export default function returnMentorSpirits() {
     wiseWarrior: {
       description:
         "The Wise Warrior is skilled in the art of war, viewing battle as an exercise in the powers of the mind as well as the body. She studies the tactics of her foes and overcomes them through a combination of superior strategy and battle prowess. The Wise Warrior does not act out of savagery or battle-lust, but from a position of knowledge and wisdom. Wise Warriors must follow the warrior’s code of honor and conduct themselves properly or risk the loss of favor.",
-      all: ["Leadership", "Instruction"],
+      all: "Leadership",
       magician:
         "+2 dice for spells, preparations, and spell rituals in the Combat category",
       adept: "Improved Ability (Combat skill)",
@@ -378,7 +378,7 @@ export default function returnMentorSpirits() {
     doomToxic: {
       description:
         "Doom embodies the desire of toxics to bring an end to all life on the planet, seeking to hasten the apocalypse and turn the world into a barren, polluted landscape. Followers of Doom see humanity as tragically flawed and carry out an agenda of total destruction, leading to isolationist and anti-social behavior.",
-      all: ["Demolitions", "Blades", "Automatics"],
+      all: "Demolitions",
       magician:
         "+2 dice for spells, preparations, and spell rituals of the Combat category",
       adept: "Free Killing Hands power",
@@ -404,7 +404,7 @@ export default function returnMentorSpirits() {
     mutationToxic: {
       description:
         "Mutation seeks to alter every living thing into new forms, conspiring to control, manipulate, and change all life through pollution and corruption. Followers are obsessed with self-improvement.",
-      all: ["Palming", "Sneaking", "Unarmed Combat"],
+      all: "Unarmed Combat",
       magician:
         "+2 dice for spells, preparations, and spell rituals of the Health category",
       adept:
