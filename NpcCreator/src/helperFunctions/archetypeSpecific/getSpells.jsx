@@ -3,7 +3,7 @@ import returnSpells from "../../components/lists/returnSpells";
 import returnRituals from "../../components/lists/returnRituals";
 import getRandomObjectsFromDepth from "../getRandomObjectFromDepth";
 import findObjectWithGivenValue from "../../helperFunctions/findObjectWithGivenValue";
-import skillsList from "../../components/lists/returnSkills";
+import skillList from "../../components/lists/returnSkills";
 import returnSkills from "../../components/lists/returnSkills";
 
 const skills = returnSkills();
@@ -13,6 +13,7 @@ const rituals = returnRituals();
 export default function getSpells(character) {
   const specialization = character.specialization;
 
+  //... look it works okay.
   if (specialization === "Summoner") {
     character.spells = getRandomObjectByKey(
       spells,
@@ -46,7 +47,7 @@ export default function getSpells(character) {
 
     requiredSkills.forEach((skill) => {
       if (!character.skills.hasOwnProperty(skill)) {
-        const skillDetails = findObjectWithGivenValue(skillsList, skill);
+        const skillDetails = findObjectWithGivenValue(skills, skill);
         character.skills[skill] = {
           skill: skillDetails[0],
           attribute: skillDetails[1],
@@ -68,7 +69,7 @@ export default function getSpells(character) {
 
     requiredSkills.forEach((skill) => {
       if (!character.skills.hasOwnProperty(skill)) {
-        const skillDetails = findObjectWithGivenValue(skillsList, skill);
+        const skillDetails = findObjectWithGivenValue(skills, skill);
         character.skills[skill] = {
           skill: skillDetails[0],
           attribute: skillDetails[1],
@@ -90,7 +91,7 @@ export default function getSpells(character) {
 
     requiredSkills.forEach((skill) => {
       if (!character.skills.hasOwnProperty(skill)) {
-        const skillDetails = findObjectWithGivenValue(skillsList, skill);
+        const skillDetails = findObjectWithGivenValue(skills, skill);
         character.skills[skill] = {
           skill: skillDetails[0],
           attribute: skillDetails[1],
@@ -117,7 +118,7 @@ export default function getSpells(character) {
 
     requiredSkills.forEach((skill) => {
       if (!character.skills.hasOwnProperty(skill)) {
-        const skillDetails = findObjectWithGivenValue(skillsList, skill);
+        const skillDetails = findObjectWithGivenValue(skills, skill);
         character.skills[skill] = {
           skill: skillDetails[0],
           attribute: skillDetails[1],
@@ -139,7 +140,7 @@ export default function getSpells(character) {
 
     requiredSkills.forEach((skill) => {
       if (!character.skills.hasOwnProperty(skill)) {
-        const skillDetails = findObjectWithGivenValue(skillsList, skill);
+        const skillDetails = findObjectWithGivenValue(skills, skill);
         character.skills[skill] = {
           skill: skillDetails[0],
           attribute: skillDetails[1],
@@ -161,7 +162,7 @@ export default function getSpells(character) {
 
     requiredSkills.forEach((skill) => {
       if (!character.skills.hasOwnProperty(skill)) {
-        const skillDetails = findObjectWithGivenValue(skillsList, skill);
+        const skillDetails = findObjectWithGivenValue(skills, skill);
         character.skills[skill] = {
           skill: skillDetails[0],
           attribute: skillDetails[1],
@@ -183,7 +184,7 @@ export default function getSpells(character) {
 
     requiredSkills.forEach((skill) => {
       if (!character.skills.hasOwnProperty(skill)) {
-        const skillDetails = findObjectWithGivenValue(skillsList, skill);
+        const skillDetails = findObjectWithGivenValue(skills, skill);
         character.skills[skill] = {
           skill: skillDetails[0],
           attribute: skillDetails[1],
@@ -205,7 +206,7 @@ export default function getSpells(character) {
 
     requiredSkills.forEach((skill) => {
       if (!character.skills.hasOwnProperty(skill)) {
-        const skillDetails = findObjectWithGivenValue(skillsList, skill);
+        const skillDetails = findObjectWithGivenValue(skills, skill);
         character.skills[skill] = {
           skill: skillDetails[0],
           attribute: skillDetails[1],
@@ -227,7 +228,7 @@ export default function getSpells(character) {
 
     requiredSkills.forEach((skill) => {
       if (!character.skills.hasOwnProperty(skill)) {
-        const skillDetails = findObjectWithGivenValue(skillsList, skill);
+        const skillDetails = findObjectWithGivenValue(skills, skill);
         character.skills[skill] = {
           skill: skillDetails[0],
           attribute: skillDetails[1],
@@ -249,7 +250,7 @@ export default function getSpells(character) {
 
     requiredSkills.forEach((skill) => {
       if (!character.skills.hasOwnProperty(skill)) {
-        const skillDetails = findObjectWithGivenValue(skillsList, skill);
+        const skillDetails = findObjectWithGivenValue(skills, skill);
         character.skills[skill] = {
           skill: skillDetails[0],
           attribute: skillDetails[1],
@@ -263,4 +264,15 @@ export default function getSpells(character) {
   } else {
     return error("specialization not found");
   }
+
+  const extraSpells = getRandomObjectsFromDepth(spells, 2, character.rating);
+  console.log(extraSpells);
+
+  extraSpells.forEach((obj) => {
+    if (Object.keys(character.spells).includes(obj)) {
+      return;
+    } else {
+      character.spells[obj.name] = obj;
+    }
+  });
 }
