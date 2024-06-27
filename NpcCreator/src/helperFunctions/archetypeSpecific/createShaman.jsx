@@ -20,16 +20,6 @@ const specializations = [
   "Witch Doctor",
   "Insect Shaman",
 ];
-// roll randomely for specialization unless tradition.name is "Qabbalism"
-
-// -- get their tradition
-// -- get their mentor spirit
-// -- add in their mentor spirit bonuses
-// -- create specialization
-// -- imput their stats
-//add in items / weapons / vehicles
-//add ammo
-//add armor
 
 export default function createShaman(character) {
   const tradition = getRandomObjectsFromDepth(traditions, 2, 1);

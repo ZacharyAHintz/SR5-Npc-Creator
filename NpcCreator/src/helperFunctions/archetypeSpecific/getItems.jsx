@@ -9,14 +9,15 @@ import getRandomObjectsFromDepth from "../getRandomObjectFromDepth";
 import getRandomObjectByKey from "../getRandomeObjectByKey";
 import getRandomeObjectByPrice from "../getRandomeObjectByPrice";
 
+import returnSecurity from "../../components/lists/returnSecurity";
+
 const armor = returnArmor();
 const ammo = returnAmmo();
 const weapons = returnWeapons();
 const vehicles = returnVehicles();
 const misc = returnMisc();
 const electronics = returnElectronics();
-const cyberware = returnCyberware();
-// vehicles are attempting to pass an object into another object but it is an array of objects.fix that
+const security = returnSecurity();
 
 export default function getItems(character) {
   let priceWeight;
@@ -59,9 +60,24 @@ export default function getItems(character) {
   if (!character.drones) {
     character.drones = {};
   }
-  console.log(armor);
 
   if (character.archetype === "Shaman") {
+    character.security = getRandomObjectsFromDepth(
+      security,
+      2,
+      character.rating,
+    );
+
+    character.comlinks = getRandomeObjectByPrice(
+      electronics,
+      "comlinks",
+      0,
+      1,
+      "rating",
+      "over",
+      character.rating,
+    );
+
     character.armor = getRandomeObjectByPrice(
       armor,
       "clothingAndArmor",
@@ -71,6 +87,7 @@ export default function getItems(character) {
       overUnder,
       priceWeight,
     );
+    character.misc = getRandomObjectByKey(misc, "chemicals", 0, 2);
 
     const extraVehicles = getRandomObjectsFromDepth(vehicles, 2, 1);
 
@@ -82,6 +99,22 @@ export default function getItems(character) {
       }
     });
   } else if (character.archetype === "Street Samurai") {
+    character.security = getRandomObjectsFromDepth(
+      security,
+      2,
+      character.rating,
+    );
+
+    character.comlinks = getRandomeObjectByPrice(
+      electronics,
+      "comlinks",
+      0,
+      1,
+      "rating",
+      "over",
+      character.rating,
+    );
+
     character.armor = getRandomeObjectByPrice(
       armor,
       "clothingAndArmor",
@@ -92,15 +125,55 @@ export default function getItems(character) {
       priceWeight,
     );
 
-    const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 1);
+    if (Number(character.rating) < 6) {
+      character.misc = getRandomObjectByKey(misc, "explosives", 0, 2);
+    } else {
+      character.misc = getRandomObjectByKey(misc, "nanoGear", 0, 2);
+    }
+
+    const extraVehicles = getRandomObjectsFromDepth(vehicles, 2, 1);
+
     extraVehicles.forEach((obj) => {
       if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.vehicles.push(obj);
+        character.vehicles[obj.vehicle] = obj;
       }
     });
   } else if (character.archetype === "Decker") {
+    character.security = getRandomObjectsFromDepth(
+      security,
+      2,
+      character.rating,
+    );
+
+    character.comlinks = getRandomeObjectByPrice(
+      electronics,
+      "comlinks",
+      0,
+      1,
+      "rating",
+      "over",
+      character.rating,
+    );
+
+    character.cyberdeck = getRandomeObjectByPrice(
+      electronics,
+      "cyberdecks",
+      0,
+      1,
+      "deviceRating",
+      "over",
+      character.rating - 1,
+    );
+
+    character.cyberdeckModules = getRandomObjectByKey(
+      electronics,
+      "cyberdeckModules",
+      0,
+      character.rating,
+    );
+
     character.armor = getRandomeObjectByPrice(
       armor,
       "clothingAndArmor",
@@ -111,15 +184,50 @@ export default function getItems(character) {
       priceWeight,
     );
 
-    const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 1);
+    character.misc = getRandomObjectByKey(misc, "survivalGear", 0, 2);
+
+    const extraVehicles = getRandomObjectsFromDepth(vehicles, 2, 1);
+
     extraVehicles.forEach((obj) => {
       if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.vehicles.push(obj);
+        character.vehicles[obj.vehicle] = obj;
       }
     });
   } else if (character.archetype === "Technomancer") {
+    character.security = getRandomObjectsFromDepth(
+      security,
+      2,
+      character.rating,
+    );
+
+    character.cyberdeckModules = getRandomObjectByKey(
+      electronics,
+      "cyberdeckModules",
+      0,
+      character.rating,
+    );
+
+    character.cyberdeck = getRandomeObjectByPrice(
+      electronics,
+      "cyberdecks",
+      0,
+      1,
+      "deviceRating",
+      "over",
+      character.rating - 1,
+    );
+    character.comlinks = getRandomeObjectByPrice(
+      electronics,
+      "comlinks",
+      0,
+      1,
+      "rating",
+      "over",
+      character.rating,
+    );
+
     character.armor = getRandomeObjectByPrice(
       armor,
       "clothingAndArmor",
@@ -129,15 +237,35 @@ export default function getItems(character) {
       overUnder,
       priceWeight,
     );
-    const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 2);
+
+    character.misc = getRandomObjectByKey(misc, "explosives", 0, 2);
+
+    const extraVehicles = getRandomObjectsFromDepth(vehicles, 2, 2);
+
     extraVehicles.forEach((obj) => {
       if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.vehicles.push(obj);
+        character.vehicles[obj.vehicle] = obj;
       }
     });
   } else if (character.archetype === "Face") {
+    character.security = getRandomObjectsFromDepth(
+      security,
+      2,
+      character.rating + 2,
+    );
+
+    character.comlinks = getRandomeObjectByPrice(
+      electronics,
+      "comlinks",
+      0,
+      1,
+      "rating",
+      "over",
+      character.rating,
+    );
+
     character.armor = getRandomeObjectByPrice(
       armor,
       "clothingAndArmor",
@@ -147,15 +275,45 @@ export default function getItems(character) {
       overUnder,
       priceWeight,
     );
-    const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 1);
+
+    character.misc = getRandomObjectByKey(misc, "chemicals", 0, 2);
+
+    const extraVehicles = getRandomObjectsFromDepth(vehicles, 2, 1);
+
     extraVehicles.forEach((obj) => {
       if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.vehicles.push(obj);
+        character.vehicles[obj.vehicle] = obj;
       }
     });
   } else if (character.archetype === "Rigger") {
+    character.security = getRandomObjectsFromDepth(
+      security,
+      2,
+      character.rating,
+    );
+
+    character.comlinks = getRandomeObjectByPrice(
+      electronics,
+      "comlinks",
+      0,
+      1,
+      "rating",
+      "over",
+      character.rating,
+    );
+
+    character.rcc = getRandomeObjectByPrice(
+      electronics,
+      "rcc",
+      0,
+      1,
+      "deviceRating",
+      "over",
+      character.rating - 1,
+    );
+
     character.armor = getRandomeObjectByPrice(
       armor,
       "clothingAndArmor",
@@ -165,15 +323,35 @@ export default function getItems(character) {
       overUnder,
       priceWeight,
     );
-    const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 3);
+
+    character.misc = getRandomObjectByKey(misc, "explosives", 0, 2);
+
+    const extraVehicles = getRandomObjectsFromDepth(vehicles, 2, 3);
+
     extraVehicles.forEach((obj) => {
       if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.vehicles.push(obj);
+        character.vehicles[obj.vehicle] = obj;
       }
     });
   } else if (character.archetype === "Physical Adept") {
+    character.security = getRandomObjectsFromDepth(
+      security,
+      2,
+      character.rating,
+    );
+
+    character.comlinks = getRandomeObjectByPrice(
+      electronics,
+      "comlinks",
+      0,
+      1,
+      "rating",
+      "over",
+      character.rating,
+    );
+
     character.armor = getRandomeObjectByPrice(
       armor,
       "clothingAndArmor",
@@ -183,7 +361,24 @@ export default function getItems(character) {
       overUnder,
       priceWeight,
     );
+
+    character.misc = getRandomObjectByKey(misc, "survivalGear", 0, 2);
   } else if (character.archetype === "Corpo") {
+    character.security = getRandomObjectsFromDepth(
+      security,
+      2,
+      character.rating + 2,
+    );
+    character.comlinks = getRandomeObjectByPrice(
+      electronics,
+      "comlinks",
+      0,
+      1,
+      "rating",
+      "over",
+      character.rating,
+    );
+
     character.armor = getRandomeObjectByPrice(
       armor,
       "clothingAndArmor",
@@ -193,12 +388,16 @@ export default function getItems(character) {
       overUnder,
       priceWeight,
     );
-    const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 2);
+
+    character.misc = getRandomObjectByKey(misc, "nanoGear", 0, 2);
+
+    const extraVehicles = getRandomObjectsFromDepth(vehicles, 2, 2);
+
     extraVehicles.forEach((obj) => {
       if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.vehicles.push(obj);
+        character.vehicles[obj.vehicle] = obj;
       }
     });
   }

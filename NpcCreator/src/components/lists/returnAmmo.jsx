@@ -9,14 +9,6 @@ export default function returnAmmo() {
         Cost: "120¥",
         Source: "Core",
       },
-      AssaultCannon: {
-        DV: "–",
-        AP: "–",
-        Modifiers: "–",
-        Avail: "12F",
-        Cost: "400¥",
-        Source: "Core",
-      },
       AVRounds: {
         DV: "–",
         AP: "-1 / -5",
@@ -73,22 +65,7 @@ export default function returnAmmo() {
         Cost: "10¥",
         Source: "SR5:R&G",
       },
-      FuelCanister: {
-        DV: "–",
-        AP: "–",
-        Modifiers: "–",
-        Avail: "16F",
-        Cost: "40¥",
-        Source: "SR5:R&G",
-      },
-      Gauss: {
-        DV: "–",
-        AP: "–",
-        Modifiers: "–",
-        Avail: "18F",
-        Cost: "400¥",
-        Source: "SR5:R&G",
-      },
+
       GelRounds: {
         DV: "+0S",
         AP: "+1",
