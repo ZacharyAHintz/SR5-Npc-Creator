@@ -23,22 +23,22 @@ export default function getItems(character) {
   let priceWeight;
   let overUnder;
 
-  if (Number(character.rating) === 6) {
+  if (Number(Number(character.rating)) === 6) {
     priceWeight = 9999;
     overUnder = "over";
-  } else if (Number(character.rating) === 5) {
+  } else if (Number(Number(character.rating)) === 5) {
     priceWeight = 10000;
     overUnder = "under";
-  } else if (Number(character.rating) === 4) {
+  } else if (Number(Number(character.rating)) === 4) {
     priceWeight = 5000;
     overUnder = "under";
-  } else if (Number(character.rating) === 3) {
+  } else if (Number(Number(character.rating)) === 3) {
     priceWeight = 2000;
     overUnder = "under";
-  } else if (Number(character.rating) === 2) {
+  } else if (Number(Number(character.rating)) === 2) {
     priceWeight = 1600;
     overUnder = "under";
-  } else if (Number(character.rating) === 1) {
+  } else if (Number(Number(character.rating)) === 1) {
     priceWeight = 1111;
     overUnder = "under";
   }
@@ -65,7 +65,7 @@ export default function getItems(character) {
     character.security = getRandomObjectsFromDepth(
       security,
       2,
-      character.rating,
+      Number(character.rating),
     );
 
     character.comlinks = getRandomeObjectByPrice(
@@ -75,7 +75,7 @@ export default function getItems(character) {
       1,
       "rating",
       "over",
-      character.rating,
+      Number(character.rating),
     );
 
     character.armor = getRandomeObjectByPrice(
@@ -102,7 +102,7 @@ export default function getItems(character) {
     character.security = getRandomObjectsFromDepth(
       security,
       2,
-      character.rating,
+      Number(character.rating),
     );
 
     character.comlinks = getRandomeObjectByPrice(
@@ -112,7 +112,7 @@ export default function getItems(character) {
       1,
       "rating",
       "over",
-      character.rating,
+      Number(character.rating),
     );
 
     character.armor = getRandomeObjectByPrice(
@@ -125,7 +125,7 @@ export default function getItems(character) {
       priceWeight,
     );
 
-    if (Number(character.rating) < 6) {
+    if (Number(Number(character.rating)) < 6) {
       character.misc = getRandomObjectByKey(misc, "explosives", 0, 2);
     } else {
       character.misc = getRandomObjectByKey(misc, "nanoGear", 0, 2);
@@ -144,7 +144,7 @@ export default function getItems(character) {
     character.security = getRandomObjectsFromDepth(
       security,
       2,
-      character.rating,
+      Number(character.rating),
     );
 
     character.comlinks = getRandomeObjectByPrice(
@@ -154,7 +154,7 @@ export default function getItems(character) {
       1,
       "rating",
       "over",
-      character.rating,
+      Number(character.rating),
     );
 
     character.cyberdeck = getRandomeObjectByPrice(
@@ -164,14 +164,14 @@ export default function getItems(character) {
       1,
       "deviceRating",
       "over",
-      character.rating - 1,
+      Number(character.rating) - 1,
     );
 
     character.cyberdeckModules = getRandomObjectByKey(
       electronics,
       "cyberdeckModules",
       0,
-      character.rating,
+      Number(character.rating),
     );
 
     character.armor = getRandomeObjectByPrice(
@@ -199,14 +199,14 @@ export default function getItems(character) {
     character.security = getRandomObjectsFromDepth(
       security,
       2,
-      character.rating,
+      Number(character.rating),
     );
 
     character.cyberdeckModules = getRandomObjectByKey(
       electronics,
       "cyberdeckModules",
       0,
-      character.rating,
+      Number(character.rating),
     );
 
     character.cyberdeck = getRandomeObjectByPrice(
@@ -216,7 +216,7 @@ export default function getItems(character) {
       1,
       "deviceRating",
       "over",
-      character.rating - 1,
+      Number(character.rating) - 1,
     );
     character.comlinks = getRandomeObjectByPrice(
       electronics,
@@ -225,7 +225,7 @@ export default function getItems(character) {
       1,
       "rating",
       "over",
-      character.rating,
+      Number(character.rating),
     );
 
     character.armor = getRandomeObjectByPrice(
@@ -253,7 +253,7 @@ export default function getItems(character) {
     character.security = getRandomObjectsFromDepth(
       security,
       2,
-      character.rating + 2,
+      Number(character.rating) + 2,
     );
 
     character.comlinks = getRandomeObjectByPrice(
@@ -263,7 +263,7 @@ export default function getItems(character) {
       1,
       "rating",
       "over",
-      character.rating,
+      Number(character.rating),
     );
 
     character.armor = getRandomeObjectByPrice(
@@ -291,7 +291,7 @@ export default function getItems(character) {
     character.security = getRandomObjectsFromDepth(
       security,
       2,
-      character.rating,
+      Number(character.rating),
     );
 
     character.comlinks = getRandomeObjectByPrice(
@@ -301,7 +301,7 @@ export default function getItems(character) {
       1,
       "rating",
       "over",
-      character.rating,
+      Number(character.rating),
     );
 
     character.rcc = getRandomeObjectByPrice(
@@ -311,7 +311,7 @@ export default function getItems(character) {
       1,
       "deviceRating",
       "over",
-      character.rating - 1,
+      Number(character.rating) - 1,
     );
 
     character.armor = getRandomeObjectByPrice(
@@ -339,7 +339,7 @@ export default function getItems(character) {
     character.security = getRandomObjectsFromDepth(
       security,
       2,
-      character.rating,
+      Number(character.rating),
     );
 
     character.comlinks = getRandomeObjectByPrice(
@@ -349,7 +349,7 @@ export default function getItems(character) {
       1,
       "rating",
       "over",
-      character.rating,
+      Number(character.rating),
     );
 
     character.armor = getRandomeObjectByPrice(
@@ -367,7 +367,7 @@ export default function getItems(character) {
     character.security = getRandomObjectsFromDepth(
       security,
       2,
-      character.rating + 2,
+      Number(character.rating) + 2,
     );
     character.comlinks = getRandomeObjectByPrice(
       electronics,
@@ -376,7 +376,7 @@ export default function getItems(character) {
       1,
       "rating",
       "over",
-      character.rating,
+      Number(character.rating),
     );
 
     character.armor = getRandomeObjectByPrice(

@@ -358,7 +358,7 @@ export default function NpcOptions({ toggleDialog }) {
             <option value="Technomancer">Technomancer</option>
             <option value="Face">Face</option>
             <option value="Rigger">Rigger</option>
-            <option value="Physical Adept">Physical adept</option>
+            <option value="Physical Adept">Adept</option>
             <option value="Corpo">Corpo</option>
           </select>
           <br />

@@ -19,7 +19,7 @@ export default function getSpells(character) {
       spells,
       "manipulationSpells",
       0,
-      character.rating,
+      Number(character.rating),
     );
     const requiredSkills = ["Summoning", "Binding"];
 
@@ -30,7 +30,7 @@ export default function getSpells(character) {
           skill: skillDetails[0],
           attribute: skillDetails[1],
           limit: skillDetails[2],
-          rank: character.rating + 4,
+          rank: Number(character.rating) + 4,
         };
       } else {
         character.skills[skill].rank += 2;
@@ -41,7 +41,7 @@ export default function getSpells(character) {
       spells,
       "detectionSpells",
       0,
-      character.rating,
+      Number(character.rating),
     );
     const requiredSkills = ["Counterspelling", "Spellcasting"];
 
@@ -52,7 +52,7 @@ export default function getSpells(character) {
           skill: skillDetails[0],
           attribute: skillDetails[1],
           limit: skillDetails[2],
-          rank: character.rating + 4,
+          rank: Number(character.rating) + 4,
         };
       } else {
         character.skills[skill].rank += 2;
@@ -63,7 +63,7 @@ export default function getSpells(character) {
       spells,
       "combatSpells",
       0,
-      character.rating,
+      Number(character.rating),
     );
     const requiredSkills = ["Astral Combat", "Counterspelling"];
 
@@ -74,7 +74,7 @@ export default function getSpells(character) {
           skill: skillDetails[0],
           attribute: skillDetails[1],
           limit: skillDetails[2],
-          rank: character.rating + 4,
+          rank: Number(character.rating) + 4,
         };
       } else {
         character.skills[skill].rank += 2;
@@ -85,7 +85,7 @@ export default function getSpells(character) {
       spells,
       "detectionSpells",
       0,
-      character.rating,
+      Number(character.rating),
     );
     const requiredSkills = ["Counterspelling", "Ritual Spellcasting"];
 
@@ -96,7 +96,7 @@ export default function getSpells(character) {
           skill: skillDetails[0],
           attribute: skillDetails[1],
           limit: skillDetails[2],
-          rank: character.rating + 4,
+          rank: Number(character.rating) + 4,
         };
       } else {
         character.skills[skill].rank += 2;
@@ -105,14 +105,14 @@ export default function getSpells(character) {
     character.rituals = getRandomObjectsFromDepth(
       rituals,
       1,
-      character.rating + 2,
+      Number(character.rating) + 2,
     );
   } else if (specialization === "Spellcaster") {
     character.spells = getRandomObjectByKey(
       spells,
       "combatSpells",
       0,
-      character.rating,
+      Number(character.rating),
     );
     const requiredSkills = ["Spellcasting", "Counterspelling"];
 
@@ -123,7 +123,7 @@ export default function getSpells(character) {
           skill: skillDetails[0],
           attribute: skillDetails[1],
           limit: skillDetails[2],
-          rank: character.rating + 4,
+          rank: Number(character.rating) + 4,
         };
       } else {
         character.skills[skill].rank += 2;
@@ -134,7 +134,7 @@ export default function getSpells(character) {
       spells,
       "combatSpells",
       0,
-      character.rating,
+      Number(character.rating),
     );
     const requiredSkills = ["Alchemy", "Disenchanting"];
 
@@ -145,7 +145,7 @@ export default function getSpells(character) {
           skill: skillDetails[0],
           attribute: skillDetails[1],
           limit: skillDetails[2],
-          rank: character.rating + 4,
+          rank: Number(character.rating) + 4,
         };
       } else {
         character.skills[skill].rank += 2;
@@ -156,7 +156,7 @@ export default function getSpells(character) {
       spells,
       "manipulationSpells",
       0,
-      character.rating,
+      Number(character.rating),
     );
     const requiredSkills = ["Spellcasting", "Assensing"];
 
@@ -167,7 +167,7 @@ export default function getSpells(character) {
           skill: skillDetails[0],
           attribute: skillDetails[1],
           limit: skillDetails[2],
-          rank: character.rating + 4,
+          rank: Number(character.rating) + 4,
         };
       } else {
         character.skills[skill].rank += 2;
@@ -178,7 +178,7 @@ export default function getSpells(character) {
       spells,
       "healthSpells",
       0,
-      character.rating,
+      Number(character.rating),
     );
     const requiredSkills = ["Spellcasting", "Arcana"];
 
@@ -189,7 +189,7 @@ export default function getSpells(character) {
           skill: skillDetails[0],
           attribute: skillDetails[1],
           limit: skillDetails[2],
-          rank: character.rating + 4,
+          rank: Number(character.rating) + 4,
         };
       } else {
         character.skills[skill].rank += 2;
@@ -200,7 +200,7 @@ export default function getSpells(character) {
       spells,
       "bloodSpells",
       0,
-      character.rating,
+      Number(character.rating),
     );
     const requiredSkills = ["Alchemy", "Spellcasting"];
 
@@ -211,7 +211,7 @@ export default function getSpells(character) {
           skill: skillDetails[0],
           attribute: skillDetails[1],
           limit: skillDetails[2],
-          rank: character.rating + 4,
+          rank: Number(character.rating) + 4,
         };
       } else {
         character.skills[skill].rank += 2;
@@ -222,7 +222,7 @@ export default function getSpells(character) {
       spells,
       "manipulationSpells",
       0,
-      character.rating,
+      Number(character.rating),
     );
     const requiredSkills = ["Summoning", "Spellcasting"];
 
@@ -233,7 +233,7 @@ export default function getSpells(character) {
           skill: skillDetails[0],
           attribute: skillDetails[1],
           limit: skillDetails[2],
-          rank: character.rating + 4,
+          rank: Number(character.rating) + 4,
         };
       } else {
         character.skills[skill].rank += 2;
@@ -244,7 +244,7 @@ export default function getSpells(character) {
       spells,
       "manipulationSpells",
       0,
-      character.rating,
+      Number(character.rating),
     );
     const requiredSkills = ["Summoning", "Spellcasting"];
 
@@ -255,7 +255,7 @@ export default function getSpells(character) {
           skill: skillDetails[0],
           attribute: skillDetails[1],
           limit: skillDetails[2],
-          rank: character.rating + 4,
+          rank: Number(character.rating) + 4,
         };
       } else {
         character.skills[skill].rank += 2;
@@ -265,7 +265,11 @@ export default function getSpells(character) {
     return error("specialization not found");
   }
 
-  const extraSpells = getRandomObjectsFromDepth(spells, 2, character.rating);
+  const extraSpells = getRandomObjectsFromDepth(
+    spells,
+    2,
+    Number(character.rating),
+  );
 
   extraSpells.forEach((obj) => {
     if (Object.keys(character.spells).includes(obj)) {

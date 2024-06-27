@@ -1,15 +1,8 @@
-export default function getShamanStats(character) {
+export default function getFaceStats(character) {
   function splitStatsFromLimit(stats) {
     const [baseStats, limit] = stats.split("/");
     return { baseStats: Number(baseStats), limit: Number(limit) };
   }
-
-  function splitDrainStats(drain) {
-    const [drainOne, drainTwo] = drain.split("+").map((part) => part.trim());
-    return { drainOne: String(drainOne), drainTwo: String(drainTwo) };
-  }
-
-  character.drain = splitDrainStats(character.tradition[0].drain);
 
   character.stats = {
     body: splitStatsFromLimit(character.race[0].body),
@@ -25,16 +18,9 @@ export default function getShamanStats(character) {
     essence: 6,
   };
 
-  if (character.stats[character.drain.drainOne.toLowerCase()]) {
-    character.stats[character.drain.drainOne.toLowerCase()].baseStats += Number(
-      character.rating,
-    );
-  }
-  if (character.stats[character.drain.drainTwo.toLowerCase()]) {
-    character.stats[character.drain.drainTwo.toLowerCase()].baseStats += Number(
-      character.rating,
-    );
-  }
+  character.stats.charisma.baseStats += Number(character.rating);
+
+  character.stats.agility.baseStats += Number(character.rating);
 
   function distributePoints(totalPoints) {
     const statsArray = [

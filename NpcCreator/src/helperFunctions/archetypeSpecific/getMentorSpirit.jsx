@@ -12,6 +12,7 @@ export default function getMentorSpirit(character) {
   character.mentor = mentor;
 
   const mentorSkillsArray = [character.mentor[0].all];
+  console.log(mentor);
 
   mentorSkillsArray.forEach((skill) => {
     if (!character.skills.hasOwnProperty(skill)) {
@@ -20,7 +21,7 @@ export default function getMentorSpirit(character) {
         skill: skillDetails[0],
         attribute: skillDetails[1],
         limit: skillDetails[2],
-        rank: character.rating + 4,
+        rank: Number(character.rating) + 4,
       };
     } else {
       character.skills[skill].rank += 2;
