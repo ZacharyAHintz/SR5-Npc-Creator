@@ -22,6 +22,14 @@ import returnDrones from "./lists/returnDrones";
 import returnAmmo from "./lists/returnAmmo";
 import createShaman from "../helperFunctions/archetypeSpecific/createShaman";
 import getAmmo from "../helperFunctions/archetypeSpecific/getAmmo";
+import createStreetSamurai from "../helperFunctions/archetypeSpecific/createStreetSamurai";
+import createDecker from "../helperFunctions/archetypeSpecific/createDecker";
+import createTechnomancer from "../helperFunctions/archetypeSpecific/createTechnomancer";
+import createFace from "../helperFunctions/archetypeSpecific/createFace";
+import createRigger from "../helperFunctions/archetypeSpecific/createRigger";
+import createPhysicalAdept from "../helperFunctions/archetypeSpecific/createPhysicalAdept";
+import createCorpo from "../helperFunctions/archetypeSpecific/createCorpo";
+
 //enter need to finish the submit every time
 export default function NpcOptions({ toggleDialog }) {
   const [name, setName] = useState("");
@@ -128,10 +136,23 @@ export default function NpcOptions({ toggleDialog }) {
     getAmmo(character);
 
     // Archetype specific selections
-    // if (character.archetype === "Shaman") {
-    //   createShaman(character);
-    // }
-    createShaman(character);
+    if (character.archetype === "Shaman") {
+      createShaman(character);
+    } else if (character.archetype === "Physical Adept") {
+      createPhysicalAdept(character);
+    } else if (character.archetype === "Corpo") {
+      createCorpo(character);
+    } else if (character.archetype === "Face") {
+      createFace(character);
+    } else if (character.archetype === "Rigger") {
+      createRigger(character);
+    } else if (character.archetype === "Technomancer") {
+      createTechnomancer(character);
+    } else if (character.archetype === "Street Samurai") {
+      createStreetSamurai(character);
+    } else if (character.archetype === "Decker") {
+      createDecker(character);
+    }
 
     // Save character to localStorage
     const storedCharacters =
