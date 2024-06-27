@@ -22,27 +22,44 @@ export default function getItems(character) {
   let priceWeight;
   let overUnder;
 
-  if (character.rating === 6) {
+  if (Number(character.rating) === 6) {
     priceWeight = 9999;
     overUnder = "over";
-  } else if (character.rating === 5) {
+  } else if (Number(character.rating) === 5) {
     priceWeight = 10000;
     overUnder = "under";
-  } else if (character.rating === 4) {
+  } else if (Number(character.rating) === 4) {
     priceWeight = 5000;
     overUnder = "under";
-  } else if (character.rating === 3) {
+  } else if (Number(character.rating) === 3) {
     priceWeight = 2000;
     overUnder = "under";
-  } else if (character.rating === 2) {
+  } else if (Number(character.rating) === 2) {
     priceWeight = 1600;
     overUnder = "under";
-  } else if (character.rating === 1) {
+  } else if (Number(character.rating) === 1) {
     priceWeight = 1111;
     overUnder = "under";
   }
-  console.log(priceWeight, overUnder);
-  console.log(character.rating);
+
+  if (!character.vehicles) {
+    character.vehicles = {};
+  }
+
+  if (!character.meleeWeapons) {
+    character.meleeWeapons = {};
+  }
+
+  if (!character.explosives) {
+    character.explosives = {};
+  }
+  if (!character.firearms) {
+    character.firearms = {};
+  }
+  if (!character.drones) {
+    character.drones = {};
+  }
+  console.log(armor);
 
   if (character.archetype === "Shaman") {
     character.armor = getRandomeObjectByPrice(
@@ -55,12 +72,13 @@ export default function getItems(character) {
       priceWeight,
     );
 
-    const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 1);
+    const extraVehicles = getRandomObjectsFromDepth(vehicles, 2, 1);
+
     extraVehicles.forEach((obj) => {
-      if (Object.keys(character.gear.vehicles).includes(obj)) {
+      if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.gear.vehicles.push(obj);
+        character.vehicles[obj.vehicle] = obj;
       }
     });
   } else if (character.archetype === "Street Samurai") {
@@ -76,10 +94,10 @@ export default function getItems(character) {
 
     const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 1);
     extraVehicles.forEach((obj) => {
-      if (Object.keys(character.gear.vehicles).includes(obj)) {
+      if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.gear.vehicles.push(obj);
+        character.vehicles.push(obj);
       }
     });
   } else if (character.archetype === "Decker") {
@@ -95,10 +113,10 @@ export default function getItems(character) {
 
     const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 1);
     extraVehicles.forEach((obj) => {
-      if (Object.keys(character.gear.vehicles).includes(obj)) {
+      if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.gear.vehicles.push(obj);
+        character.vehicles.push(obj);
       }
     });
   } else if (character.archetype === "Technomancer") {
@@ -113,10 +131,10 @@ export default function getItems(character) {
     );
     const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 2);
     extraVehicles.forEach((obj) => {
-      if (Object.keys(character.gear.vehicles).includes(obj)) {
+      if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.gear.vehicles.push(obj);
+        character.vehicles.push(obj);
       }
     });
   } else if (character.archetype === "Face") {
@@ -131,10 +149,10 @@ export default function getItems(character) {
     );
     const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 1);
     extraVehicles.forEach((obj) => {
-      if (Object.keys(character.gear.vehicles).includes(obj)) {
+      if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.gear.vehicles.push(obj);
+        character.vehicles.push(obj);
       }
     });
   } else if (character.archetype === "Rigger") {
@@ -149,10 +167,10 @@ export default function getItems(character) {
     );
     const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 3);
     extraVehicles.forEach((obj) => {
-      if (Object.keys(character.gear.vehicles).includes(obj)) {
+      if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.gear.vehicles.push(obj);
+        character.vehicles.push(obj);
       }
     });
   } else if (character.archetype === "Physical Adept") {
@@ -177,10 +195,10 @@ export default function getItems(character) {
     );
     const extraVehicles = getRandomObjectsFromDepth(vehicles, 1, 2);
     extraVehicles.forEach((obj) => {
-      if (Object.keys(character.gear.vehicles).includes(obj)) {
+      if (Object.keys(character.vehicles).includes(obj)) {
         return;
       } else {
-        character.gear.vehicles.push(obj);
+        character.vehicles.push(obj);
       }
     });
   }

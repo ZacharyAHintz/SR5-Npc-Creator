@@ -93,8 +93,8 @@ export default function NpcOptions({ toggleDialog }) {
     };
 
     const archetypeSkills = archetypeSkillFunctions[character.archetype]();
-    const skillAmount = character.rating * 3 + 5;
-    const archetypeSkillAmount = character.rating + 2;
+    const skillAmount = Number(character.rating) * 3 + 5;
+    const archetypeSkillAmount = Number(character.rating) + 2;
     const archetypeSkillSelection = getStartingSkillValues(
       getRandomObjectFromDepth(archetypeSkills, 1, archetypeSkillAmount),
       Number(character.rating),
@@ -125,7 +125,6 @@ export default function NpcOptions({ toggleDialog }) {
 
     // Item selection based on skills
     determineGearRequirements(character);
-
     getAmmo(character);
 
     // Archetype specific selections

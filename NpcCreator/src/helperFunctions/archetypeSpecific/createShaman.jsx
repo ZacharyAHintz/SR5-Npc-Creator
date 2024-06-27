@@ -43,5 +43,5 @@ export default function createShaman(character) {
   }
   getShamanStats(character);
   getSpells(character);
-  // getItems(character);
+  getItems(character);
 }

@@ -85,8 +85,8 @@ export default function determineGearRequirements(character) {
         skillToGearMapping[skill.skill][3],
       );
     } else if (skillToVehicleMapping.hasOwnProperty(skill.skill)) {
-      character.vehicle = character.vehicle || {};
-      character.vehicle[skill.skill] = getRandomObjectByKey(
+      character.vehicles = character.vehicles || {};
+      character.vehicles = getRandomObjectByKey(
         skillToVehicleMapping[skill.skill][0],
         skillToVehicleMapping[skill.skill][1],
         skillToVehicleMapping[skill.skill][2],

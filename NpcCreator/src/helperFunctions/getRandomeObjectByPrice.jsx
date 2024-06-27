@@ -84,8 +84,12 @@ export default function getRandomeObjectByPrice(
   );
 
   if (Object.keys(filteredObjects).length < amount) {
-    throw new Error(
-      `Not enough objects found with the specified price criteria.`,
+    console.warn(
+      `Not enough objects found with the specified price criteria. Returning available objects.`,
+    );
+    return getRandomSubsetFromObject(
+      filteredObjects,
+      Object.keys(filteredObjects).length,
     );
   }
 
