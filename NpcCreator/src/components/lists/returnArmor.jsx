@@ -1,20 +1,12 @@
 export default function returnArmor() {
   const armors = {
     clothingAndArmor: {
-      clothing: {
-        article: "Clothing",
-        armorRating: 0,
-        capacity: 0,
-        availability: "-",
-        cost: "20¥ - 100,000¥",
-        source: "Core",
-      },
       electrochromicModification: {
         article: "Electrochromic Modification",
         armorRating: "-",
         capacity: "-",
         availability: "+2",
-        cost: "+500¥",
+        cost: 500,
         source: "Core",
       },
       feedbackClothing: {
@@ -22,7 +14,7 @@ export default function returnArmor() {
         armorRating: "-",
         capacity: "-",
         availability: 8,
-        cost: "+500¥",
+        cost: 500,
         source: "Core",
       },
       synthLeather: {
@@ -30,7 +22,7 @@ export default function returnArmor() {
         armorRating: 4,
         capacity: 4,
         availability: "-",
-        cost: "+200¥",
+        cost: 200,
         source: "Core",
       },
       armanteSuit: {
@@ -38,7 +30,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 4,
         availability: 10,
-        cost: "2,500¥",
+        cost: 2500,
         source: "SR5:R&G",
       },
       armanteDress: {
@@ -46,7 +38,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 4,
         availability: 10,
-        cost: "2,500¥",
+        cost: 2500,
         source: "SR5:R&G",
       },
       mortimerOfLondonBerwickSuit: {
@@ -54,7 +46,7 @@ export default function returnArmor() {
         armorRating: 9,
         capacity: 5,
         availability: 9,
-        cost: "2,600¥",
+        cost: 2600,
         source: "SR5:R&G",
       },
       mortimerOfLondonBerwickDress: {
@@ -62,7 +54,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 4,
         availability: 8,
-        cost: "2,300¥",
+        cost: 2300,
         source: "SR5:R&G",
       },
       mortimerOfLondonCrimsonSkySuit: {
@@ -70,7 +62,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 5,
         availability: 6,
-        cost: "2,400¥",
+        cost: 2400,
         source: "SR5:R&G",
       },
       mortimerOfLondonSummitSuit: {
@@ -78,7 +70,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 6,
         availability: 7,
-        cost: "2,500¥",
+        cost: 2500,
         source: "SR5:R&G",
       },
       mortimerOfLondonSummitDress: {
@@ -86,7 +78,7 @@ export default function returnArmor() {
         armorRating: 7,
         capacity: 5,
         availability: 7,
-        cost: "2,200¥",
+        cost: 2200,
         source: "SR5:R&G",
       },
       mortimerOfLondonGreatcoatCoat: {
@@ -94,7 +86,7 @@ export default function returnArmor() {
         armorRating: "10/+3",
         capacity: 10,
         availability: 8,
-        cost: "3,000¥",
+        cost: 3000,
         source: "SR5:R&G",
       },
       mortimerOfLondonUlyssesCoat: {
@@ -102,7 +94,7 @@ export default function returnArmor() {
         armorRating: "10/+3",
         capacity: 12,
         availability: 8,
-        cost: "3,100¥",
+        cost: 3100,
         source: "SR5:R&G",
       },
       mortimerOfLondonArgentumCoat: {
@@ -110,7 +102,7 @@ export default function returnArmor() {
         armorRating: "12/+4",
         capacity: 14,
         availability: 10,
-        cost: "3,600¥",
+        cost: 3600,
         source: "SR5:R&G",
       },
       vashonIslandAceOfCups: {
@@ -118,7 +110,7 @@ export default function returnArmor() {
         armorRating: 9,
         capacity: 8,
         availability: 6,
-        cost: "1,600¥",
+        cost: 1600,
         source: "SR5:R&G",
       },
       vashonIslandAceOfSwords: {
@@ -126,7 +118,7 @@ export default function returnArmor() {
         armorRating: 7,
         capacity: 8,
         availability: 6,
-        cost: "1,300¥",
+        cost: 1300,
         source: "SR5:R&G",
       },
       vashonIslandAceOfWands: {
@@ -134,7 +126,7 @@ export default function returnArmor() {
         armorRating: 6,
         capacity: 8,
         availability: 6,
-        cost: "1,200¥",
+        cost: 1200,
         source: "SR5:R&G",
       },
       vashonIslandAceOfCoins: {
@@ -142,7 +134,7 @@ export default function returnArmor() {
         armorRating: 7,
         capacity: 10,
         availability: 4,
-        cost: "2,100¥",
+        cost: 2100,
         source: "SR5:R&G",
       },
       vashonIslandAceOfSpades: {
@@ -150,7 +142,7 @@ export default function returnArmor() {
         armorRating: 7,
         capacity: 6,
         availability: 6,
-        cost: "1,000¥",
+        cost: 1000,
         source: "SR5:R&G",
       },
       vashonIslandAceOfClubs: {
@@ -158,7 +150,7 @@ export default function returnArmor() {
         armorRating: 7,
         capacity: 6,
         availability: 6,
-        cost: "1,000¥",
+        cost: 1000,
         source: "SR5:R&G",
       },
       vashonIslandAceOfHearts: {
@@ -166,7 +158,7 @@ export default function returnArmor() {
         armorRating: 7,
         capacity: 6,
         availability: 6,
-        cost: "1,000¥",
+        cost: 1000,
         source: "SR5:R&G",
       },
       vashonIslandAceOfDiamonds: {
@@ -174,7 +166,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 6,
         availability: 8,
-        cost: "1,400¥",
+        cost: 1400,
         source: "SR5:R&G",
       },
       vashonIslandSteampunk: {
@@ -182,7 +174,7 @@ export default function returnArmor() {
         armorRating: 10,
         capacity: 14,
         availability: 7,
-        cost: "2,250¥",
+        cost: 2250,
         source: "SR5:R&G",
       },
       vashonIslandSynergistBusinessLine: {
@@ -190,7 +182,7 @@ export default function returnArmor() {
         armorRating: 9,
         capacity: 5,
         availability: 8,
-        cost: "1,500¥",
+        cost: 1500,
         source: "SR5:R&G",
       },
       vashonIslandSynergistBusinessLineLongcoat: {
@@ -198,7 +190,7 @@ export default function returnArmor() {
         armorRating: "10 / +3",
         capacity: 6,
         availability: 8,
-        cost: "2,300¥",
+        cost: 2300,
         source: "SR5:R&G",
       },
       vashonIslandSleepingTiger: {
@@ -206,7 +198,7 @@ export default function returnArmor() {
         armorRating: 13,
         capacity: 10,
         availability: 10,
-        cost: "13,500¥",
+        cost: 13500,
         source: "SR5:R&G",
       },
       executiveSuite: {
@@ -214,7 +206,7 @@ export default function returnArmor() {
         armorRating: 12,
         capacity: 4,
         availability: 12,
-        cost: "2,000¥",
+        cost: 2000,
         source: "SR5:R&G",
       },
       heritage: {
@@ -222,7 +214,7 @@ export default function returnArmor() {
         armorRating: "4/6/8/10/12",
         capacity: "Armor ÷ 2",
         availability: 16,
-        cost: "2,000¥ + (Armor Rating x 500)",
+        cost: 2000,
         source: "SR5:R&G",
       },
       nightshadeMoonsilver: {
@@ -230,7 +222,7 @@ export default function returnArmor() {
         armorRating: 7,
         capacity: 2,
         availability: 10,
-        cost: "8,500¥",
+        cost: 8500,
         source: "SR5:R&G",
       },
       secondSkin: {
@@ -238,7 +230,7 @@ export default function returnArmor() {
         armorRating: "6/+2",
         capacity: 2,
         availability: 14,
-        cost: "12,000¥",
+        cost: 12000,
         source: "SR5:R&G",
       },
       globetrotterJacket: {
@@ -246,7 +238,7 @@ export default function returnArmor() {
         armorRating: 12,
         capacity: 10,
         availability: 10,
-        cost: "1,300¥",
+        cost: 1300,
         source: "SR5:R&G",
       },
       globetrotterVest: {
@@ -254,7 +246,7 @@ export default function returnArmor() {
         armorRating: 9,
         capacity: 10,
         availability: 7,
-        cost: "900¥",
+        cost: 900,
         source: "SR5:R&G",
       },
       globetrotterClothing: {
@@ -262,7 +254,7 @@ export default function returnArmor() {
         armorRating: 7,
         capacity: 10,
         availability: 6,
-        cost: "600¥",
+        cost: 600,
         source: "SR5:R&G",
       },
       wildHunt: {
@@ -270,7 +262,7 @@ export default function returnArmor() {
         armorRating: 12,
         capacity: 10,
         availability: 12,
-        cost: "3,000¥",
+        cost: 3000,
         source: "SR5:R&G",
       },
       industrious: {
@@ -278,7 +270,7 @@ export default function returnArmor() {
         armorRating: 9,
         capacity: 6,
         availability: 6,
-        cost: "1,100¥",
+        cost: 1100,
         source: "SR5:R&G",
       },
       bigGameHunter: {
@@ -286,7 +278,7 @@ export default function returnArmor() {
         armorRating: 14,
         capacity: 12,
         availability: 12,
-        cost: "5,000¥",
+        cost: 5000,
         source: "SR5:R&G",
       },
       rapidTransit: {
@@ -294,7 +286,7 @@ export default function returnArmor() {
         armorRating: 9,
         capacity: 6,
         availability: 10,
-        cost: "400+¥",
+        cost: 400,
         source: "SR5:R&G",
       },
       actioneerBusinessClothes: {
@@ -302,7 +294,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 8,
         availability: 8,
-        cost: "1,500¥",
+        cost: 1500,
         source: "Core",
       },
       armorClothing: {
@@ -310,7 +302,7 @@ export default function returnArmor() {
         armorRating: 6,
         capacity: 6,
         availability: 2,
-        cost: "450¥",
+        cost: 450,
         source: "Core",
       },
       armorJacket: {
@@ -318,7 +310,7 @@ export default function returnArmor() {
         armorRating: 12,
         capacity: 12,
         availability: 2,
-        cost: "1,000¥",
+        cost: 1000,
         source: "Core",
       },
       armorVest: {
@@ -326,7 +318,7 @@ export default function returnArmor() {
         armorRating: 9,
         capacity: 9,
         availability: 4,
-        cost: "500¥",
+        cost: 500,
         source: "Core",
       },
       chameleonSuit: {
@@ -334,7 +326,7 @@ export default function returnArmor() {
         armorRating: 9,
         capacity: 9,
         availability: "10R",
-        cost: "1,700¥",
+        cost: 1700,
         source: "Core",
       },
       fullBodyArmor: {
@@ -342,23 +334,16 @@ export default function returnArmor() {
         armorRating: 15,
         capacity: 15,
         availability: "14R",
-        cost: "2,000¥",
+        cost: 2000,
         source: "Core",
       },
-      fullBodyArmorHelmet: {
-        article: "Full Body Armor, Helmet",
-        armorRating: "+3",
-        capacity: "+3",
-        availability: "-",
-        cost: "+500¥",
-        source: "Core",
-      },
+
       fullBodyArmorChemicalSeal: {
         article: "Full Body Armor, Chemical Seal",
         armorRating: "-",
         capacity: "-",
         availability: "+6",
-        cost: "+6,000¥",
+        cost: 6000,
         source: "Core",
       },
       fullBodyArmorEnvironmentalAdaptation: {
@@ -366,7 +351,7 @@ export default function returnArmor() {
         armorRating: "-",
         capacity: "-",
         availability: "+3",
-        cost: "+1,000¥",
+        cost: 1000,
         source: "Core",
       },
       linedCoat: {
@@ -374,7 +359,7 @@ export default function returnArmor() {
         armorRating: 9,
         capacity: 9,
         availability: 4,
-        cost: "900¥",
+        cost: 900,
         source: "Core",
       },
       urbanExplorerJumpsuit: {
@@ -382,7 +367,7 @@ export default function returnArmor() {
         armorRating: 9,
         capacity: 9,
         availability: 8,
-        cost: "650¥",
+        cost: 650,
         source: "Core",
       },
       urbanExplorerJumpsuitHelmet: {
@@ -390,7 +375,7 @@ export default function returnArmor() {
         armorRating: "+2",
         capacity: "+2",
         availability: "-",
-        cost: "+100¥",
+        cost: 100,
         source: "Core",
       },
       helmet: {
@@ -398,7 +383,7 @@ export default function returnArmor() {
         armorRating: "+2",
         capacity: "+2",
         availability: 2,
-        cost: "100¥",
+        cost: 100,
         source: "Core",
       },
       ballisticShield: {
@@ -406,7 +391,7 @@ export default function returnArmor() {
         armorRating: "+6",
         capacity: "+6",
         availability: "12R",
-        cost: "1,200¥",
+        cost: 1200,
         source: "Core",
       },
       riotShield: {
@@ -414,7 +399,7 @@ export default function returnArmor() {
         armorRating: "+6",
         capacity: "+6",
         availability: "10R",
-        cost: "1,000¥",
+        cost: 1000,
         source: "Core",
       },
       formFittingBodyArmor: {
@@ -422,7 +407,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 3,
         availability: 8,
-        cost: "1,300¥",
+        cost: 1300,
         source: "SR5:R&G",
       },
       hardenedMilSpecBattleArmorLight: {
@@ -430,7 +415,7 @@ export default function returnArmor() {
         armorRating: 15,
         capacity: 15,
         availability: "16F",
-        cost: "15,000¥",
+        cost: 15000,
         source: "SR5:R&G",
       },
       hardenedMilSpecBattleArmorMedium: {
@@ -438,7 +423,7 @@ export default function returnArmor() {
         armorRating: 18,
         capacity: 18,
         availability: "18F",
-        cost: "20,000¥",
+        cost: 20000,
         source: "SR5:R&G",
       },
       hardenedMilSpecBattleArmorHeavy: {
@@ -446,7 +431,7 @@ export default function returnArmor() {
         armorRating: 20,
         capacity: 20,
         availability: "22F",
-        cost: "25,000¥",
+        cost: 25000,
         source: "SR5:R&G",
       },
       hardenedMilSpecBattleArmorHelmet: {
@@ -454,7 +439,7 @@ export default function returnArmor() {
         armorRating: "+3",
         capacity: 8,
         availability: "8F",
-        cost: "10,000¥",
+        cost: 10000,
         source: "SR5:R&G",
       },
       securityArmorLight: {
@@ -462,7 +447,7 @@ export default function returnArmor() {
         armorRating: 15,
         capacity: 12,
         availability: "14R",
-        cost: "8,000¥",
+        cost: 8000,
         source: "SR5:R&G",
       },
       securityArmorMedium: {
@@ -470,7 +455,7 @@ export default function returnArmor() {
         armorRating: 18,
         capacity: 14,
         availability: "16R",
-        cost: "14,000¥",
+        cost: 14000,
         source: "SR5:R&G",
       },
       securityArmorHeavy: {
@@ -478,7 +463,7 @@ export default function returnArmor() {
         armorRating: 20,
         capacity: 16,
         availability: "18R",
-        cost: "20,000¥",
+        cost: 20000,
         source: "SR5:R&G",
       },
       securityArmorHelmet: {
@@ -486,7 +471,7 @@ export default function returnArmor() {
         armorRating: "+3",
         capacity: 5,
         availability: "8R",
-        cost: "5,000¥",
+        cost: 5000,
         source: "SR5:R&G",
       },
       bikeRacingArmor: {
@@ -494,7 +479,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 8,
         availability: 6,
-        cost: "500¥",
+        cost: 500,
         source: "SR5:R&G",
       },
       bikeRacingHelmet: {
@@ -502,7 +487,7 @@ export default function returnArmor() {
         armorRating: "+2",
         capacity: 6,
         availability: 6,
-        cost: "200¥",
+        cost: 200,
         source: "SR5:R&G",
       },
       bunkerGear: {
@@ -510,7 +495,7 @@ export default function returnArmor() {
         armorRating: 6,
         capacity: 6,
         availability: 6,
-        cost: "3,000¥",
+        cost: 3000,
         source: "SR5:R&G",
       },
       bunkerGearHelmet: {
@@ -518,7 +503,7 @@ export default function returnArmor() {
         armorRating: "+2",
         capacity: 3,
         availability: 6,
-        cost: "750¥",
+        cost: 750,
         source: "SR5:R&G",
       },
       riotControlArmor: {
@@ -526,7 +511,7 @@ export default function returnArmor() {
         armorRating: 14,
         capacity: 8,
         availability: "10R",
-        cost: "5,000¥",
+        cost: 5000,
         source: "SR5:R&G",
       },
       riotControlHelmet: {
@@ -534,7 +519,7 @@ export default function returnArmor() {
         armorRating: "+2",
         capacity: 6,
         availability: "6R",
-        cost: "1,000¥",
+        cost: 1000,
         source: "SR5:R&G",
       },
       swatArmor: {
@@ -542,7 +527,7 @@ export default function returnArmor() {
         armorRating: 15,
         capacity: 15,
         availability: "16R",
-        cost: "8,000¥",
+        cost: 8000,
         source: "SR5:R&G",
       },
       swatHelmet: {
@@ -550,7 +535,7 @@ export default function returnArmor() {
         armorRating: "+3",
         capacity: 8,
         availability: "10R",
-        cost: "1,500¥",
+        cost: 1500,
         source: "SR5:R&G",
       },
       securetechPPPArmsKit: {
@@ -558,7 +543,7 @@ export default function returnArmor() {
         armorRating: "+1",
         capacity: 1,
         availability: 6,
-        cost: "250¥",
+        cost: 250,
         source: "SR5:R&G",
       },
       securetechPPPLegsKit: {
@@ -566,7 +551,7 @@ export default function returnArmor() {
         armorRating: "+1",
         capacity: 1,
         availability: 6,
-        cost: "300¥",
+        cost: 300,
         source: "SR5:R&G",
       },
       securetechPPPVitalsKit: {
@@ -574,7 +559,7 @@ export default function returnArmor() {
         armorRating: "+1",
         capacity: 1,
         availability: 6,
-        cost: "350¥",
+        cost: 350,
         source: "SR5:R&G",
       },
       bodyArmorBag: {
@@ -582,7 +567,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 4,
         availability: 8,
-        cost: "750¥",
+        cost: 750,
         source: "SR5:R&G",
       },
       chainMail: {
@@ -590,7 +575,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 2,
         availability: 8,
-        cost: "900¥",
+        cost: 900,
         source: "SR5:R&G",
       },
       paddedLeather: {
@@ -598,7 +583,7 @@ export default function returnArmor() {
         armorRating: 7,
         capacity: 2,
         availability: 8,
-        cost: "600¥",
+        cost: 600,
         source: "SR5:R&G",
       },
       aresFlaShield: {
@@ -606,7 +591,7 @@ export default function returnArmor() {
         armorRating: "+6",
         capacity: 4,
         availability: "12R",
-        cost: "4,000¥",
+        cost: 4000,
         source: "SR5:R&G",
       },
       murderArmor: {
@@ -614,7 +599,7 @@ export default function returnArmor() {
         armorRating: 13,
         capacity: 4,
         availability: "12R",
-        cost: "5,000¥",
+        cost: 5000,
         source: "SR5:R&G",
       },
       gorepak: {
@@ -622,7 +607,7 @@ export default function returnArmor() {
         armorRating: "-",
         capacity: "-",
         availability: "8R",
-        cost: "200¥",
+        cost: 200,
         source: "SR5:R&G",
       },
       forearmGuards: {
@@ -630,7 +615,7 @@ export default function returnArmor() {
         armorRating: "+1",
         capacity: 3,
         availability: 6,
-        cost: "300¥",
+        cost: 300,
         source: "SR5:R&G",
       },
       ballisticMask: {
@@ -638,7 +623,7 @@ export default function returnArmor() {
         armorRating: "+2",
         capacity: 8,
         availability: 6,
-        cost: "150¥",
+        cost: 150,
         source: "SR5:R&G",
       },
       cloak: {
@@ -646,7 +631,7 @@ export default function returnArmor() {
         armorRating: "-",
         capacity: "(Rating)",
         availability: 1,
-        cost: "(Rating) x 100¥",
+        cost: 500,
         source: "SR5:HT",
       },
       rutheniumPolymerCloak: {
@@ -654,7 +639,7 @@ export default function returnArmor() {
         armorRating: "-",
         capacity: "-",
         availability: "14F",
-        cost: "(Rating) x 4,000¥",
+        cost: 20000,
         source: "SR5:HT",
       },
     },
@@ -665,7 +650,7 @@ export default function returnArmor() {
         armorRating: 4,
         capacity: 4,
         availability: 6,
-        cost: "600¥",
+        cost: 600,
         source: "SR5:R&G",
       },
       aresArmoredSurvivalist: {
@@ -674,7 +659,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 6,
         availability: 10,
-        cost: "1,500¥",
+        cost: 1500,
         source: "SR5:R&G",
       },
       desertSuit: {
@@ -683,7 +668,7 @@ export default function returnArmor() {
         armorRating: 3,
         capacity: 2,
         availability: 8,
-        cost: "1,000¥",
+        cost: 1000,
         source: "SR5:R&G",
       },
       snakeMeshSocks: {
@@ -692,7 +677,7 @@ export default function returnArmor() {
         armorRating: "+2",
         capacity: "-",
         availability: 6,
-        cost: "50¥",
+        cost: 50,
         source: "SR5:R&G",
       },
       coldsuit: {
@@ -701,7 +686,7 @@ export default function returnArmor() {
         armorRating: "—",
         capacity: 4,
         availability: 4,
-        cost: "800¥",
+        cost: 800,
         source: "SR5:R&G",
       },
       polarSurvivalSuit: {
@@ -710,7 +695,7 @@ export default function returnArmor() {
         armorRating: 6,
         capacity: 6,
         availability: 8,
-        cost: "2,000¥",
+        cost: 2000,
         source: "SR5:R&G",
       },
       aresArcticForcesSuit: {
@@ -719,7 +704,7 @@ export default function returnArmor() {
         armorRating: 15,
         capacity: 14,
         availability: "16R",
-        cost: "11,000¥",
+        cost: 11000,
         source: "SR5:R&G",
       },
       aresArmoredColdsuit: {
@@ -728,7 +713,7 @@ export default function returnArmor() {
         armorRating: 9,
         capacity: 6,
         availability: 6,
-        cost: "1,200¥",
+        cost: 1200,
         source: "SR5:R&G",
       },
       aresPolarSneakSuit: {
@@ -737,7 +722,7 @@ export default function returnArmor() {
         armorRating: 6,
         capacity: 4,
         availability: "16F",
-        cost: "10,000¥",
+        cost: 10000,
         source: "SR5:R&G",
       },
       enclosedBreathingHelmet: {
@@ -746,7 +731,7 @@ export default function returnArmor() {
         armorRating: "—",
         capacity: 6,
         availability: 8,
-        cost: "900¥",
+        cost: 900,
         source: "SR5:R&G",
       },
       fullFaceMask: {
@@ -755,7 +740,7 @@ export default function returnArmor() {
         armorRating: "—",
         capacity: 4,
         availability: 8,
-        cost: "300¥",
+        cost: 300,
         source: "SR5:R&G",
       },
       drysuit: {
@@ -764,7 +749,7 @@ export default function returnArmor() {
         armorRating: "—",
         capacity: 4,
         availability: 6,
-        cost: "2,500¥",
+        cost: 2500,
         source: "SR5:R&G",
       },
       divingArmor: {
@@ -773,7 +758,7 @@ export default function returnArmor() {
         armorRating: 7,
         capacity: 4,
         availability: 6,
-        cost: "1,750¥",
+        cost: 1750,
         source: "SR5:R&G",
       },
       arcticDivingSuit: {
@@ -782,7 +767,7 @@ export default function returnArmor() {
         armorRating: 1,
         capacity: 4,
         availability: 8,
-        cost: "3,000¥",
+        cost: 3000,
         source: "SR5:R&G",
       },
       evoHelSuit: {
@@ -791,7 +776,7 @@ export default function returnArmor() {
         armorRating: 8,
         capacity: 5,
         availability: 10,
-        cost: "3,000¥",
+        cost: 3000,
         source: "SR5:R&G",
       },
       spacesuit: {
@@ -800,7 +785,7 @@ export default function returnArmor() {
         armorRating: 12,
         capacity: 6,
         availability: 16,
-        cost: "12,000¥",
+        cost: 12000,
         source: "SR5:R&G",
       },
       securitySpacesuit: {
@@ -809,7 +794,7 @@ export default function returnArmor() {
         armorRating: 15,
         capacity: 10,
         availability: 24,
-        cost: "25,000¥",
+        cost: 25000,
         source: "SR5:R&G",
       },
       evoArmadilloArmoredSpacesuit: {
@@ -818,7 +803,7 @@ export default function returnArmor() {
         armorRating: 16,
         capacity: 10,
         availability: "24R",
-        cost: "35,000¥",
+        cost: 35000,
         source: "SR5:R&G",
       },
       magneticBoots: {
@@ -827,7 +812,7 @@ export default function returnArmor() {
         armorRating: "—",
         capacity: 4,
         availability: 12,
-        cost: "2,500¥",
+        cost: 2500,
         source: "SR5:R&G",
       },
       survivalBubble: {
@@ -836,7 +821,7 @@ export default function returnArmor() {
         armorRating: 4,
         capacity: 4,
         availability: "Rating x 3",
-        cost: "2,000¥",
+        cost: 2000,
         source: "SR5:R&G",
       },
       mctEESuit: {
@@ -845,7 +830,7 @@ export default function returnArmor() {
         armorRating: 6,
         capacity: 5,
         availability: 10,
-        cost: "2,500¥",
+        cost: 2500,
         source: "SR5:R&G",
       },
     },
@@ -854,147 +839,147 @@ export default function returnArmor() {
         modification: "Chemical Protection",
         capacity: "[Rating]",
         availability: 6,
-        cost: "250¥ * Rating",
+        cost: 2000,
         source: "Core",
       },
       chemicalSeal: {
         modification: "Chemical Seal",
         capacity: "[6]",
         availability: "12R",
-        cost: "3,000¥",
+        cost: 3000,
         source: "Core",
       },
       fireResistance: {
         modification: "Fire Resistance",
         capacity: "[Rating]",
         availability: 6,
-        cost: "250¥ * Rating",
+        cost: 2000,
         source: "Core",
       },
       insulation: {
         modification: "Insulation",
         capacity: "[Rating]",
         availability: 6,
-        cost: "250¥ * Rating",
+        cost: 2000,
         source: "Core",
       },
       nonconductivity: {
         modification: "Nonconductivity",
         capacity: "[Rating]",
         availability: 6,
-        cost: "250¥ * Rating",
+        cost: 2000,
         source: "Core",
       },
       shockFrills: {
         modification: "Shock Frills",
         capacity: "[2]",
         availability: "6R",
-        cost: "250¥",
+        cost: 250,
         source: "Core",
       },
       thermalDamping: {
         modification: "Thermal Damping",
         capacity: "[Rating]",
         availability: "10R",
-        cost: "500¥ * Rating",
+        cost: 2000,
         source: "Core",
       },
       autoInjector: {
         modification: "Auto-Injector",
         capacity: "[2]",
         availability: 4,
-        cost: "1,500¥ + chemical costs",
+        cost: 1500,
         source: "SR5:R&G",
       },
       fresnelFabric: {
         modification: "Fresnel Fabric",
         capacity: "[2]",
         availability: "14R",
-        cost: "Rating x 1,000¥",
+        cost: 5000,
         source: "SR5:R&G",
       },
       pulseWeave: {
         modification: "Pulse Weave",
         capacity: "[3]",
         availability: "+8R",
-        cost: "Rating x 3,000¥",
+        cost: 10000,
         source: "SR5:R&G",
       },
       shockWeave: {
         modification: "Shock Weave",
         capacity: "[3]",
         availability: 8,
-        cost: "1,000¥",
+        cost: 1000,
         source: "SR5:R&G",
       },
       universalMirrorMaterial: {
         modification: "Universal Mirror Material (per square meter)",
         capacity: "[3]",
         availability: "8F",
-        cost: "Rating x 250¥",
+        cost: 1000,
         source: "SR5:R&G",
       },
       yntSoftweaveArmor: {
         modification: "YNT Softweave Armor",
         capacity: "—",
         availability: "+4",
-        cost: "x2¥",
+        cost: 2000,
         source: "SR5:R&G",
       },
       rutheniumPolymerCoating: {
         modification: "Ruthenium Polymer Coating (Rating 1-4)",
         capacity: "[4]",
         availability: "16F",
-        cost: "Rating x 5,000¥",
+        cost: 20000,
         source: "SR5:R&G",
       },
       radiationShielding: {
         modification: "Radiation Shielding",
         capacity: "[Rating]",
         availability: "Rating x 2",
-        cost: "Rating x 200¥",
+        cost: 2000,
         source: "SR5:R&G",
       },
       gelPacks: {
         modification: "Gel Packs",
         capacity: "—",
         availability: 6,
-        cost: "1,500¥",
+        cost: 1500,
         source: "SR5:R&G",
       },
       responseInterfaceGear: {
         modification: "Response Interface Gear (RIG)",
         capacity: "[4] + [2]",
         availability: 8,
-        cost: "2,500¥",
+        cost: 2500,
         source: "SR5:R&G",
       },
       biofiberPocket: {
         modification: "Biofiber Pocket",
         capacity: "[2]",
         availability: "10F",
-        cost: "700¥",
+        cost: 700,
         source: "SR5:HT",
       },
       concealedPockets: {
         modification: "Concealed Pockets",
         capacity: "[1]",
         availability: 4,
-        cost: "40¥",
+        cost: 40,
         source: "SR5:HT",
       },
       faradayPocket: {
         modification: "Faraday Pocket",
         capacity: "[1]",
         availability: "7R",
-        cost: "50¥",
+        cost: 50,
         source: "SR5:HT",
       },
       gearAccess: {
         modification: "Gear Access",
         capacity: "[4]",
         availability: 4,
-        cost: "150¥",
+        cost: 150,
         source: "SR5:HT",
       },
     },

@@ -34,8 +34,6 @@ export default function getShamanStats(character) {
       character.rating;
   }
 
-  console.log(character.stats);
-
   function distributePoints(totalPoints) {
     const statsArray = [
       character.stats.body,

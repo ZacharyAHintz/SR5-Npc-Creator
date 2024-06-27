@@ -3,7 +3,7 @@ import returnSpells from "../../components/lists/returnSpells";
 import returnRituals from "../../components/lists/returnRituals";
 import getRandomObjectsFromDepth from "../getRandomObjectFromDepth";
 import findObjectWithGivenValue from "../../helperFunctions/findObjectWithGivenValue";
-import skillList from "../../components/lists/returnSkills";
+
 import returnSkills from "../../components/lists/returnSkills";
 
 const skills = returnSkills();
@@ -266,7 +266,6 @@ export default function getSpells(character) {
   }
 
   const extraSpells = getRandomObjectsFromDepth(spells, 2, character.rating);
-  console.log(extraSpells);
 
   extraSpells.forEach((obj) => {
     if (Object.keys(character.spells).includes(obj)) {

@@ -21,6 +21,7 @@ import returnVehicles from "./lists/returnVehicles";
 import returnDrones from "./lists/returnDrones";
 import returnAmmo from "./lists/returnAmmo";
 import createShaman from "../helperFunctions/archetypeSpecific/createShaman";
+import getAmmo from "../helperFunctions/archetypeSpecific/getAmmo";
 //enter need to finish the submit every time
 export default function NpcOptions({ toggleDialog }) {
   const [name, setName] = useState("");
@@ -151,11 +152,14 @@ export default function NpcOptions({ toggleDialog }) {
           }
         }
       }
-
+      // character.gear = gear;
+      // character.vehicles = vehicles;
+      // character.weapons = weapons;
       return { gear, vehicles, weapons };
     }
 
     character.gear = processGearRequirements(gearList);
+    getAmmo(character);
 
     // Archetype specific selections
     // if (character.archetype === "Shaman") {

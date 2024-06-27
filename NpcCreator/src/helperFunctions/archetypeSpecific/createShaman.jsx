@@ -1,8 +1,10 @@
 import returnTraditions from "../../components/lists/returnTraditions";
+import getItems from "./getItems";
 import getRandomObjectsFromDepth from "../getRandomObjectFromDepth";
 import getMentorSpirit from "./getMentorSpirit";
 import getShamanStats from "./getShamanStats";
 import getSpells from "./getSpells";
+import getAmmo from "./getAmmo";
 
 const traditions = returnTraditions();
 const specializations = [
@@ -23,7 +25,7 @@ const specializations = [
 // -- get their tradition
 // -- get their mentor spirit
 // -- add in their mentor spirit bonuses
-//create specialization
+// -- create specialization
 // -- imput their stats
 //add in items / weapons / vehicles
 //add ammo
@@ -31,7 +33,7 @@ const specializations = [
 
 export default function createShaman(character) {
   const tradition = getRandomObjectsFromDepth(traditions, 2, 1);
-  console.log(tradition);
+
   character.tradition = tradition;
   getMentorSpirit(character);
   if (traditions.name !== "Qabbalism") {
@@ -41,4 +43,5 @@ export default function createShaman(character) {
   }
   getShamanStats(character);
   getSpells(character);
+  // getItems(character);
 }

@@ -12,7 +12,6 @@ export default function getMentorSpirit(character) {
   character.mentor = mentor;
 
   const mentorSkillsArray = [character.mentor[0].all];
-  console.log(mentor);
 
   mentorSkillsArray.forEach((skill) => {
     if (!character.skills.hasOwnProperty(skill)) {
