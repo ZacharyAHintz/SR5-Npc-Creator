@@ -124,41 +124,8 @@ export default function NpcOptions({ toggleDialog }) {
     character.skills = combinedSkillSelection;
 
     // Item selection based on skills
-    const gearList = determineGearRequirements(character);
+    determineGearRequirements(character);
 
-    function processGearRequirements(gearRequirementsList) {
-      const gear = [];
-      const vehicles = [];
-      const weapons = [];
-
-      for (const category in gearRequirementsList) {
-        if (gearRequirementsList.hasOwnProperty(category)) {
-          for (const item of gearRequirementsList[category]) {
-            const [obj, itemKey, keyDepth, amount] = item;
-            const randomObject = getRandomObjectByKey(
-              obj,
-              itemKey,
-              keyDepth,
-              amount,
-            );
-
-            if (category === "vehicle") {
-              vehicles.push(randomObject);
-            } else if (category === "weapon" || category === "ammo") {
-              weapons.push(randomObject);
-            } else {
-              gear.push(randomObject);
-            }
-          }
-        }
-      }
-      // character.gear = gear;
-      // character.vehicles = vehicles;
-      // character.weapons = weapons;
-      return { gear, vehicles, weapons };
-    }
-
-    character.gear = processGearRequirements(gearList);
     getAmmo(character);
 
     // Archetype specific selections
