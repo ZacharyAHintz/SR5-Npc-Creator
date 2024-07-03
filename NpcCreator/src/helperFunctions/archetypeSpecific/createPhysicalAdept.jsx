@@ -5,6 +5,8 @@ import getShamanStats from "./getShamanStats";
 import getStreetSamuraiStats from "./getStreetSamuraiStats";
 import getItems from "./getItems";
 import getFaceStats from "./getFaceStats";
+import getSpells from "./getSpells";
+import getCyberware from "./getCyberware";
 
 const traditions = returnTraditions();
 
@@ -23,9 +25,14 @@ export default function createPhysicalAdept(character) {
 
   getMentorSpirit(character);
 
+  if (character.specialization === "Mystic Adept") {
+    getSpells(character);
+  }
+
   if (character.specialization === "Burnt Adept") {
     getStreetSamuraiStats(character);
     getShamanStats(character);
+    getCyberware(character);
   } else if (character.specialization === "Social Adept") {
     getFaceStats(character);
   } else {

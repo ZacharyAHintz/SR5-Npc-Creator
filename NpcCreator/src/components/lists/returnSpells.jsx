@@ -1659,16 +1659,6 @@ export default function returnSpells() {
         duration: "F-1",
         source: "SR5:SG",
       },
-      controlPack: {
-        category: "Manipulation",
-        name: "Control Pack",
-        effects: "Mental, Area",
-        type: "M",
-        range: "LOS",
-        damage: "S",
-        duration: "F-1",
-        source: "SR5:SG",
-      },
       deflection: {
         category: "Manipulation",
         name: "Deflection",

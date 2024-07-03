@@ -168,7 +168,7 @@ export default function returnTraditions() {
         health: "Plant",
         illusion: "Air",
         manipulation: "Earth",
-        drain: "Intuition(Goddess Wicca)/Logic(Gardnerian Wicca) + Willpower",
+        drain: "Intuition + Willpower",
         source: "SR5:SG",
       },
       wuxing: {
