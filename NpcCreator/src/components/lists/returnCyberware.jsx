@@ -829,7 +829,6 @@ export default function returnCyberware() {
         source: "SR5:CF",
       },
       fiberopticHair: {
-        addedStats: ["skills", "Escape Artist", 3, "physical"],
         device: "Fiberoptic Hair",
         part: "Body",
         essence: 0.1,
@@ -965,7 +964,7 @@ export default function returnCyberware() {
         source: "SR5:CF",
       },
       retractableClimbingClaws: {
-        addedStats: ["skills", "climbing", 2, "physical"],
+        addedStats: ["skills", "Climbing", 2, "physical"],
         device: "Retractable Climbing Claws",
         part: "Body",
         essence: 0.2,

@@ -10,5 +10,6 @@ export default function createRigger(character) {
   getRiggerStats(character);
 
   setBaselineCyberware(character);
+
   getItems(character);
 }

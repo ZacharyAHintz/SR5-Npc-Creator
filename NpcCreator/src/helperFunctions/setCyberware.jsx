@@ -37,6 +37,7 @@ const wareGrades = {
 
 export default function setCyberware(character) {
   let availablePoints = character.cyberLevel;
+
   let factor = 1.0;
   if (character.wareGrade && wareGrades[character.wareGrade]) {
     factor = wareGrades[character.wareGrade].essCostMultiplier;
@@ -71,7 +72,8 @@ export default function setCyberware(character) {
     "basicBioware",
     "culturedBioware",
   ];
-  let deviceArray = [];
+
+  let deviceArray = character.cyberware;
 
   while (availablePoints > 0.3 && cyberwareIndex.length > 0) {
     let randomIndex = Math.floor(Math.random() * cyberwareIndex.length);
@@ -101,6 +103,7 @@ export default function setCyberware(character) {
     availablePoints -=
       currentDevice[Object.getOwnPropertyNames(currentDevice)].essence;
   }
+  console.log("deviceArray", deviceArray);
   character.cyberware = deviceArray;
   character.stats.essence =
     character.stats.essence - character.cyberLevel + availablePoints;

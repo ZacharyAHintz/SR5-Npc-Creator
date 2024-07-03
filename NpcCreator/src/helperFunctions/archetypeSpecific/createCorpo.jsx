@@ -1,6 +1,7 @@
 import getCyberware from "./getCyberware";
 import getStreetSamuraiStats from "./getStreetSamuraiStats";
 import getFaceStats from "./getFaceStats";
+import getItems from "./getItems";
 
 const specializations = ["Mr. Johnson", "HTR", "Corporate Security"];
 
@@ -13,4 +14,6 @@ export default function createCorpo(character) {
   }
 
   getCyberware(character);
+
+  getItems(character);
 }

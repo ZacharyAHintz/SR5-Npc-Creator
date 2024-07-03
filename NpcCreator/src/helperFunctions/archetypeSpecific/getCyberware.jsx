@@ -26,12 +26,11 @@ export default function getCyberware(character) {
     character.cyberLevel = Math.floor(Math.random() * 3) + 1;
   } else {
     character.cyberLevel = Math.floor(Math.random() * 5) + 1;
-    console.log(character.cyberLevel);
   }
 
   setBaselineCyberware(character);
-
   setCyberware(character);
+  console.log(character.cyberware, "cw");
 
   if (!character.currentArmor) {
     character.currentArmor = 0;
@@ -44,9 +43,9 @@ export default function getCyberware(character) {
         if (character.skills.hasOwnProperty(addedStats[1])) {
           character.skills[addedStats[0]].rank += addStats[2];
         } else {
-          console.log(character.skills[addedStats[1]]);
           character.skills[addedStats[1]] =
             skills[addedStats[3]][addedStats[1]];
+
           character.skills[addedStats[1]].rating = addedStats[2];
         }
       } else if (addedStats[0] === "stats") {
@@ -69,11 +68,7 @@ export default function getCyberware(character) {
           character.skills[addedStatsTwo[1]].rating = addedStatsTwo[2];
         }
       } else if (addedStatsTwo[0] === "stats") {
-        console.log(ware);
-        console.log(addedStatsTwo[2]);
-        console.log("base stats", character.stats[addedStatsTwo[1]].baseStats);
         character.stats[addedStatsTwo[1]].baseStats += addedStatsTwo[2];
-        console.log("after stats", character.stats[addedStatsTwo[1]].baseStats);
       } else {
         character.currentArmor += addedStatsTwo[2];
       }
