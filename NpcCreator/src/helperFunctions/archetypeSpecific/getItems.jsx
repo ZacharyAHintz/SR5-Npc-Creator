@@ -57,9 +57,6 @@ export default function getItems(character) {
   if (!character.firearms) {
     character.firearms = {};
   }
-  if (!character.drones) {
-    character.drones = {};
-  }
 
   if (character.archetype === "Shaman") {
     character.security = getRandomObjectsFromDepth(
@@ -157,23 +154,6 @@ export default function getItems(character) {
       Number(character.rating),
     );
 
-    character.cyberdeck = getRandomeObjectByPrice(
-      electronics,
-      "cyberdecks",
-      0,
-      1,
-      "deviceRating",
-      "over",
-      Number(character.rating) - 1,
-    );
-
-    character.cyberdeckModules = getRandomObjectByKey(
-      electronics,
-      "cyberdeckModules",
-      0,
-      Number(character.rating),
-    );
-
     character.armor = getRandomeObjectByPrice(
       armor,
       "clothingAndArmor",
@@ -202,22 +182,6 @@ export default function getItems(character) {
       Number(character.rating),
     );
 
-    character.cyberdeckModules = getRandomObjectByKey(
-      electronics,
-      "cyberdeckModules",
-      0,
-      Number(character.rating),
-    );
-
-    character.cyberdeck = getRandomeObjectByPrice(
-      electronics,
-      "cyberdecks",
-      0,
-      1,
-      "deviceRating",
-      "over",
-      Number(character.rating) - 1,
-    );
     character.comlinks = getRandomeObjectByPrice(
       electronics,
       "comlinks",

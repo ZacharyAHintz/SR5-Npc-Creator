@@ -103,7 +103,11 @@ export default function setCyberware(character) {
     availablePoints -=
       currentDevice[Object.getOwnPropertyNames(currentDevice)].essence;
   }
-  console.log("deviceArray", deviceArray);
+  console.log("deviceArray: ", deviceArray);
+  console.log("character ", character);
+  console.log("character.stats.essence: ", character.stats.essence);
+  console.log("availablePoints: ", availablePoints);
+  console.log("character.cyberLevel", character.cyberLevel);
   character.cyberware = deviceArray;
   character.stats.essence =
     character.stats.essence - character.cyberLevel + availablePoints;

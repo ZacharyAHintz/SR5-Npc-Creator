@@ -175,7 +175,7 @@ export default function returnElectronics() {
         attributeArray: [4, 3, 2, 1],
         programs: 1,
         avail: "3R",
-        cost: "49,500¥",
+        cost: 49500,
         source: "Core",
       },
       microdeckSummit: {
@@ -184,7 +184,7 @@ export default function returnElectronics() {
         attributeArray: [4, 3, 3, 1],
         programs: 1,
         avail: "3R",
-        cost: "58,000¥",
+        cost: 58000,
         source: "Core",
       },
       microtronicaAzteca200: {
@@ -193,7 +193,7 @@ export default function returnElectronics() {
         attributeArray: [5, 4, 3, 2],
         programs: 2,
         avail: "6R",
-        cost: "110,250¥",
+        cost: 110250,
         source: "Core",
       },
       hermesChariot: {
@@ -202,7 +202,7 @@ export default function returnElectronics() {
         attributeArray: [5, 4, 4, 2],
         programs: 2,
         avail: "6R",
-        cost: "123,000¥",
+        cost: 123000,
         source: "Core",
       },
       novatechNavigator: {
@@ -211,7 +211,7 @@ export default function returnElectronics() {
         attributeArray: [6, 5, 4, 3],
         programs: 3,
         avail: "9R",
-        cost: "205,750¥",
+        cost: 205750,
         source: "Core",
       },
       renrakuTsurugi: {
@@ -220,7 +220,7 @@ export default function returnElectronics() {
         attributeArray: [6, 5, 5, 3],
         programs: 3,
         avail: "9R",
-        cost: "214,125¥",
+        cost: 214125,
         source: "Core",
       },
       sonyCiy720: {
@@ -229,7 +229,7 @@ export default function returnElectronics() {
         attributeArray: [7, 6, 5, 4],
         programs: 4,
         avail: "12R",
-        cost: "345,000¥",
+        cost: 345000,
         source: "Core",
       },
       shiawaseCyber5: {
@@ -238,7 +238,7 @@ export default function returnElectronics() {
         attributeArray: [8, 7, 6, 5],
         programs: 5,
         avail: "15R",
-        cost: "549,375¥",
+        cost: 549375,
         source: "Core",
       },
       fairlightExcalibur: {
@@ -247,7 +247,7 @@ export default function returnElectronics() {
         attributeArray: [9, 8, 7, 6],
         programs: 6,
         avail: "18R",
-        cost: "823,250¥",
+        cost: 823250,
         source: "Core",
       },
       radioShackPcd500: {
@@ -256,7 +256,7 @@ export default function returnElectronics() {
         attributeArray: [2, 2, 1, 1],
         programs: 1,
         avail: "2",
-        cost: "21,000¥",
+        cost: 21000,
         source: "SR5:DT",
       },
       littleHornet: {
@@ -265,7 +265,7 @@ export default function returnElectronics() {
         attributeArray: [5, 4, 1, 1],
         programs: 2,
         avail: "5R",
-        cost: "89,700¥",
+        cost: 89700,
         source: "SR5:DT",
       },
       microtronicaAzteca300: {
@@ -274,7 +274,7 @@ export default function returnElectronics() {
         attributeArray: [7, 5, 3, 1],
         programs: 3,
         avail: "9R",
-        cost: "200,000¥",
+        cost: 200000,
         source: "SR5:DT",
       },
       xiaoMpg1: {
@@ -283,7 +283,7 @@ export default function returnElectronics() {
         attributeArray: [8, 5, 4, 3],
         programs: 3,
         avail: "13R",
-        cost: "302,000¥",
+        cost: 302000,
         source: "SR5:DT",
       },
       shiawaseCyber4: {
@@ -292,7 +292,7 @@ export default function returnElectronics() {
         attributeArray: [8, 6, 4, 2],
         programs: 3,
         avail: "12R",
-        cost: "331,000¥",
+        cost: 331000,
         source: "SR5:DT",
       },
       fairlightPaladin: {
@@ -301,7 +301,7 @@ export default function returnElectronics() {
         attributeArray: [9, 9, 8, 8],
         programs: 6,
         avail: "20R",
-        cost: "1,050,000¥",
+        cost: 11050000,
         source: "SR5:DT",
       },
       mctTrainee: {
@@ -310,7 +310,7 @@ export default function returnElectronics() {
         attributeArray: [2, 1, 1, 2],
         programs: 1,
         avail: "3R",
-        cost: "17,250¥",
+        cost: 17250,
         source: "SR5:DT",
       },
       cKAnalyst: {
@@ -319,7 +319,7 @@ export default function returnElectronics() {
         attributeArray: [1, 5, 4, 3],
         programs: 1,
         avail: "5R",
-        cost: "83,800¥",
+        cost: 83800,
         source: "SR5:DT",
       },
       aztechnologyEmissary: {
@@ -328,7 +328,7 @@ export default function returnElectronics() {
         attributeArray: [2, 3, 3, 8],
         programs: 1,
         avail: "8R",
-        cost: "168,000¥",
+        cost: 168000,
         source: "SR5:DT",
       },
     },

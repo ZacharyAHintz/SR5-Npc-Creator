@@ -7,6 +7,7 @@ import getItems from "./getItems";
 import getFaceStats from "./getFaceStats";
 import getSpells from "./getSpells";
 import getCyberware from "./getCyberware";
+import getAdeptPowers from "./getAdeptPowers";
 
 const traditions = returnTraditions();
 
@@ -38,6 +39,7 @@ export default function createPhysicalAdept(character) {
   } else {
     getShamanStats(character);
   }
+  getAdeptPowers(character);
 
   getItems(character);
 }

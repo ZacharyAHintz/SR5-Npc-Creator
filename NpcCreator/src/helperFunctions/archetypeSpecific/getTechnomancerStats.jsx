@@ -20,7 +20,7 @@ export default function getTechnomancerStats(character) {
 
   character.stats.charisma.baseStats += Math.ceil(Number(character.rating) / 2);
 
-  character.stats.logical.baseStats += Math.ceil(Number(character.rating) / 2);
+  character.stats.logic.baseStats += Math.ceil(Number(character.rating) / 2);
 
   character.stats.willpower.baseStats += Number(character.rating);
 

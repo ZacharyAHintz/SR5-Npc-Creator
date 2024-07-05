@@ -1,0 +1,186 @@
+export default function returnComplexForms() {
+  const complexForms = {
+    cleaner: {
+      name: "Cleaner",
+      target: "Persona",
+      duration: "S",
+      fading: "L-2",
+    },
+    derezz: {
+      name: "Derezz",
+      target: "Persona",
+      duration: "I",
+      fading: "L-1",
+    },
+    diffusionOfMatrixAttribute: {
+      name: "Diffusion Of Matrix Attribute",
+      target: "Device",
+      duration: "S",
+      fading: "L-2",
+    },
+    editor: {
+      name: "Editor",
+      target: "File",
+      duration: "P",
+      fading: "L-1",
+    },
+    faq: {
+      name: "FAQ",
+      target: "Device",
+      duration: "P",
+      fading: "L-3",
+    },
+    icTray: {
+      name: "ICTray",
+      target: "Host",
+      duration: "I",
+      fading: "L-5",
+    },
+    infusionOfMatrixAttribute: {
+      name: "Infusion Of Matrix Attribute",
+      target: "Device",
+      duration: "S",
+      fading: "L-2",
+    },
+    misreadMarks: {
+      name: "Misread Marks",
+      target: "IC",
+      duration: "P",
+      fading: "L-1",
+    },
+    pulseStorm: {
+      name: "Pulse Storm",
+      target: "Persona",
+      duration: "I",
+      fading: "L-3",
+    },
+    puppeteer: {
+      name: "Puppeteer",
+      target: "Device",
+      duration: "I",
+      fading: "L+1",
+    },
+    redundancy: {
+      name: "Redundancy",
+      target: "Device",
+      duration: "S",
+      fading: "L-3",
+    },
+    resonanceChannel: {
+      name: "Resonance Channel",
+      target: "Device",
+      duration: "S",
+      fading: "L-4",
+    },
+    resonanceSpike: {
+      name: "Resonance Spike",
+      target: "Device",
+      duration: "I",
+      fading: "L-3",
+    },
+    resonanceVeil: {
+      name: "Resonance Veil",
+      target: "Device",
+      duration: "S",
+      fading: "L-4",
+    },
+    staticBomb: {
+      name: "Static Bomb",
+      target: "Self",
+      duration: "I",
+      fading: "L-1",
+    },
+    staticVeil: {
+      name: "Static Veil",
+      target: "Persona",
+      duration: "S",
+      fading: "L-4",
+    },
+    stitches: {
+      name: "Stitches",
+      target: "Sprite",
+      duration: "P",
+      fading: "L-5",
+    },
+    tattletale: {
+      name: "Tattletale",
+      target: "Persona",
+      duration: "P",
+      fading: "L-5",
+    },
+    transcendentGrid: {
+      name: "Transcendent Grid",
+      target: "Self",
+      duration: "I",
+      fading: "L-6",
+    },
+    arcFeedback: {
+      name: "Arc Feedback",
+      target: "Icon",
+      duration: "S",
+      fading: "L-2",
+    },
+    bootlegProgram: {
+      name: "Bootleg Program",
+      target: "Device",
+      duration: "I",
+      fading: "L-2",
+    },
+    hostEmulator: {
+      name: "Host Emulator",
+      target: "Self",
+      duration: "P",
+      fading: "L",
+    },
+    mirroredPersona: {
+      name: "Mirrored Persona",
+      target: "Self",
+      duration: "I",
+      fading: "L-2",
+    },
+    pinch: {
+      name: "Pinch",
+      target: "Self",
+      duration: "S",
+      fading: "L+2",
+    },
+    resonanceBind: {
+      name: "Resonance Bind",
+      target: "Persona",
+      duration: "S",
+      fading: "L-2",
+    },
+    resonanceCache: {
+      name: "Resonance Cache",
+      target: "IC",
+      duration: "I",
+      fading: "L-2",
+    },
+    primedCharge: {
+      name: "Primed Charge",
+      target: "Self",
+      duration: "I",
+      fading: "L",
+    },
+    searchHistory: {
+      name: "Search History",
+      target: "Device",
+      duration: "I",
+      fading: "L-2",
+    },
+    weakenDataBomb: {
+      name: "Weaken Data Bomb",
+      target: "File",
+      duration: "I",
+      fading: "L-2",
+    },
+    weakenEncryption: {
+      name: "Weaken Encryption",
+      target: "File",
+      duration: "I",
+      fading: "L-3",
+    },
+  };
+
+  return complexForms;
+}

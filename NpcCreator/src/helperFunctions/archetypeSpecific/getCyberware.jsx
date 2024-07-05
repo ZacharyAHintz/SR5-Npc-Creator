@@ -30,7 +30,6 @@ export default function getCyberware(character) {
 
   setBaselineCyberware(character);
   setCyberware(character);
-  console.log(character.cyberware, "cw");
 
   if (!character.currentArmor) {
     character.currentArmor = 0;
