@@ -47,30 +47,30 @@ export default function CharacterSheet({ name, character }) {
           onClick={() => toggleTab(6)}
           className={toggleState === 6 ? styles.activeTab : styles.tabs}
         >
-          Social
+          Spells
         </div>
       </div>
       <div className={styles.contentTabs}>
         <div
           className={toggleState === 1 ? styles.activecontent : styles.content}
         >
-          <MainTab />
+          <MainTab character={character} />
         </div>
         <div
           className={toggleState === 2 ? styles.activecontent : styles.content}
         >
-          <h2>Stats</h2>
-          <div>{character.stats}</div>
+          <h2>Skills</h2>
+          {/* <div>{character.stats}</div> */}
         </div>
         <div
           className={toggleState === 3 ? styles.activecontent : styles.content}
         >
-          <h2>Equitment</h2>
+          <h2>Enhancements</h2>
         </div>
         <div
           className={toggleState === 4 ? styles.activecontent : styles.content}
         >
-          <h2>Equitment</h2>
+          <h2>Matrix</h2>
         </div>
         <div
           className={toggleState === 5 ? styles.activecontent : styles.content}
@@ -80,7 +80,7 @@ export default function CharacterSheet({ name, character }) {
         <div
           className={toggleState === 6 ? styles.activecontent : styles.content}
         >
-          <h2>Equitment</h2>
+          <h2>Spells</h2>
         </div>
       </div>
     </div>

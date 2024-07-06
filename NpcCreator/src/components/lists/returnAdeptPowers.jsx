@@ -528,7 +528,8 @@ export default function returnAdeptPowers() {
     plagueCloud: {
       power: "Plague Cloud",
       prerequisite: "Free Action",
-      activation: "0.5 PP",
+      activation: "-",
+      cost: "0.5 PP",
       source: "SR5:SG",
     },
     powerSwimming: {
@@ -596,13 +597,15 @@ export default function returnAdeptPowers() {
     spiritClaw: {
       power: "Spirit Claw",
       prerequisite: "Free Action",
-      activation: "0.25 PP",
+      activation: "-",
+      cost: "0.25 PP",
       source: "SR5:SG",
     },
     spiritRam: {
       power: "Spirit Ram",
       prerequisite: "Simple Action",
-      activation: "0.5 PP",
+      activation: "-",
+      cost: "0.5 PP",
       source: "SR5:SG",
     },
     stillness: {
