@@ -1,4 +1,6 @@
 .pages {
+  margin-top: 80px;
+  margin-right: 100px;
   display: flex;
   flex-direction: column;
   height: 100vh;
