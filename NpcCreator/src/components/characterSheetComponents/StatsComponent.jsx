@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import DiceRoller from "../DiceRoller";
 export default function StatsComponent({ stats, setCurrentCharacter }) {
   const [editedStats, setEditedStats] = useState({});
 
@@ -52,7 +52,7 @@ export default function StatsComponent({ stats, setCurrentCharacter }) {
   return statsToRender.map((key) => {
     const stat = stats[key];
     const baseStats = stat?.baseStats;
-    const bonus = stat?.bonus ?? 0;
+    const bonus = stat?.bonus ?? 0; // Initialize bonus to 0 if not defined
     const total = stat?.total ?? parseInt(baseStats) + parseInt(bonus);
     const editedValue = editedStats[key]?.baseStats ?? baseStats;
     const editedBonus = editedStats[key]?.bonus ?? bonus;
@@ -83,6 +83,7 @@ export default function StatsComponent({ stats, setCurrentCharacter }) {
               />
             </div>
             <div>Total: {total}</div>
+            <DiceRoller total={total} />
           </div>
         ) : (
           <div>
