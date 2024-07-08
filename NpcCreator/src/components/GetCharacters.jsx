@@ -52,7 +52,7 @@ export default function GetCharacters() {
         {characters.map((char) => (
           <div key={char.id}>
             <ToggleDialog name={char.name ? char.name : "Name"}>
-              <CharacterSheet character={char} />
+              <CharacterSheet character={char} id={char.id} />
             </ToggleDialog>
           </div>
         ))}

@@ -18,6 +18,7 @@ export default function MainTab({ character }) {
       <div>
         {currentCharacter?.id && <h3>{currentCharacter.id}</h3>}
         <StatsComponent
+          character={currentCharacter}
           stats={currentCharacter.stats}
           setCurrentCharacter={setCurrentCharacter}
         />
