@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DiceRoller from "../DiceRoller";
 import setLimits from "../../helperFunctions/setLimits";
+
 export default function StatsComponent({
   stats,
   setCurrentCharacter,
@@ -9,9 +10,6 @@ export default function StatsComponent({
   const [editedStats, setEditedStats] = useState({});
 
   useEffect(() => {
-    console.log(stats);
-    console.log("stats", character.stats);
-
     const storedCharacter = JSON.parse(localStorage.getItem("character"));
     if (storedCharacter) {
       setEditedStats(storedCharacter.stats);
@@ -19,15 +17,6 @@ export default function StatsComponent({
   }, []);
 
   setLimits(character);
-
-  // const logLocalStorage = () => {
-  //   console.log("Logging all local storage items:");
-  //   for (let i = 0; i < localStorage.length; i++) {
-  //     const key = localStorage.key(i);
-  //     const value = localStorage.getItem(key);
-  //     console.log(`${key}: ${value}`);
-  //   }
-  // };
 
   const handleBaseStatsChange = (key, newBaseValue, newBonusValue) => {
     const updatedEditedStats = {
@@ -50,14 +39,21 @@ export default function StatsComponent({
     };
 
     const updatedCharacter = {
-      ...JSON.parse(localStorage.getItem("character")),
+      ...character,
       stats: updatedStats,
     };
-    // logLocalStorage();
-    console.log("stats", character.stats);
-    console.log("character", JSON.parse(localStorage.getItem("character")));
+
+    const storedCharacters = JSON.parse(localStorage.getItem("characters"));
+    const updatedCharacters = storedCharacters.map((char) =>
+      char.id === character.id ? updatedCharacter : char,
+    );
+    localStorage.setItem("characters", JSON.stringify(updatedCharacters));
+
     setCurrentCharacter(updatedCharacter);
     localStorage.setItem("character", JSON.stringify(updatedCharacter));
+
+    const event = new Event("characterAdded");
+    window.dispatchEvent(event);
   };
 
   const statsToRender = [

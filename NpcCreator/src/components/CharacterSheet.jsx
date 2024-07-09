@@ -1,16 +1,38 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/CharacterSheet.module.css";
 import MainTab from "./MainTab";
 
 export default function CharacterSheet({ name, character }) {
   const [toggleState, setToggleState] = useState(1);
+  const [currentCharacter, setCurrentCharacter] = useState(character);
+
   const toggleTab = (index) => {
     setToggleState(index);
   };
 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const updatedCharacter = JSON.parse(localStorage.getItem("character"));
+      if (updatedCharacter) {
+        setCurrentCharacter(updatedCharacter);
+      }
+    };
+
+    window.addEventListener("characterAdded", handleStorageChange);
+    window.addEventListener("localStorageCleared", handleStorageChange);
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("characterAdded", handleStorageChange);
+      window.removeEventListener("localStorageCleared", handleStorageChange);
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
   return (
     <div className={styles.container}>
-      <h3>{character.name}</h3>
+      <h3>{currentCharacter.name}</h3>
+      <h3>{currentCharacter.stats.body.baseStats}</h3>
       <hr />
       <div className={styles.blockTabs}>
         <div
@@ -54,13 +76,13 @@ export default function CharacterSheet({ name, character }) {
         <div
           className={toggleState === 1 ? styles.activecontent : styles.content}
         >
-          <MainTab character={character} />
+          <MainTab character={currentCharacter} />
         </div>
         <div
           className={toggleState === 2 ? styles.activecontent : styles.content}
         >
           <h2>Skills</h2>
-          {/* <div>{character.stats}</div> */}
+          {/* <div>{currentCharacter.stats}</div> */}
         </div>
         <div
           className={toggleState === 3 ? styles.activecontent : styles.content}
@@ -75,7 +97,7 @@ export default function CharacterSheet({ name, character }) {
         <div
           className={toggleState === 5 ? styles.activecontent : styles.content}
         >
-          <h2>Equitment</h2>
+          <h2>Equipment</h2>
         </div>
         <div
           className={toggleState === 6 ? styles.activecontent : styles.content}

@@ -8,12 +8,14 @@ import Navbar from "./Navbar";
 export default function GetCharacters() {
   const [characters, setCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+
   useEffect(() => {
     updateCharactersFromLocalStorage();
 
     const handleCharacterAdded = (e) => {
       updateCharactersFromLocalStorage();
     };
+
     const handleLocalStorageCleared = () => {
       setCharacters([]);
     };
