@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import StatsComponent from "./characterSheetComponents/StatsComponent";
+import SkillsComponent from "../characterSheetComponents/SkillsComponent";
 
-export default function MainTab({ character }) {
+export default function SkillsTab({ character }) {
   const [currentCharacter, setCurrentCharacter] = useState(character);
 
   useEffect(() => {
@@ -13,13 +13,12 @@ export default function MainTab({ character }) {
 
   return (
     <div>
-      <h2>Attributes</h2>
+      <h2>Skills</h2>
       <hr />
       <div>
         {currentCharacter?.id && <h3>{currentCharacter.id}</h3>}
-        <StatsComponent
+        <SkillsComponent
           character={currentCharacter}
-          stats={currentCharacter.stats}
           setCurrentCharacter={setCurrentCharacter}
         />
       </div>

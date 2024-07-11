@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/CharacterSheet.module.css";
-import MainTab from "./MainTab";
+import MainTab from "./characterSheetPages/MainTab";
+import SkillsTab from "./characterSheetPages/SkillsTab";
 
 export default function CharacterSheet({ name, character }) {
   const [toggleState, setToggleState] = useState(1);
@@ -82,7 +83,7 @@ export default function CharacterSheet({ name, character }) {
           className={toggleState === 2 ? styles.activecontent : styles.content}
         >
           <h2>Skills</h2>
-          {/* <div>{currentCharacter.stats}</div> */}
+          <SkillsTab character={currentCharacter} />
         </div>
         <div
           className={toggleState === 3 ? styles.activecontent : styles.content}
