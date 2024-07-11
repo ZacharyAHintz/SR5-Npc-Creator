@@ -41,10 +41,10 @@ export default function SkillsComponent({ setCurrentCharacter, character }) {
     };
     setEditedSkill(updatedEditedSkill);
 
-    const updatedStats = {
-      ...stats,
+    const updatedSkills = {
+      ...character.skills,
       [key]: {
-        ...stats[key],
+        ...character.skills[key],
         rank: newRank,
         bonus: newBonusValue,
         total: parseInt(newRank) + parseInt(newBonusValue),
@@ -53,7 +53,7 @@ export default function SkillsComponent({ setCurrentCharacter, character }) {
 
     const updatedCharacter = {
       ...character,
-      stats: updatedStats,
+      skills: updatedSkills,
     };
 
     const storedCharacters = JSON.parse(localStorage.getItem("characters"));
@@ -69,55 +69,53 @@ export default function SkillsComponent({ setCurrentCharacter, character }) {
     window.dispatchEvent(event);
   };
 
-  // return character.skills.map((key) => {
-  //   const skill = stats[key];
-  //   const rank = stat?.rank;
-  //   const bonus = stat?.bonus ?? 0;
-  //   const total = stat?.total ?? parseInt(rank) + parseInt(bonus);
-  //   const editedValue = editedSkill[key]?.rank ?? rank;
-  //   const editedBonus = editedSkill[key]?.bonus ?? bonus;
-  for (const key in character.skills) {
-    const skill = character.skills.skill;
-    const rank = character.skills?.rank;
-    const bonus = character.skills?.bonus ?? 0;
-    const total = character.skills?.total ?? parseInt(rank) + parseInt(bonus);
-    const editedValue = editedSkill[key]?.rank ?? rank;
-    const editedBonus = editedSkill[key]?.bonus ?? bonus;
+  return (
+    <>
+      {Object.keys(character.skills).map((key) => {
+        const skill = character.skills[key];
+        const rank = skill?.rank;
+        const bonus = skill?.bonus ?? 0;
+        const total =
+          skill?.total ?? (rank ? parseInt(rank) + parseInt(bonus) : 0);
+        const editedValue = editedSkill[key]?.rank ?? rank;
+        const editedBonus = editedSkill[key]?.bonus ?? bonus;
 
-    return (
-      <div key={key}>
-        <h3>{key.charAt(0).toUpperCase() + key.slice(1)} Stats</h3>
-        {rank !== undefined ? (
-          <div>
-            <div>
-              Base:
-              <input
-                type="number"
-                value={editedValue}
-                onChange={(e) =>
-                  handleSkillChange(key, e.target.value, editedBonus)
-                }
-              />
-            </div>
-            <div>
-              Bonus:
-              <input
-                type="number"
-                value={editedBonus}
-                onChange={(e) =>
-                  handleSkillChange(key, editedValue, e.target.value)
-                }
-              />
-            </div>
-            <div>Total: {total}</div>
-            <DiceRoller total={total} />
+        return (
+          <div key={key}>
+            <h3>{key.charAt(0).toUpperCase() + key.slice(1)} Stats</h3>
+            {rank !== undefined ? (
+              <div>
+                <div>
+                  Base:
+                  <input
+                    type="number"
+                    value={editedValue}
+                    onChange={(e) =>
+                      handleSkillChange(key, e.target.value, editedBonus)
+                    }
+                  />
+                </div>
+                <div>
+                  Bonus:
+                  <input
+                    type="number"
+                    value={editedBonus}
+                    onChange={(e) =>
+                      handleSkillChange(key, editedValue, e.target.value)
+                    }
+                  />
+                </div>
+                <div>Total: {total}</div>
+                <DiceRoller total={total} />
+              </div>
+            ) : (
+              <div>
+                <p>Base Stats: Not available</p>
+              </div>
+            )}
           </div>
-        ) : (
-          <div>
-            <p>Base Stats: Not available</p>
-          </div>
-        )}
-      </div>
-    );
-  }
+        );
+      })}
+    </>
+  );
 }
