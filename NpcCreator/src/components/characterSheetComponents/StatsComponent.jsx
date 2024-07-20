@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import DiceRoller from "../DiceRoller";
+import DiceRoller from "../../helperFunctions/DiceRoller";
 import setLimits from "../../helperFunctions/setLimits";
+import updateCharacterInLocalStorage from "../../helperFunctions/updateCharacterInLocalStorage";
 
 export default function StatsComponent({
   stats,
@@ -26,6 +27,17 @@ export default function StatsComponent({
         bonus: newBonusValue,
       },
     };
+    function setBaseStats(character) {
+      statsToRender.forEach((stat) => {
+        character.stats[stat].bonus = character.stats[stat].bonus ?? 0;
+        character.stats[stat].total =
+          character.stats[stat].total ??
+          parseInt(character.stats[stat]?.baseStats) +
+            parseInt(character.stats[stat]?.bonus);
+      });
+    }
+
+    setBaseStats(character);
     setEditedStats(updatedEditedStats);
 
     const updatedStats = {
@@ -43,14 +55,16 @@ export default function StatsComponent({
       stats: updatedStats,
     };
 
-    const storedCharacters = JSON.parse(localStorage.getItem("characters"));
-    const updatedCharacters = storedCharacters.map((char) =>
-      char.id === character.id ? updatedCharacter : char,
-    );
-    localStorage.setItem("characters", JSON.stringify(updatedCharacters));
+    updateCharacterInLocalStorage(character.id, character);
+    // const storedCharacters = JSON.parse(localStorage.getItem("characters"));
+    // const updatedCharacters = storedCharacters.map((char) =>
+    //   char.id === character.id ? updatedCharacter : char,
+    // );
+    // localStorage.setItem("characters", JSON.stringify(updatedCharacters));
 
-    setCurrentCharacter(updatedCharacter);
-    localStorage.setItem("character", JSON.stringify(updatedCharacter));
+    // setCurrentCharacter(updatedCharacter);
+    // localStorage.setItem("character", JSON.stringify(updatedCharacter));
+    console.log(character);
 
     const event = new Event("characterAdded");
     window.dispatchEvent(event);
@@ -85,9 +99,9 @@ export default function StatsComponent({
               <input
                 type="number"
                 value={editedValue}
-                onChange={(e) =>
-                  handleBaseStatsChange(key, e.target.value, editedBonus)
-                }
+                onChange={(e) => {
+                  handleBaseStatsChange(key, e.target.value, editedBonus);
+                }}
               />
             </div>
             <div>
@@ -95,9 +109,9 @@ export default function StatsComponent({
               <input
                 type="number"
                 value={editedBonus}
-                onChange={(e) =>
-                  handleBaseStatsChange(key, editedValue, e.target.value)
-                }
+                onChange={(e) => {
+                  handleBaseStatsChange(key, editedValue, e.target.value);
+                }}
               />
             </div>
             <div>Total: {total}</div>

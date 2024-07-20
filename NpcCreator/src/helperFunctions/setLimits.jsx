@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
+import updateCharacterInLocalStorage from "./updateCharacterInLocalStorage";
 
 export default function setLimits(character) {
   const [currentCharacter, setCurrentCharacter] = useState(character);
 
-  const intuition = character.stats.intuition.baseStats;
-  const willpower = character.stats.willpower.baseStats;
-  const logic = character.stats.logic.baseStats;
-  const reaction = character.stats.reaction.baseStats;
-  const strength = character.stats.strength.baseStats;
-  const agility = character.stats.agility.baseStats;
-  const body = character.stats.body.baseStats;
-  const charisma = character.stats.charisma.baseStats;
-  const essence = character.essence;
+  const intuition = character.stats.intuition.total;
+  const willpower = character.stats.willpower.total;
+  const logic = character.stats.logic.total;
+  const reaction = character.stats.reaction.total;
+  const strength = character.stats.strength.total;
+  const agility = character.stats.agility.total;
+  const body = character.stats.body.total;
+  const charisma = character.stats.charisma.total;
+  const essence = character.stats.essence;
 
   const [physicalLimit, setPhysicalLimit] = useState(0);
   const [mentalLimit, setMentalLimit] = useState(0);
@@ -44,7 +45,7 @@ export default function setLimits(character) {
       mentalLimit: newMentalLimit,
       socialLimit: newSocialLimit,
     };
-    setCurrentCharacter(updatedCharacter);
-    localStorage.setItem("character", JSON.stringify(updatedCharacter));
-  }, [setCurrentCharacter, character]);
+
+    updateCharacterInLocalStorage(character.id, updatedCharacter);
+  }, []);
 }

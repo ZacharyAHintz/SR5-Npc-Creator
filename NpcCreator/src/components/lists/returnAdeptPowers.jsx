@@ -667,7 +667,8 @@ export default function returnAdeptPowers() {
     wallRunning: {
       power: "Wall Running",
       prerequisite: "Simple Action",
-      activation: "0.5 PP",
+      activation: "-",
+      cost: "0.5 PP",
       source: "Core",
     },
   };

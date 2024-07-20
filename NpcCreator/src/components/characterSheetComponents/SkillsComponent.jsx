@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import DiceRoller from "../DiceRoller";
+import DiceRoller from "../../helperFunctions/DiceRoller";
 import setLimits from "../../helperFunctions/setLimits";
 import toCamelCase from "../../helperFunctions/camleCaseString";
+import LimitDiceRoller from "../../helperFunctions/LimitDiceRoller";
 
 export default function SkillsComponent({ setCurrentCharacter, character }) {
   const [editedSkill, setEditedSkill] = useState({});
@@ -19,7 +20,6 @@ export default function SkillsComponent({ setCurrentCharacter, character }) {
     character.skills = newSkills;
   }
   addKeyToSkills(character);
-  console.log("skills", character.skills);
 
   useEffect(() => {
     const storedCharacter = JSON.parse(localStorage.getItem("character"));
@@ -27,7 +27,6 @@ export default function SkillsComponent({ setCurrentCharacter, character }) {
       setEditedSkill(storedCharacter.skills);
     }
   }, []);
-  console.log("editedSkill", editedSkill);
 
   setLimits(character);
 
@@ -82,7 +81,7 @@ export default function SkillsComponent({ setCurrentCharacter, character }) {
 
         return (
           <div key={key}>
-            <h3>{key.charAt(0).toUpperCase() + key.slice(1)} Stats</h3>
+            <h3>{key.charAt(0).toUpperCase() + key.slice(1)}</h3>
             {rank !== undefined ? (
               <div>
                 <div>
@@ -106,7 +105,11 @@ export default function SkillsComponent({ setCurrentCharacter, character }) {
                   />
                 </div>
                 <div>Total: {total}</div>
-                <DiceRoller total={total} />
+                <LimitDiceRoller
+                  total={total}
+                  limit={skill.limit}
+                  character={character}
+                />
               </div>
             ) : (
               <div>
