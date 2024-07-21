@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/CharacterSheet.module.css";
 import MainTab from "./characterSheetPages/MainTab";
 import SkillsTab from "./characterSheetPages/SkillsTab";
+import getCharacterByID from "../helperFunctions/getCharacterByID";
 
-export default function CharacterSheet({ name, character }) {
+export default function CharacterSheet({ id }) {
   const [toggleState, setToggleState] = useState(1);
-  const [currentCharacter, setCurrentCharacter] = useState(character);
+  const [character, setCharacter] = useState(getCharacterByID(id));
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -15,7 +16,7 @@ export default function CharacterSheet({ name, character }) {
     const handleStorageChange = () => {
       const updatedCharacter = JSON.parse(localStorage.getItem("character"));
       if (updatedCharacter) {
-        setCurrentCharacter(updatedCharacter);
+        setCharacter(updatedCharacter);
       }
     };
 
@@ -32,8 +33,7 @@ export default function CharacterSheet({ name, character }) {
 
   return (
     <div className={styles.container}>
-      <h3>{currentCharacter.name}</h3>
-      <h3>{currentCharacter.stats.body.baseStats}</h3>
+      <h3>{character.name}</h3>
       <hr />
       <div className={styles.blockTabs}>
         <div
@@ -77,13 +77,13 @@ export default function CharacterSheet({ name, character }) {
         <div
           className={toggleState === 1 ? styles.activecontent : styles.content}
         >
-          <MainTab character={currentCharacter} />
+          <MainTab id={id} />
         </div>
         <div
           className={toggleState === 2 ? styles.activecontent : styles.content}
         >
           <h2>Skills</h2>
-          <SkillsTab character={currentCharacter} />
+          <SkillsTab character={character} />
         </div>
         <div
           className={toggleState === 3 ? styles.activecontent : styles.content}

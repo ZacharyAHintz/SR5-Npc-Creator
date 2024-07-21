@@ -2,23 +2,17 @@ import React, { useState, useEffect } from "react";
 import DiceRoller from "../../helperFunctions/DiceRoller";
 import setLimits from "../../helperFunctions/setLimits";
 import updateCharacterInLocalStorage from "../../helperFunctions/updateCharacterInLocalStorage";
+import getCharacterByID from "../../helperFunctions/getCharacterByID";
 
-export default function StatsComponent({
-  stats,
-  setCurrentCharacter,
-  character,
-}) {
+export default function StatsComponent({ id }) {
+  const [character, setCharacter] = useState(getCharacterByID(id));
   const [editedStats, setEditedStats] = useState({});
 
   useEffect(() => {
-    const storedCharacter = JSON.parse(localStorage.getItem("character"));
-    if (storedCharacter) {
-      setEditedStats(storedCharacter.stats);
+    if (character) {
+      setEditedStats(character.stats);
     }
   }, []);
-
-  setLimits(character);
-
   const handleBaseStatsChange = (key, newBaseValue, newBonusValue) => {
     const updatedEditedStats = {
       ...editedStats,
@@ -27,6 +21,7 @@ export default function StatsComponent({
         bonus: newBonusValue,
       },
     };
+
     function setBaseStats(character) {
       statsToRender.forEach((stat) => {
         character.stats[stat].bonus = character.stats[stat].bonus ?? 0;
@@ -41,9 +36,9 @@ export default function StatsComponent({
     setEditedStats(updatedEditedStats);
 
     const updatedStats = {
-      ...stats,
+      ...character.stats,
       [key]: {
-        ...stats[key],
+        ...character.stats[key],
         baseStats: newBaseValue,
         bonus: newBonusValue,
         total: parseInt(newBaseValue) + parseInt(newBonusValue),
@@ -55,15 +50,8 @@ export default function StatsComponent({
       stats: updatedStats,
     };
 
-    updateCharacterInLocalStorage(character.id, character);
-    // const storedCharacters = JSON.parse(localStorage.getItem("characters"));
-    // const updatedCharacters = storedCharacters.map((char) =>
-    //   char.id === character.id ? updatedCharacter : char,
-    // );
-    // localStorage.setItem("characters", JSON.stringify(updatedCharacters));
-
-    // setCurrentCharacter(updatedCharacter);
-    // localStorage.setItem("character", JSON.stringify(updatedCharacter));
+    updateCharacterInLocalStorage(id, updatedCharacter);
+    setCharacter(updatedCharacter);
     console.log(character);
 
     const event = new Event("characterAdded");
@@ -82,7 +70,7 @@ export default function StatsComponent({
   ];
 
   return statsToRender.map((key) => {
-    const stat = stats[key];
+    const stat = character.stats[key];
     const baseStats = stat?.baseStats;
     const bonus = stat?.bonus ?? 0;
     const total = stat?.total ?? parseInt(baseStats) + parseInt(bonus);

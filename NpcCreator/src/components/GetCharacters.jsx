@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/GetCharacters.module.css";
-import CharacterSheetButtons from "./CharacterSheetButton";
+
 import ToggleDialog from "./ToggleDialog";
 import CharacterSheet from "./CharacterSheet";
-import Navbar from "./Navbar";
 
 export default function GetCharacters() {
   const [characters, setCharacters] = useState([]);
-  const [selectedCharacter, setSelectedCharacter] = useState(null);
 
   useEffect(() => {
     updateCharactersFromLocalStorage();
@@ -41,20 +39,13 @@ export default function GetCharacters() {
     }
   };
 
-  const handleButtonPress = (id) => {
-    const character = characters.find((char) => char.id === id);
-    if (character) {
-      setSelectedCharacter(character);
-    }
-  };
-
   return (
     <div>
       <div>
         {characters.map((char) => (
           <div key={char.id}>
             <ToggleDialog name={char.name ? char.name : "Name"}>
-              <CharacterSheet character={char} id={char.id} />
+              <CharacterSheet id={char.id} />
             </ToggleDialog>
           </div>
         ))}

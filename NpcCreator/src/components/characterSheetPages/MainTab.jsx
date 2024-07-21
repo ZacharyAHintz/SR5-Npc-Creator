@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import StatsComponent from "../characterSheetComponents/StatsComponent";
+import getCharacterByID from "../../helperFunctions/getCharacterByID";
 
-export default function MainTab({ character }) {
-  const [currentCharacter, setCurrentCharacter] = useState(character);
+export default function MainTab({ id }) {
+  const [character, setCharacter] = useState(getCharacterByID(id));
 
   useEffect(() => {
     const storedCharacter = JSON.parse(localStorage.getItem("character"));
     if (storedCharacter) {
-      setCurrentCharacter(storedCharacter);
+      setCharacter(storedCharacter);
     }
   }, []);
 
@@ -16,12 +17,8 @@ export default function MainTab({ character }) {
       <h2>Attributes</h2>
       <hr />
       <div>
-        {currentCharacter?.id && <h3>{currentCharacter.id}</h3>}
-        <StatsComponent
-          character={currentCharacter}
-          stats={currentCharacter.stats}
-          setCurrentCharacter={setCurrentCharacter}
-        />
+        {character?.id && <h3>{character.id}</h3>}
+        <StatsComponent id={id} />
       </div>
     </div>
   );
