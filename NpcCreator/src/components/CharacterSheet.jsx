@@ -6,7 +6,7 @@ import getCharacterByID from "../helperFunctions/getCharacterByID";
 import EnhancementsTab from "./characterSheetPages/EnhancementsTab";
 // import MatrixTab from "./characterSheetPages/MatrixTab";
 // import EquipmentTab from "./characterSheetPages/EquipmentTab";
-// import SpellsTab from "./characterSheetPages/SpellsTab";
+import SpellsTab from "./characterSheetPages/SpellsTab";
 
 export default function CharacterSheet({ id }) {
   const [toggleState, setToggleState] = useState(1);
@@ -74,7 +74,7 @@ export default function CharacterSheet({ id }) {
           onClick={() => toggleTab(6)}
           className={toggleState === 6 ? styles.activeTab : styles.tabs}
         >
-          Spells
+          {character.archetype === "Technomancer" ? "Complex Forms" : "Spells"}
         </div>
       </div>
       <div className={styles.contentTabs}>
@@ -110,8 +110,12 @@ export default function CharacterSheet({ id }) {
         <div
           className={toggleState === 6 ? styles.activecontent : styles.content}
         >
-          <h2>Spells</h2>
-          {/* <SpellsTab id={id} /> */}
+          <h2>
+            {character.archetype === "Technomancer"
+              ? "Complex Forms"
+              : "Spells"}
+          </h2>
+          <SpellsTab id={id} />
         </div>
       </div>
     </div>

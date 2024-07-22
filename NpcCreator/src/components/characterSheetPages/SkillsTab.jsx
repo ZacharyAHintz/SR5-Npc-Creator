@@ -15,10 +15,8 @@ export default function SkillsTab({ id }) {
 
   return (
     <div>
-      <h2>Skills</h2>
       <hr />
       <div>
-        {currentCharacter?.id && <h3>{currentCharacter.id}</h3>}
         <SkillsComponent id={id} />
       </div>
     </div>

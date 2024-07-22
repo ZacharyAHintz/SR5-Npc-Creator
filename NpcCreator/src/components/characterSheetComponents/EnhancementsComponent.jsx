@@ -13,7 +13,6 @@ export default function EnhancementsComponent({ id }) {
 
   return (
     <div>
-      <h2>Character Enhancements</h2>
       {devices.length > 0 ? (
         <ul>
           {devices.map((device, index) => (

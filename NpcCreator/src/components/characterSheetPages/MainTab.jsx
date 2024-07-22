@@ -17,7 +17,6 @@ export default function MainTab({ id }) {
       <h2>Attributes</h2>
       <hr />
       <div>
-        {character?.id && <h3>{character.id}</h3>}
         <StatsComponent id={id} />
       </div>
     </div>
