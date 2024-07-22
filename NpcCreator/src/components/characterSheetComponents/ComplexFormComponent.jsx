@@ -4,7 +4,7 @@ import updateCharacterInLocalStorage from "../../helperFunctions/updateCharacter
 import DiceRoller from "../../helperFunctions/DiceRoller";
 import LimitDiceRoller from "../../helperFunctions/LimitDiceRoller";
 
-export default function SpellsComponent({ id }) {
+export default function ComplexFormComponent({ id }) {
   const [editedSpells, setEditedSpells] = useState({});
   const [character, setCharacter] = useState(getCharacterByID(id));
   const [limit, setLimit] = useState(0);
@@ -12,10 +12,8 @@ export default function SpellsComponent({ id }) {
   const characterSpells = character.spells || [];
   const complexForms = character.complexForms || [];
 
-  let spells = [];
-  character.archetype === "Technomancer"
-    ? (spells = complexForms)
-    : (spells = characterSpells);
+  let spells =
+    character.archetype === "Technomancer" ? complexForms : characterSpells;
 
   const handleRankChange = (key, newRank, newBonusValue) => {
     const updatedEditedSpells = {
@@ -27,22 +25,22 @@ export default function SpellsComponent({ id }) {
     };
     setEditedSpells(updatedEditedSpells);
 
-    const updatedSpells = {
-      ...character.spells,
+    const updatedComplexForms = {
+      ...character.complexForms,
       [key]: {
-        ...character.spells[key],
-        rank: newRank,
-        bonus: newBonusValue,
+        ...character.complexForms[key],
+        rank: parseInt(newRank) || 0,
+        bonus: parseInt(newBonusValue) || 0,
         total:
-          parseInt(newRank) +
-          parseInt(newBonusValue) +
-          parseInt(character.stats.magic),
+          (parseInt(newRank) || 0) +
+            (parseInt(newBonusValue) || 0) +
+            parseInt(character.stats.magic) || 0,
       },
     };
 
     const updatedCharacter = {
       ...character,
-      spells: updatedSpells,
+      complexForms: updatedComplexForms,
     };
 
     const storedCharacters = JSON.parse(localStorage.getItem("characters"));
@@ -64,12 +62,9 @@ export default function SpellsComponent({ id }) {
         const name = spells[key].name;
         const rank = character.rating + Math.floor(Math.random() * 4) + 1;
         const bonus = spells[key]?.bonus ?? 0;
-        const damage = spells[key].damage;
-        const drain = spells[key].drain;
-        const range = spells[key].range;
+        const target = spells[key].target;
+        const fading = spells[key].fading;
         const duration = spells[key].duration;
-        const effects = spells[key].effects;
-        const type = spells[key].type;
         const magic = character.stats.magic;
         const editedValue = editedSpells[key]?.rank ?? rank;
         const editedBonus = editedSpells[key]?.bonus ?? bonus;
@@ -82,8 +77,7 @@ export default function SpellsComponent({ id }) {
           <div key={key}>
             <h3>{name}</h3>
             <h5>
-              Damage: {damage} Drain: {drain} Range: {range} Duration:
-              {duration} Effects: {effects} Type: {type}
+              Fading: {fading} Duration: {duration} Target: {target}
             </h5>
             {rank !== undefined ? (
               <div>
@@ -97,7 +91,7 @@ export default function SpellsComponent({ id }) {
                     }
                   />
                 </div>
-                <div>Magic: {magic}</div>
+                <div>Resonance: {magic}</div>
                 <div>
                   Bonus:
                   <input
