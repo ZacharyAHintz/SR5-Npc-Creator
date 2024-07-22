@@ -15,15 +15,15 @@ export default function setLimits(id) {
   const essence = character.stats.essence;
 
   function calculatePhysicalLimit(strength, body, reaction) {
-    return Math.floor((strength * 2 + body + reaction) / 3);
+    return Math.floor(Number(strength * 2 + body + reaction) / 3);
   }
 
   function calculateMentalLimit(logic, intuition, willpower) {
-    return Math.floor((logic * 2 + intuition + willpower) / 3);
+    return Math.floor(Number(logic * 2 + intuition + willpower) / 3);
   }
 
   function calculateSocialLimit(charisma, willpower, essence) {
-    return Math.floor((charisma * 2 + willpower + essence) / 3);
+    return Math.floor(Number(charisma * 2 + willpower + essence) / 3);
   }
 
   const newPhysicalLimit = calculatePhysicalLimit(strength, body, reaction);
@@ -37,6 +37,7 @@ export default function setLimits(id) {
     socialLimit: newSocialLimit,
   };
   console.log(newPhysicalLimit);
+  console.log(character);
 
   updateCharacterInLocalStorage(character.id, updatedCharacter);
 }

@@ -7,6 +7,7 @@ import LimitDiceRoller from "../../helperFunctions/LimitDiceRoller";
 export default function SpellsComponent({ id }) {
   const [editedSpells, setEditedSpells] = useState({});
   const [character, setCharacter] = useState(getCharacterByID(id));
+  const [limit, setLimit] = useState(0);
 
   const characterSpells = character.spells || [];
   const complexForms = character.complexForms || [];
@@ -80,6 +81,10 @@ export default function SpellsComponent({ id }) {
         return (
           <div key={key}>
             <h3>{name}</h3>
+            <h5>
+              Damage: {damage} Drain: {drain} Range: {range} Duration:
+              {duration} Effects: {effects} Type: {type}
+            </h5>
             {rank !== undefined ? (
               <div>
                 <div>
@@ -104,7 +109,19 @@ export default function SpellsComponent({ id }) {
                   />
                 </div>
                 <div>Total: {total}</div>
-                <DiceRoller total={total} />
+                <div>
+                  Limit:
+                  <input
+                    type="number"
+                    value={limit}
+                    onChange={(e) => setLimit(e.target.value)}
+                  />
+                </div>
+                <LimitDiceRoller
+                  total={total}
+                  limit={Number(limit)}
+                  character={character}
+                />
               </div>
             ) : (
               <div>

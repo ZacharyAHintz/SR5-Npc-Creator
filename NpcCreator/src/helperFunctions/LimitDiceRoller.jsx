@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import setLimits from "./setLimits";
 
 function rollDice(total, skillLimit) {
   const results = [];
@@ -14,8 +13,9 @@ export default function LimitDiceRoller({ total, limit, character }) {
   const [successes, setSuccesses] = useState(0);
 
   let skillLimit = null;
-
-  if (limit === "social") {
+  if (typeof limit !== "string") {
+    skillLimit = limit;
+  } else if (limit === "social") {
     skillLimit = character.socialLimit;
   } else if (limit === "mental") {
     skillLimit = character.mentalLimit;
@@ -35,6 +35,8 @@ export default function LimitDiceRoller({ total, limit, character }) {
     } else {
       setSuccesses(successCount);
     }
+    console.log(skillLimit);
+    console.log(limit);
   };
 
   return (

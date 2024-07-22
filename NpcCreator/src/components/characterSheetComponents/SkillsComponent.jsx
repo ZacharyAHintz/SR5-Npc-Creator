@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import DiceRoller from "../../helperFunctions/DiceRoller";
-import setLimits from "../../helperFunctions/setLimits";
+
 import toCamelCase from "../../helperFunctions/camleCaseString";
 import LimitDiceRoller from "../../helperFunctions/LimitDiceRoller";
 import getCharacterByID from "../../helperFunctions/getCharacterByID";
@@ -29,8 +28,6 @@ export default function SkillsComponent({ id }) {
       setEditedSkill(storedCharacter.skills);
     }
   }, []);
-
-  setLimits(id);
 
   const handleSkillChange = (key, newRank, newBonusValue) => {
     const updatedEditedSkill = {

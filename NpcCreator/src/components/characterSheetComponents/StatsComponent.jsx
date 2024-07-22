@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import DiceRoller from "../../helperFunctions/DiceRoller";
 import updateCharacterInLocalStorage from "../../helperFunctions/updateCharacterInLocalStorage";
 import getCharacterByID from "../../helperFunctions/getCharacterByID";
+import setLimits from "../../helperFunctions/setLimits";
 
 export default function StatsComponent({ id }) {
   const [character, setCharacter] = useState(getCharacterByID(id));
   const [editedStats, setEditedStats] = useState({});
+  setLimits(id);
 
   useEffect(() => {
     if (character) {
@@ -63,6 +65,7 @@ export default function StatsComponent({ id }) {
 
     updateCharacterInLocalStorage(id, updatedCharacter);
     setCharacter(updatedCharacter);
+    setLimits(id);
     console.log(character);
 
     const event = new Event("characterAdded");
