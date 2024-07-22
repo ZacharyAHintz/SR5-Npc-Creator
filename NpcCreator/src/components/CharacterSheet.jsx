@@ -3,6 +3,10 @@ import styles from "../styles/CharacterSheet.module.css";
 import MainTab from "./characterSheetPages/MainTab";
 import SkillsTab from "./characterSheetPages/SkillsTab";
 import getCharacterByID from "../helperFunctions/getCharacterByID";
+import EnhancementsTab from "./characterSheetPages/EnhancementsTab";
+// import MatrixTab from "./characterSheetPages/MatrixTab";
+// import EquipmentTab from "./characterSheetPages/EquipmentTab";
+// import SpellsTab from "./characterSheetPages/SpellsTab";
 
 export default function CharacterSheet({ id }) {
   const [toggleState, setToggleState] = useState(1);
@@ -89,21 +93,25 @@ export default function CharacterSheet({ id }) {
           className={toggleState === 3 ? styles.activecontent : styles.content}
         >
           <h2>Enhancements</h2>
+          <EnhancementsTab id={id} />
         </div>
         <div
           className={toggleState === 4 ? styles.activecontent : styles.content}
         >
           <h2>Matrix</h2>
+          {/* <MatrixTab id={id} /> */}
         </div>
         <div
           className={toggleState === 5 ? styles.activecontent : styles.content}
         >
           <h2>Equipment</h2>
+          {/* <EquipmentTab id={id} /> */}
         </div>
         <div
           className={toggleState === 6 ? styles.activecontent : styles.content}
         >
           <h2>Spells</h2>
+          {/* <SpellsTab id={id} /> */}
         </div>
       </div>
     </div>
