@@ -30,7 +30,7 @@ export default function SkillsComponent({ id }) {
     }
   }, []);
 
-  setLimits(character);
+  setLimits(id);
 
   const handleSkillChange = (key, newRank, newBonusValue) => {
     const updatedEditedSkill = {

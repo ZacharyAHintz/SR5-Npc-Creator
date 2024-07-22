@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
 import updateCharacterInLocalStorage from "./updateCharacterInLocalStorage";
+import getCharacterByID from "./getCharacterByID";
 
-export default function setLimits(character) {
-  const [currentCharacter, setCurrentCharacter] = useState(character);
+export default function setLimits(id) {
+  const character = getCharacterByID(id);
 
   const intuition = character.stats.intuition.total;
   const willpower = character.stats.willpower.total;
@@ -13,10 +13,6 @@ export default function setLimits(character) {
   const body = character.stats.body.total;
   const charisma = character.stats.charisma.total;
   const essence = character.stats.essence;
-
-  const [physicalLimit, setPhysicalLimit] = useState(0);
-  const [mentalLimit, setMentalLimit] = useState(0);
-  const [socialLimit, setSocialLimit] = useState(0);
 
   function calculatePhysicalLimit(strength, body, reaction) {
     return Math.floor((strength * 2 + body + reaction) / 3);
@@ -30,22 +26,17 @@ export default function setLimits(character) {
     return Math.floor((charisma * 2 + willpower + essence) / 3);
   }
 
-  useEffect(() => {
-    const newPhysicalLimit = calculatePhysicalLimit(strength, body, reaction);
-    const newMentalLimit = calculateMentalLimit(logic, intuition, willpower);
-    const newSocialLimit = calculateSocialLimit(charisma, willpower, essence);
+  const newPhysicalLimit = calculatePhysicalLimit(strength, body, reaction);
+  const newMentalLimit = calculateMentalLimit(logic, intuition, willpower);
+  const newSocialLimit = calculateSocialLimit(charisma, willpower, essence);
 
-    setPhysicalLimit(newPhysicalLimit);
-    setMentalLimit(newMentalLimit);
-    setSocialLimit(newSocialLimit);
+  const updatedCharacter = {
+    ...character,
+    physicalLimit: newPhysicalLimit,
+    mentalLimit: newMentalLimit,
+    socialLimit: newSocialLimit,
+  };
+  console.log(newPhysicalLimit);
 
-    const updatedCharacter = {
-      ...character,
-      physicalLimit: newPhysicalLimit,
-      mentalLimit: newMentalLimit,
-      socialLimit: newSocialLimit,
-    };
-
-    updateCharacterInLocalStorage(character.id, updatedCharacter);
-  }, []);
+  updateCharacterInLocalStorage(character.id, updatedCharacter);
 }
