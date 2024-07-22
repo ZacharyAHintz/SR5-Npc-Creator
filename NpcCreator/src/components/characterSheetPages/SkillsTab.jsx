@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SkillsComponent from "../characterSheetComponents/SkillsComponent";
+import getCharacterByID from "../../helperFunctions/getCharacterByID";
 
-export default function SkillsTab({ character }) {
+export default function SkillsTab({ id }) {
+  const [character, setCharacter] = useState(getCharacterByID(id));
   const [currentCharacter, setCurrentCharacter] = useState(character);
 
   useEffect(() => {
@@ -17,10 +19,7 @@ export default function SkillsTab({ character }) {
       <hr />
       <div>
         {currentCharacter?.id && <h3>{currentCharacter.id}</h3>}
-        <SkillsComponent
-          character={currentCharacter}
-          setCurrentCharacter={setCurrentCharacter}
-        />
+        <SkillsComponent id={id} />
       </div>
     </div>
   );

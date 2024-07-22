@@ -83,7 +83,7 @@ export default function CharacterSheet({ id }) {
           className={toggleState === 2 ? styles.activecontent : styles.content}
         >
           <h2>Skills</h2>
-          <SkillsTab character={character} />
+          <SkillsTab id={id} />
         </div>
         <div
           className={toggleState === 3 ? styles.activecontent : styles.content}

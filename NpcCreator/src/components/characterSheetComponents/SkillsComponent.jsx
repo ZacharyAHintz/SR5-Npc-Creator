@@ -3,10 +3,12 @@ import DiceRoller from "../../helperFunctions/DiceRoller";
 import setLimits from "../../helperFunctions/setLimits";
 import toCamelCase from "../../helperFunctions/camleCaseString";
 import LimitDiceRoller from "../../helperFunctions/LimitDiceRoller";
+import getCharacterByID from "../../helperFunctions/getCharacterByID";
+import updateCharacterInLocalStorage from "../../helperFunctions/updateCharacterInLocalStorage";
 
-export default function SkillsComponent({ setCurrentCharacter, character }) {
+export default function SkillsComponent({ id }) {
   const [editedSkill, setEditedSkill] = useState({});
-
+  const [character, setCharacter] = useState(getCharacterByID(id));
   function addKeyToSkills(character) {
     const newSkills = {};
 
@@ -61,7 +63,7 @@ export default function SkillsComponent({ setCurrentCharacter, character }) {
     );
     localStorage.setItem("characters", JSON.stringify(updatedCharacters));
 
-    setCurrentCharacter(updatedCharacter);
+    setCharacter(updatedCharacter);
     localStorage.setItem("character", JSON.stringify(updatedCharacter));
 
     const event = new Event("characterAdded");
