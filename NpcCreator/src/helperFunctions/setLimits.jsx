@@ -4,26 +4,27 @@ import getCharacterByID from "./getCharacterByID";
 export default function setLimits(id) {
   const character = getCharacterByID(id);
 
-  const intuition = character.stats.intuition.total;
-  const willpower = character.stats.willpower.total;
-  const logic = character.stats.logic.total;
-  const reaction = character.stats.reaction.total;
-  const strength = character.stats.strength.total;
-  const agility = character.stats.agility.total;
-  const body = character.stats.body.total;
-  const charisma = character.stats.charisma.total;
-  const essence = character.stats.essence;
+  const intuition = Number(character.stats.intuition.total);
+  const willpower = Number(character.stats.willpower.total);
+  const logic = Number(character.stats.logic.total);
+  const reaction = Number(character.stats.reaction.total);
+  const strength = Number(character.stats.strength.total);
+  const agility = Number(character.stats.agility.total);
+  const body = Number(character.stats.body.total);
+  const charisma = Number(character.stats.charisma.total);
+  let essence = Number(character.stats.essence);
+  essence > 0 ? (essence = Number(character.stats.essence)) : (essence = 1);
 
   function calculatePhysicalLimit(strength, body, reaction) {
-    return Math.floor(Number(strength * 2 + body + reaction) / 3);
+    return Math.floor((strength * 2 + body + reaction) / 3);
   }
 
   function calculateMentalLimit(logic, intuition, willpower) {
-    return Math.floor(Number(logic * 2 + intuition + willpower) / 3);
+    return Math.floor((logic * 2 + intuition + willpower) / 3);
   }
 
   function calculateSocialLimit(charisma, willpower, essence) {
-    return Math.floor(Number(charisma * 2 + willpower + essence) / 3);
+    return Math.floor((charisma * 2 + willpower + essence) / 3);
   }
 
   const newPhysicalLimit = calculatePhysicalLimit(strength, body, reaction);
@@ -36,8 +37,6 @@ export default function setLimits(id) {
     mentalLimit: newMentalLimit,
     socialLimit: newSocialLimit,
   };
-  console.log(newPhysicalLimit);
-  console.log(character);
 
-  updateCharacterInLocalStorage(character.id, updatedCharacter);
+  updateCharacterInLocalStorage(id, updatedCharacter);
 }

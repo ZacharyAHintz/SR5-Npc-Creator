@@ -42,7 +42,7 @@ function getRandomElements(obj, count) {
 
 function updateCharacterEssence(character, selectedCyberware) {
   selectedCyberware.forEach((item) => {
-    const essence = Object.values(item)[0].essence;
+    const essence = Object.values(item)[0]?.essence;
     if (essence) {
       character.stats.essence -= essence;
       character.cyberLevel -= essence;

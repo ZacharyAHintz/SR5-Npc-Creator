@@ -54,14 +54,16 @@ export default function SkillsComponent({ id }) {
       skills: updatedSkills,
     };
 
-    const storedCharacters = JSON.parse(localStorage.getItem("characters"));
-    const updatedCharacters = storedCharacters.map((char) =>
-      char.id === character.id ? updatedCharacter : char,
-    );
-    localStorage.setItem("characters", JSON.stringify(updatedCharacters));
-
+    updateCharacterInLocalStorage(updatedCharacter);
     setCharacter(updatedCharacter);
-    localStorage.setItem("character", JSON.stringify(updatedCharacter));
+    // const storedCharacters = JSON.parse(localStorage.getItem("characters"));
+    // const updatedCharacters = storedCharacters.map((char) =>
+    //   char.id === character.id ? updatedCharacter : char,
+    // );
+    // localStorage.setItem("characters", JSON.stringify(updatedCharacters));
+
+    // setCharacter(updatedCharacter);
+    // localStorage.setItem("character", JSON.stringify(updatedCharacter));
 
     const event = new Event("characterAdded");
     window.dispatchEvent(event);
@@ -104,11 +106,7 @@ export default function SkillsComponent({ id }) {
                   />
                 </div>
                 <div>Total: {total}</div>
-                <LimitDiceRoller
-                  total={total}
-                  limit={skill.limit}
-                  character={character}
-                />
+                <LimitDiceRoller total={total} limit={skill.limit} id={id} />
               </div>
             ) : (
               <div>

@@ -5,7 +5,7 @@ import SkillsTab from "./characterSheetPages/SkillsTab";
 import getCharacterByID from "../helperFunctions/getCharacterByID";
 import EnhancementsTab from "./characterSheetPages/EnhancementsTab";
 // import MatrixTab from "./characterSheetPages/MatrixTab";
-// import EquipmentTab from "./characterSheetPages/EquipmentTab";
+import EquipmentTab from "./characterSheetPages/EquipmentTab";
 import SpellsTab from "./characterSheetPages/SpellsTab";
 
 export default function CharacterSheet({ id }) {
@@ -105,7 +105,7 @@ export default function CharacterSheet({ id }) {
           className={toggleState === 5 ? styles.activecontent : styles.content}
         >
           <h2>Equipment</h2>
-          {/* <EquipmentTab id={id} /> */}
+          <EquipmentTab id={id} />
         </div>
         <div
           className={toggleState === 6 ? styles.activecontent : styles.content}

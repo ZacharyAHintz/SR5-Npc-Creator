@@ -963,16 +963,6 @@ export default function returnCyberware() {
         cost: "2,000¥",
         source: "SR5:CF",
       },
-      retractableClimbingClaws: {
-        addedStats: ["skills", "Climbing", 2, "physical"],
-        device: "Retractable Climbing Claws",
-        part: "Body",
-        essence: 0.2,
-        capacity: "[2]",
-        avail: "8",
-        cost: "2,000¥",
-        source: "SR5:CF",
-      },
       skinToner: {
         device: "Skin Toner",
         part: "Body",

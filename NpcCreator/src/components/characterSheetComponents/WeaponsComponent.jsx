@@ -4,9 +4,10 @@ import updateCharacterInLocalStorage from "../../helperFunctions/updateCharacter
 import getCharacterByID from "../../helperFunctions/getCharacterByID";
 import setLimits from "../../helperFunctions/setLimits";
 
-export default function StatsComponent({ id }) {
+export default function WeaponsComponent({ id }) {
   const [character, setCharacter] = useState(getCharacterByID(id));
   const [editedStats, setEditedStats] = useState({});
+  setLimits(id);
 
   useEffect(() => {
     if (character) {
@@ -35,9 +36,6 @@ export default function StatsComponent({ id }) {
           parseInt(character.stats[stat]?.bonus);
     });
   };
-  setBaseStats(character);
-  updateCharacterInLocalStorage(id, character);
-  setLimits(id);
 
   const handleBaseStatsChange = (key, newBaseValue, newBonusValue) => {
     const updatedEditedStats = {
@@ -73,7 +71,7 @@ export default function StatsComponent({ id }) {
     const event = new Event("characterAdded");
     window.dispatchEvent(event);
   };
-  [];
+
   const statsToRender = [
     "body",
     "charisma",

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import getCharacterByID from "./getCharacterByID";
 
 function rollDice(total, skillLimit) {
   const results = [];
@@ -8,7 +9,8 @@ function rollDice(total, skillLimit) {
   return results;
 }
 
-export default function LimitDiceRoller({ total, limit, character }) {
+export default function LimitDiceRoller({ total, limit, id }) {
+  const character = getCharacterByID(id);
   const [results, setResults] = useState([]);
   const [successes, setSuccesses] = useState(0);
 
@@ -35,8 +37,6 @@ export default function LimitDiceRoller({ total, limit, character }) {
     } else {
       setSuccesses(successCount);
     }
-    console.log(skillLimit);
-    console.log(limit);
   };
 
   return (
