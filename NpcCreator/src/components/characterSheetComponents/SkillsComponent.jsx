@@ -56,14 +56,6 @@ export default function SkillsComponent({ id }) {
 
     updateCharacterInLocalStorage(updatedCharacter);
     setCharacter(updatedCharacter);
-    // const storedCharacters = JSON.parse(localStorage.getItem("characters"));
-    // const updatedCharacters = storedCharacters.map((char) =>
-    //   char.id === character.id ? updatedCharacter : char,
-    // );
-    // localStorage.setItem("characters", JSON.stringify(updatedCharacters));
-
-    // setCharacter(updatedCharacter);
-    // localStorage.setItem("character", JSON.stringify(updatedCharacter));
 
     const event = new Event("characterAdded");
     window.dispatchEvent(event);

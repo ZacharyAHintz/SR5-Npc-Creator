@@ -75,11 +75,12 @@ export default function setBaselineCyberware(character) {
   }
 
   const updatedCyberware = updateEssenceValues(cyberware, factor);
+  console.log("updatedCyberware", updatedCyberware);
   const cyberzombieArray = {
     bondLacingTitanium: updatedCyberware.bodyDevices.bondLacingTitanium,
     wiredReflexesR3: updatedCyberware.bodyDevices.wiredReflexesR3,
-    suprathyroidGland: updatedCyberware.nanoCybernetic.suprathyroidGland,
-    muscleToner: updatedCyberware.nanoCybernetic.muscleToner,
+    suprathyroidGland: updatedCyberware.basicBioware.suprathyroidGland,
+    muscleToner: updatedCyberware.basicBioware.muscleToner,
   };
   const cyberFaceArray = {
     cerebralBooster: updatedCyberware.culturedBioware.cerebralBooster,

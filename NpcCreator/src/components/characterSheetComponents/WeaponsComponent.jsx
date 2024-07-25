@@ -3,9 +3,40 @@ import DiceRoller from "../../helperFunctions/DiceRoller";
 import updateCharacterInLocalStorage from "../../helperFunctions/updateCharacterInLocalStorage";
 import getCharacterByID from "../../helperFunctions/getCharacterByID";
 import setLimits from "../../helperFunctions/setLimits";
+import getRandomObjectFromDepth from "../../helperFunctions/getRandomObjectFromDepth";
 
 export default function WeaponsComponent({ id }) {
   const [character, setCharacter] = useState(getCharacterByID(id));
+  const [bonus, setBonus] = useState(0); // State for the bonus value
+
+  useEffect(() => {
+    const handleCharacterAdded = () => {
+      const updatedCharacter = getCharacterByID(id);
+      setCharacter(updatedCharacter);
+    };
+
+    window.addEventListener("characterAdded", handleCharacterAdded);
+
+    return () => {
+      window.removeEventListener("characterAdded", handleCharacterAdded);
+    };
+  }, [id]);
+
+  function getRandomItemFromArray(array) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
+  }
+
+  function addSpacesBeforeCapitals(str) {
+    return str.replace(/([A-Z])/g, " $1").trim();
+  }
+
+  const ammunition = character.ammunition || {};
+  for (let key in ammunition) {
+    if (ammunition.hasOwnProperty(key)) {
+      ammunition[key].name = addSpacesBeforeCapitals(key);
+    }
+  }
 
   const guns = character.firearms || [];
   const vehicles = character.vehicles || [];
@@ -14,12 +45,15 @@ export default function WeaponsComponent({ id }) {
   const security = character.security || [];
   const explosives = character.explosives || [];
   const armor = character.armor || [];
-  const ammo = character.ammo || [];
+  const ammo = ammunition || [];
   const projectiles = character.projectiles || [];
   const misc = character.misc || [];
+  const strength = character.stats.strength.total;
+  const agility = character.stats.agility.total;
+  const skills = character.skills || {};
 
   let containedGuns = [];
-  //flatten gun objects and add parent key
+  // Flatten gun objects and add parent key
   Object.keys(guns).forEach((key) => {
     if (typeof guns[key] === "object") {
       Object.keys(guns[key]).forEach((subKey) => {
@@ -29,54 +63,65 @@ export default function WeaponsComponent({ id }) {
     }
   });
 
-  console.log(containedGuns);
+  console.log("containedGuns", containedGuns);
+  console.log("character", character);
 
-  //   return (
-  //     <div>
-  //       {containedGuns.map((key) => {
-  //         const stat = character.stats[key];
-  //         const baseStats = stat?.baseStats;
-  //         const bonus = stat?.bonus ?? 0;
-  //         const total = stat?.total ?? parseInt(baseStats) + parseInt(bonus);
-  //         const editedValue = editedStats[key]?.baseStats ?? baseStats;
-  //         const editedBonus = editedStats[key]?.bonus ?? bonus;
+  return (
+    <div>
+      {containedGuns.map((object) => {
+        const gun = object;
+        const name = gun.Name;
+        const accuracy = gun.Accuracy;
+        const baseDV = gun.DV;
+        const modes = gun.Modes;
+        const type = gun.parentKey;
+        const currentAmmo = getRandomObjectFromDepth(ammo, 1, 1)[0];
+        const ammoDV = currentAmmo.DV;
+        const ammoAP = currentAmmo.AP;
+        const ammoName = currentAmmo.name;
+        let weaponSkill = 0;
+        Object.keys(skills).forEach((key) => {
+          let skillObject = { ...skills[key] };
+          if (skillObject.skill === type) {
+            weaponSkill = skillObject.rank;
+          }
+        });
+        const skillTotal = parseInt(agility) + parseInt(weaponSkill);
+        const hitTotal =
+          parseInt(agility) + parseInt(weaponSkill) + parseInt(bonus);
+        const totalDV = parseInt(baseDV) + parseInt(ammoDV);
+        console.log("totalDV", currentAmmo);
 
-  //         return (
-  //           <div key={key}>
-  //             <h3>{key.charAt(0).toUpperCase() + key.slice(1)} Stats</h3>
-  //             {baseStats !== undefined ? (
-  //               <div>
-  //                 <div>
-  //                   Base:
-  //                   <input
-  //                     type="number"
-  //                     value={editedValue}
-  //                     onChange={(e) => {
-  //                       handleBaseStatsChange(key, e.target.value, editedBonus);
-  //                     }}
-  //                   />
-  //                 </div>
-  //                 <div>
-  //                   Bonus:
-  //                   <input
-  //                     type="number"
-  //                     value={editedBonus}
-  //                     onChange={(e) => {
-  //                       handleBaseStatsChange(key, editedValue, e.target.value);
-  //                     }}
-  //                   />
-  //                 </div>
-  //                 <div>Total: {total}</div>
-  //                 <DiceRoller total={total} />
-  //               </div>
-  //             ) : (
-  //               <div>
-  //                 <p>Base Stats: Not available</p>
-  //               </div>
-  //             )}
-  //           </div>
-  //         );
-  //       })}
-  //     </div>
-  //   );
+        return (
+          <div key={object}>
+            <h3>{name}</h3>
+
+            <div>Type: {type}</div>
+            <div>Accuracy: {accuracy}</div>
+            <div>Base Damage: {baseDV}</div>
+            <div>Modes: {modes}</div>
+            <div>Ammo: {ammoName}</div>
+            <div>AP: {ammoAP}</div>
+            <div>Ammo Damage: {ammoDV}</div>
+
+            <div>
+              <div>
+                <div>Damage: {totalDV}</div>
+              </div>
+              <div>Skill: {skillTotal}</div>
+              <div>
+                Bonus:
+                <input
+                  type="number"
+                  value={bonus}
+                  onChange={(e) => setBonus(Number(e.target.value))} // Update bonus state
+                />
+              </div>
+              <DiceRoller total={hitTotal} />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 }

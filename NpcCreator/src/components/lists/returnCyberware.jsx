@@ -1991,7 +1991,7 @@ export default function returnCyberware() {
       synapticBooster: {
         type: "Cultured",
         addedStats: ["stats", "reaction", 3],
-        addedStats: ["initiative", "dice", 3],
+        addedStatsTwo: ["initiative", "dice", 3],
         device: "Synaptic Booster (R 1-3)",
         essence: 1.5,
         avail: "(Rating * 6)R",
