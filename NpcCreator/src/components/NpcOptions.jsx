@@ -29,6 +29,8 @@ import createFace from "../helperFunctions/archetypeSpecific/createFace";
 import createRigger from "../helperFunctions/archetypeSpecific/createRigger";
 import createPhysicalAdept from "../helperFunctions/archetypeSpecific/createPhysicalAdept";
 import createCorpo from "../helperFunctions/archetypeSpecific/createCorpo";
+import findObjectWithGivenValue from "../helperFunctions/findObjectWithGivenValue";
+import getObjectByKey from "../helperFunctions/getObjectByKey";
 
 //enter need to finish the submit every time
 export default function NpcOptions({ toggleDialog }) {
@@ -85,7 +87,10 @@ export default function NpcOptions({ toggleDialog }) {
     if (race === "Random") {
       const raceSelection = getRandomObjectFromDepth(races, 2, 1);
       character.race = raceSelection;
+    } else {
+      character.race = [getObjectByKey(races, race.toLocaleLowerCase(), 1)];
     }
+    console.log(character);
 
     // Skill selection
     // prettier-ignore
