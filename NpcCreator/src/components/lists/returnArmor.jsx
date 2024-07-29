@@ -1,22 +1,6 @@
 export default function returnArmor() {
   const armors = {
     clothingAndArmor: {
-      electrochromicModification: {
-        article: "Electrochromic Modification",
-        armorRating: "-",
-        capacity: "-",
-        availability: "+2",
-        cost: 500,
-        source: "Core",
-      },
-      feedbackClothing: {
-        article: "Feedback Clothing",
-        armorRating: "-",
-        capacity: "-",
-        availability: 8,
-        cost: 500,
-        source: "Core",
-      },
       synthLeather: {
         article: "(Synth)Leather",
         armorRating: 4,

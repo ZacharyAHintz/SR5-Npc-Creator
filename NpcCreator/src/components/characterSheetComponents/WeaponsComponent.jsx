@@ -39,15 +39,10 @@ export default function WeaponsComponent({ id }) {
   }
 
   const guns = character.firearms || [];
-  const vehicles = character.vehicles || [];
-  const drones = character.drones || [];
   const meleeWeapons = character.meleeWeapons || [];
-  const security = character.security || [];
-  const explosives = character.explosives || [];
+  const gernades = character.gernades || [];
   const armor = character.armor || [];
   const ammo = ammunition || [];
-  const projectiles = character.projectiles || [];
-  const misc = character.misc || [];
   const strength = character.stats.strength.total;
   const agility = character.stats.agility.total;
   const skills = character.skills || {};
@@ -62,12 +57,31 @@ export default function WeaponsComponent({ id }) {
       });
     }
   });
+  let melee = [];
+  // Flatten melee weapon objects and add parent key
+  Object.keys(meleeWeapons).forEach((key) => {
+    if (typeof meleeWeapons[key] === "object") {
+      Object.keys(meleeWeapons[key]).forEach((subKey) => {
+        let meleeObject = { ...meleeWeapons[key][subKey], parentKey: key };
+        melee.push(meleeObject);
+      });
+    }
+  });
 
-  console.log("containedGuns", containedGuns);
-  console.log("character", character);
+  let explosivesArray = [];
+  Object.keys(gernades).forEach((key) => {
+    gernades[key].name = key;
+    explosivesArray.push(gernades[key]);
+  });
+
+  let armorArray = [];
+  Object.keys(armor).forEach((key) => {
+    armorArray.push(armor[key]);
+  });
 
   return (
     <div>
+      <h3>Guns:</h3>
       {containedGuns.map((object) => {
         const gun = object;
         const name = gun.Name;
@@ -91,7 +105,6 @@ export default function WeaponsComponent({ id }) {
         const hitTotal =
           parseInt(agility) + parseInt(weaponSkill) + parseInt(bonus);
         const totalDV = parseInt(baseDV) + parseInt(ammoDV);
-        console.log("totalDV", currentAmmo);
 
         return (
           <div key={object}>
@@ -119,6 +132,90 @@ export default function WeaponsComponent({ id }) {
                 />
               </div>
               <DiceRoller total={hitTotal} />
+            </div>
+          </div>
+        );
+      })}
+      <hr />
+      <h3>Melee:</h3>
+      {melee.map((object) => {
+        const gun = object;
+        const name = gun.Name;
+        const accuracy = gun.Accuracy;
+        const baseDV = gun.DV;
+        const modes = gun.Modes;
+        const type = gun.parentKey;
+        const ap = gun.AP;
+
+        let weaponSkill = 0;
+        Object.keys(skills).forEach((key) => {
+          let skillObject = { ...skills[key] };
+          if (skillObject.skill === type) {
+            weaponSkill = skillObject.rank;
+          }
+        });
+        const skillTotal = parseInt(agility) + parseInt(weaponSkill);
+        const hitTotal =
+          parseInt(agility) + parseInt(weaponSkill) + parseInt(bonus);
+        const totalDV = parseInt(baseDV) + parseInt(strength);
+
+        return (
+          <div key={object}>
+            <h3>{name}</h3>
+
+            <div>Type: {type}</div>
+            <div>Accuracy: {accuracy}</div>
+            <div>Base Damage: {baseDV}</div>
+            <div>AP: {ap}</div>
+
+            <div>
+              <div>
+                <div>Damage: {totalDV}</div>
+              </div>
+              <div>Skill: {skillTotal}</div>
+              <div>
+                Bonus:
+                <input
+                  type="number"
+                  value={bonus}
+                  onChange={(e) => setBonus(Number(e.target.value))} // Update bonus state
+                />
+              </div>
+              <DiceRoller total={hitTotal} />
+            </div>
+          </div>
+        );
+      })}
+      <hr />
+      <h3>Explosives:</h3>
+      {explosivesArray.map((object) => {
+        const name = object.name;
+        const baseDV = object.DV;
+        const ap = object.DV;
+        const blastRadius = object.Blast;
+
+        return (
+          <div key={object}>
+            <h3>{name}</h3>
+            <div>Damage: {baseDV}</div>
+            <div>AP: {ap}</div>
+            <div>Blast Radius: {blastRadius}</div>
+          </div>
+        );
+      })}
+      <hr />
+      <h3>Armor:</h3>
+      {armorArray.map((object) => {
+        const name = object.article;
+        const armorRating = object.armorRating;
+        const capacity = object.capacity;
+        const source = object.source;
+
+        return (
+          <div key={object}>
+            <h3>{name}</h3>
+            <div>
+              Armor: {armorRating} Capacity: {capacity} Book: {source}
             </div>
           </div>
         );
