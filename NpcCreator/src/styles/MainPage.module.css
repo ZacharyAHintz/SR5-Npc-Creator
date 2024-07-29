@@ -1,0 +1,26 @@
+.characterContainer {
+  margin-bottom: 20px;
+}
+
+.healthRow,
+.willpowerRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.healthBox {
+  margin-right: 5px;
+}
+
+.bodyBox {
+  margin-left: 5px;
+}
+
+.gap {
+  width: 20px;
+}
+
+.willpowerBox {
+  margin-right: 5px;
+}
