@@ -79,6 +79,7 @@ export default function WeaponsComponent({ id }) {
         const ammoDV = currentAmmo.DV;
         const ammoAP = currentAmmo.AP;
         const ammoName = currentAmmo.name;
+
         let weaponSkill = 0;
         Object.keys(skills).forEach((key) => {
           let skillObject = { ...skills[key] };
