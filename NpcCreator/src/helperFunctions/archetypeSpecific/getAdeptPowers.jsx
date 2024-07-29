@@ -17,7 +17,6 @@ export default function getAdeptPowers(character) {
 
     powersArray.push(adeptPower);
 
-    console.log("adept", adeptPower);
     powerPoints -= extractNumberFromString(adeptPower[0].cost);
   }
   character.adeptPowers = powersArray;

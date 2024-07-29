@@ -4,7 +4,7 @@ import getCharacterByID from "../../helperFunctions/getCharacterByID";
 export default function DroneComponent({ id }) {
   const [character, setCharacter] = useState(getCharacterByID(id));
 
-  const drones = character.drones || [];
+  const drones = character?.drones || [];
 
   let droneArray = [];
 
@@ -14,7 +14,7 @@ export default function DroneComponent({ id }) {
 
   return (
     <div>
-      {droneArray.map((object) => {
+      {droneArray.map((object, index) => {
         const name = object.drone;
         const accel = object.accel;
         const body = object.body;
@@ -27,7 +27,7 @@ export default function DroneComponent({ id }) {
         const size = object.size;
 
         return (
-          <div>
+          <div key={index}>
             <p>
               {name}: "{size}"
             </p>

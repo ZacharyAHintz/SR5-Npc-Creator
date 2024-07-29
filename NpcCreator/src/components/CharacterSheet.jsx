@@ -113,7 +113,9 @@ export default function CharacterSheet({ id }) {
           <h2>
             {character.archetype === "Technomancer"
               ? "Complex Forms"
-              : "Spells"}
+              : character.archetype === "Physical Adept"
+                ? "Adept Powers"
+                : "Spells"}
           </h2>
           <SpellsTab id={id} />
         </div>
