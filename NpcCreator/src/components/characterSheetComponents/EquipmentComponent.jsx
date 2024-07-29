@@ -17,13 +17,13 @@ export default function EquipmentComponent({ id }) {
 
   return (
     <div>
-      {equipmentArray.map((object) => {
+      {equipmentArray.map((object, index) => {
         const name = object.name;
         const type = object.type;
         const book = object.source;
 
         return (
-          <div>
+          <div key={`equipment-${index}`}>
             <p>
               {name}: "{type}"
             </p>

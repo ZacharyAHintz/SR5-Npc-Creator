@@ -14,7 +14,7 @@ export default function VehicleComponent({ id }) {
 
   return (
     <div>
-      {vehicleArray.map((object) => {
+      {vehicleArray.map((object, index) => {
         const name = object.vehicle;
         const accel = object.accel;
         const body = object.body;
@@ -28,7 +28,7 @@ export default function VehicleComponent({ id }) {
         const craft = object.craft;
 
         return (
-          <div>
+          <div key={`vehicle-${index}`}>
             <p>
               {name}: "{type}"
             </p>

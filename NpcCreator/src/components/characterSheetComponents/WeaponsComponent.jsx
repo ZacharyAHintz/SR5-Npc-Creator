@@ -82,7 +82,7 @@ export default function WeaponsComponent({ id }) {
   return (
     <div>
       <h3>Guns:</h3>
-      {containedGuns.map((object) => {
+      {containedGuns.map((object, index) => {
         const gun = object;
         const name = gun.Name;
         const accuracy = gun.Accuracy;
@@ -107,7 +107,7 @@ export default function WeaponsComponent({ id }) {
         const totalDV = parseInt(baseDV) + parseInt(ammoDV);
 
         return (
-          <div key={object}>
+          <div key={`gun-${index}`}>
             <h3>{name}</h3>
 
             <div>Type: {type}</div>
@@ -138,7 +138,7 @@ export default function WeaponsComponent({ id }) {
       })}
       <hr />
       <h3>Melee:</h3>
-      {melee.map((object) => {
+      {melee.map((object, index) => {
         const gun = object;
         const name = gun.Name;
         const accuracy = gun.Accuracy;
@@ -160,7 +160,7 @@ export default function WeaponsComponent({ id }) {
         const totalDV = parseInt(baseDV) + parseInt(strength);
 
         return (
-          <div key={object}>
+          <div key={`melee-${index}`}>
             <h3>{name}</h3>
 
             <div>Type: {type}</div>
@@ -188,14 +188,14 @@ export default function WeaponsComponent({ id }) {
       })}
       <hr />
       <h3>Explosives:</h3>
-      {explosivesArray.map((object) => {
+      {explosivesArray.map((object, index) => {
         const name = object.name;
         const baseDV = object.DV;
         const ap = object.DV;
         const blastRadius = object.Blast;
 
         return (
-          <div key={object}>
+          <div key={`explosive-${index}`}>
             <h3>{name}</h3>
             <div>Damage: {baseDV}</div>
             <div>AP: {ap}</div>
@@ -205,14 +205,14 @@ export default function WeaponsComponent({ id }) {
       })}
       <hr />
       <h3>Armor:</h3>
-      {armorArray.map((object) => {
+      {armorArray.map((object, index) => {
         const name = object.article;
         const armorRating = object.armorRating;
         const capacity = object.capacity;
         const source = object.source;
 
         return (
-          <div key={object}>
+          <div key={`armor-${index}`}>
             <h3>{name}</h3>
             <div>
               Armor: {armorRating} Capacity: {capacity} Book: {source}
