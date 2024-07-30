@@ -1,16 +1,100 @@
 .sidebar {
   background-color: rgb(46, 46, 46);
-  color: #000;
-  width: 200px;
+  color: #fff;
+  width: 220px;
   position: fixed;
   right: 0;
   top: 0;
   bottom: 0;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
+  align-items: flex-start;
   margin-top: 109px;
-  margin-right: 10px;
+}
+
+.sidebarTopActions {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: rgb(46, 46, 46);
+  width: 100%;
+}
+
+.sidebarTopActions button {
+  background-color: #505050;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebarTopActions button:hover {
+  background-color: #606060;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.tab {
+  background-color: rgb(46, 46, 46);
+  color: #fff;
+  padding: 10px 20px;
+  width: auto;
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease;
+  margin-bottom: 5px;
+  margin-left: -82.5px;
+  position: relative;
+}
+
+.tab:hover,
+.tab.active {
+  background-color: #505050;
+}
+
+.tab.active::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 5px;
+  background-color: #ffcc00;
+  border-radius: 2px;
+}
+.contextMenu {
+  position: fixed;
+  background-color: rgb(127, 25, 25);
+  border: 1px solid gray;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: block;
+
+  padding: 0;
+  margin: 0;
+}
+
+.contextMenu button {
+  display: block;
+  background: none;
+  width: 100%;
+  border: none;
+
+  padding: 6px 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.contextMenu button:hover {
+  background-color: #f0f0f0;
 }

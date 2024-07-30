@@ -16,6 +16,7 @@ const specializations = [
 export default function createDecker(character) {
   character.specialization = specializations[Math.floor(Math.random() * 4)];
   if (character.specialization === "Butcher") {
+    getDeckerStats(character);
     getCyberware(character);
   }
   if (
