@@ -4,6 +4,7 @@ import styles from "../styles/MainPage.module.css";
 
 export default function MainPage() {
   const [characters, setCharacters] = useState([]);
+  const [activeTab, setActiveTab] = useState(localStorage.getItem("activeTab"));
 
   useEffect(() => {
     const updateCharactersFromLocalStorage = () => {
@@ -19,6 +20,7 @@ export default function MainPage() {
 
     const handleStorageChange = () => {
       updateCharactersFromLocalStorage();
+      setActiveTab(localStorage.getItem("activeTab"));
     };
 
     window.addEventListener("storage", handleStorageChange);
@@ -41,49 +43,51 @@ export default function MainPage() {
   return (
     <PageLayout>
       <h1>Main Page</h1>
-      {characters.map((char) => (
-        <div key={char.id} className={styles.characterContainer}>
-          <h2>{char.name}</h2>
-          {char.healthTracker && (
-            <>
-              <div className={styles.healthRow}>
-                {Array.from({
-                  length: calculateHealthBoxes(char.stats.body.baseStats),
-                }).map((_, index) => (
-                  <input
-                    key={index}
-                    type="checkbox"
-                    className={styles.healthBox}
-                  />
-                ))}
-                <div className={styles.gap}></div>
-                {Array.from({ length: char.stats.body.baseStats }).map(
-                  (_, index) => (
+      {characters
+        .filter((char) => char.tab === activeTab)
+        .map((char) => (
+          <div key={char.id} className={styles.characterContainer}>
+            <h2>{char.name}</h2>
+            {char.healthTracker && (
+              <>
+                <div className={styles.healthRow}>
+                  {Array.from({
+                    length: calculateHealthBoxes(char.stats.body.baseStats),
+                  }).map((_, index) => (
                     <input
                       key={index}
                       type="checkbox"
-                      className={styles.bodyBox}
+                      className={styles.healthBox}
                     />
-                  ),
-                )}
-              </div>
-              <div className={styles.willpowerRow}>
-                {Array.from({
-                  length: calculateWillpowerBoxes(
-                    char.stats.willpower.baseStats,
-                  ),
-                }).map((_, index) => (
-                  <input
-                    key={index}
-                    type="checkbox"
-                    className={styles.willpowerBox}
-                  />
-                ))}
-              </div>
-            </>
-          )}
-        </div>
-      ))}
+                  ))}
+                  <div className={styles.gap}></div>
+                  {Array.from({ length: char.stats.body.baseStats }).map(
+                    (_, index) => (
+                      <input
+                        key={index}
+                        type="checkbox"
+                        className={styles.bodyBox}
+                      />
+                    ),
+                  )}
+                </div>
+                <div className={styles.willpowerRow}>
+                  {Array.from({
+                    length: calculateWillpowerBoxes(
+                      char.stats.willpower.baseStats,
+                    ),
+                  }).map((_, index) => (
+                    <input
+                      key={index}
+                      type="checkbox"
+                      className={styles.willpowerBox}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        ))}
     </PageLayout>
   );
 }

@@ -4,13 +4,13 @@ import styles from "../styles/GetCharacters.module.css";
 import ToggleDialog from "./ToggleDialog";
 import CharacterSheet from "./CharacterSheet";
 
-export default function GetCharacters() {
+export default function GetCharacters({ activeTab }) {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     updateCharactersFromLocalStorage();
 
-    const handleCharacterAdded = (e) => {
+    const handleCharacterAdded = () => {
       updateCharactersFromLocalStorage();
       const event = new Event("charactersUpdated");
       window.dispatchEvent(event);
@@ -35,12 +35,9 @@ export default function GetCharacters() {
   }, []);
 
   const updateCharactersFromLocalStorage = () => {
-    const storedCharacters = JSON.parse(localStorage.getItem("characters"));
-    if (storedCharacters) {
-      setCharacters(storedCharacters);
-    } else {
-      setCharacters([]);
-    }
+    const storedCharacters =
+      JSON.parse(localStorage.getItem("characters")) || [];
+    setCharacters(storedCharacters);
   };
 
   const handleHealthTrackerToggle = (id) => {
@@ -61,18 +58,20 @@ export default function GetCharacters() {
   return (
     <div>
       <div>
-        {characters.map((char) => (
-          <div key={char.id} className={styles.characterItem}>
-            <input
-              type="checkbox"
-              checked={char.healthTracker || false}
-              onChange={() => handleHealthTrackerToggle(char.id)}
-            />
-            <ToggleDialog name={char.name ? char.name : "Name"}>
-              <CharacterSheet id={char.id} />
-            </ToggleDialog>
-          </div>
-        ))}
+        {characters
+          .filter((char) => char.tab === activeTab)
+          .map((char) => (
+            <div key={char.id} className={styles.characterItem}>
+              <input
+                type="checkbox"
+                checked={char.healthTracker || false}
+                onChange={() => handleHealthTrackerToggle(char.id)}
+              />
+              <ToggleDialog name={char.name ? char.name : "Name"}>
+                <CharacterSheet id={char.id} />
+              </ToggleDialog>
+            </div>
+          ))}
       </div>
     </div>
   );

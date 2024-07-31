@@ -60,9 +60,11 @@ export default function NpcOptions({ toggleDialog }) {
 
   function handleSubmit(e) {
     let id = crypto.randomUUID();
+    let tab = localStorage.getItem("activeTab");
     e.preventDefault();
     let character = {
       id,
+      tab,
       name,
       race,
       rating,

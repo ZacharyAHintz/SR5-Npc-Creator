@@ -1,15 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/Sidebar.module.css";
 import GetCharacters from "./GetCharacters";
 
 export default function Sidebar() {
-  const [tabs, setTabs] = useState([
-    { id: 1, name: "Default" },
-    { id: 2, name: "Heroes" },
-    { id: 3, name: "Villains" },
-  ]);
-  const [activeTab, setActiveTab] = useState(1);
+  let lSTabs;
+  try {
+    const storedTabs = JSON.parse(localStorage.getItem("tabs"));
+    lSTabs = storedTabs
+      ? [...storedTabs]
+      : [{ id: crypto.randomUUID(), name: "Default" }];
+  } catch (e) {
+    lSTabs = [{ id: crypto.randomUUID(), name: "Default" }];
+  }
+
+  const [tabs, setTabs] = useState(lSTabs);
+
+  const event = new CustomEvent("storage");
+
+  const savedActiveTab = localStorage.getItem("activeTab");
+  const [activeTab, setActiveTab] = useState(savedActiveTab || lSTabs[0].id);
+
   const [contextMenu, setContextMenu] = useState(null);
+
+  useEffect(() => {
+    saveTabs(tabs);
+  }, [tabs]);
+
+  useEffect(() => {
+    localStorage.setItem("activeTab", activeTab);
+    window.dispatchEvent(event);
+  }, [activeTab]);
+
+  function saveTabs(tabs) {
+    localStorage.setItem("tabs", JSON.stringify(tabs));
+  }
 
   const handleRightClick = (e, tab) => {
     e.preventDefault();
@@ -24,8 +48,8 @@ export default function Sidebar() {
           tab.id === contextMenu.tab.id ? { ...tab, name: newName } : tab,
         ),
       );
+      setContextMenu(null);
     }
-    setContextMenu(null);
   };
 
   const handleDeleteTab = () => {
@@ -44,9 +68,24 @@ export default function Sidebar() {
     setContextMenu(null);
   };
 
+  const handleAddTab = () => {
+    const newTabName = prompt("Enter new tab name:", "New Tab");
+    if (newTabName) {
+      const newTab = {
+        id: crypto.randomUUID(),
+        name: newTabName,
+      };
+      setTabs((prevTabs) => [...prevTabs, newTab]);
+      setActiveTab(newTab.id);
+    }
+  };
+
   return (
     <div className={styles.sidebar} onClick={handleCloseContextMenu}>
       <div className={styles.sidebarTopActions}>
+        <button onClick={handleAddTab} className={styles.addTabButton}>
+          + Add Tab
+        </button>
         {contextMenu && (
           <div
             className={styles.contextMenu}
@@ -75,7 +114,7 @@ export default function Sidebar() {
           </div>
         ))}
       </div>
-      <GetCharacters tabName={tabs.find((tab) => tab.id === activeTab)?.name} />
+      <GetCharacters activeTab={activeTab} />
     </div>
   );
 }
