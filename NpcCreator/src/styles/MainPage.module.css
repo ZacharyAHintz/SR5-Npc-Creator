@@ -1,5 +1,23 @@
 .characterContainer {
   margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.characterHeader {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 10px;
+}
+
+.characterHeader h2 {
+  margin-right: 10px;
+}
+
+.characterHeader h3 {
+  margin: 0;
 }
 
 .healthRow,

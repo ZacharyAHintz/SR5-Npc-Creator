@@ -47,7 +47,14 @@ export default function MainPage() {
         .filter((char) => char.tab === activeTab)
         .map((char) => (
           <div key={char.id} className={styles.characterContainer}>
-            <h2>{char.name}</h2>
+            <div className={styles.characterHeader}>
+              <h2>{char.name} -</h2>
+              <h3>
+                Rating {char.rating} {""}
+                {char.archetype}
+              </h3>
+            </div>
+
             {char.healthTracker && (
               <>
                 <div className={styles.healthRow}>

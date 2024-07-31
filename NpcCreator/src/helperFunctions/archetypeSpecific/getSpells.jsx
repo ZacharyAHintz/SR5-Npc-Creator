@@ -239,6 +239,28 @@ export default function getSpells(character) {
         character.skills[skill].rank += 2;
       }
     });
+  } else if (specialization === "Face Mage") {
+    character.spells = getRandomObjectByKey(
+      spells,
+      "manipulationSpells",
+      0,
+      Number(character.rating),
+    );
+    const requiredSkills = ["Summoning", "Spellcasting"];
+
+    requiredSkills.forEach((skill) => {
+      if (!character.skills.hasOwnProperty(skill)) {
+        const skillDetails = findObjectWithGivenValue(skills, skill);
+        character.skills[skill] = {
+          skill: skillDetails[0],
+          attribute: skillDetails[1],
+          limit: skillDetails[2],
+          rank: Number(character.rating) + 4,
+        };
+      } else {
+        character.skills[skill].rank += 2;
+      }
+    });
   } else if (specialization === "Insect Shaman") {
     character.spells = getRandomObjectByKey(
       spells,
