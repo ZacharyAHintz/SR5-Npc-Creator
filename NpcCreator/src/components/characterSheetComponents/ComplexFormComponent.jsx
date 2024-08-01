@@ -60,7 +60,9 @@ export default function ComplexFormComponent({ id }) {
     <>
       {Object.keys(spells).map((key) => {
         const name = spells[key].name;
-        const rank = character.rating + Math.floor(Math.random() * 4) + 1;
+        const rank =
+          parseInt(character.rating) +
+          parseInt(Math.floor(Math.random() * 4) + 1);
         const bonus = spells[key]?.bonus ?? 0;
         const target = spells[key].target;
         const fading = spells[key].fading;

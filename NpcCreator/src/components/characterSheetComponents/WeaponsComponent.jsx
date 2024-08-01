@@ -46,6 +46,7 @@ export default function WeaponsComponent({ id }) {
   const strength = character.stats.strength.total;
   const agility = character.stats.agility.total;
   const skills = character.skills || {};
+  console.log("strength", strength);
 
   let containedGuns = [];
   // Flatten gun objects and add parent key
