@@ -49,7 +49,7 @@ export default function MainPage() {
         .map((char) => (
           <div key={char.id} className={styles.characterContainer}>
             <div className={styles.characterHeader}>
-              <GetCharacters />
+              <GetCharacters char={char} />
               <h3>
                 {" "}
                 - Rating {char.rating} {""}

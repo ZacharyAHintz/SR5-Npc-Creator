@@ -3,7 +3,7 @@ import styles from "../styles/GetCharacters.module.css";
 import ToggleDialog from "./ToggleDialog";
 import CharacterSheet from "./CharacterSheet";
 
-export default function GetCharacters() {
+export default function GetCharacters({ char }) {
   const [characters, setCharacters] = useState([]);
   const activeTab = localStorage.getItem("activeTab");
 
@@ -57,20 +57,16 @@ export default function GetCharacters() {
 
   return (
     <div className={styles.characterList}>
-      {characters
-        .filter((char) => char.tab === activeTab)
-        .map((char) => (
-          <div key={char.id} className={styles.characterItem}>
-            <input
-              type="checkbox"
-              checked={char.healthTracker || false}
-              onChange={() => handleHealthTrackerToggle(char.id)}
-            />
-            <ToggleDialog name={char.name ? char.name : "Name"}>
-              <CharacterSheet id={char.id} />
-            </ToggleDialog>
-          </div>
-        ))}
+      <div key={char.id} className={styles.characterItem}>
+        <input
+          type="checkbox"
+          checked={char.healthTracker || false}
+          onChange={() => handleHealthTrackerToggle(char.id)}
+        />
+        <ToggleDialog name={char.name ? char.name : "Name"}>
+          <CharacterSheet id={char.id} />
+        </ToggleDialog>
+      </div>
     </div>
   );
 }
