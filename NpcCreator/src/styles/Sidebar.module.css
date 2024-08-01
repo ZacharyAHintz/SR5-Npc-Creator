@@ -45,14 +45,14 @@
   background-color: rgb(46, 46, 46);
   color: #fff;
   padding: 10px 20px;
-  width: auto;
+  width: 100%;
   text-align: left;
   cursor: pointer;
   border: none;
   outline: none;
   transition: background-color 0.3s ease;
   margin-bottom: 5px;
-  margin-left: -82.5px;
+
   position: relative;
 }
 

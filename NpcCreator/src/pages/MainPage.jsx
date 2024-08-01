@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PageLayout from "../components/PageLayout";
 import styles from "../styles/MainPage.module.css";
+import GetCharacters from "../components/GetCharacters";
 
 export default function MainPage() {
   const [characters, setCharacters] = useState([]);
@@ -48,9 +49,10 @@ export default function MainPage() {
         .map((char) => (
           <div key={char.id} className={styles.characterContainer}>
             <div className={styles.characterHeader}>
-              <h2>{char.name} -</h2>
+              <GetCharacters />
               <h3>
-                Rating {char.rating} {""}
+                {" "}
+                - Rating {char.rating} {""}
                 {char.archetype}
               </h3>
             </div>

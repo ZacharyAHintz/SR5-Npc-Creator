@@ -1,20 +1,21 @@
-import React, { useState, useRef, Children } from "react";
+import React, { useState, useRef } from "react";
 import styles from "../styles/ToggleDialog.module.css";
 
 export default function ToggleDialog({ children, name }) {
-  const targetRef = React.useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleDialog = () => {
     setIsVisible(!isVisible);
   };
+
   return (
     <div>
-      <button onClick={toggleDialog}>{name}</button>
+      <button onClick={toggleDialog} className={styles.nameButton}>
+        {name}
+      </button>
       {isVisible && (
         <div>
           <div
-            ref={targetRef}
             className={styles.popup}
             style={{
               maxWidth: "auto",

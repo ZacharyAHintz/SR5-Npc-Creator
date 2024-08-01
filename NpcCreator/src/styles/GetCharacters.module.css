@@ -1,2 +1,76 @@
-.one {
+.characterList {
+  margin: 20px 0;
+}
+
+.characterItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.characterItem input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #181610;
+  border: 1px solid rgb(49, 49, 49);
+  border-radius: 3px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  position: relative;
+  margin-right: 10px;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+  outline: none;
+}
+
+.characterItem input[type="checkbox"]:checked {
+  background-color: #2a261e;
+  border-color: #fff;
+}
+
+.characterItem input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.characterItem > .toggle-dialog {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #181610;
+  border: 1px solid rgb(49, 49, 49);
+  color: rgb(49, 49, 49);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  text-align: center;
+}
+
+.characterItem > .toggle-dialog:hover {
+  background-color: #2a261e;
+  color: #fff;
+}
+
+.characterItem > .toggle-dialog h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.25;
+  color: inherit;
 }

@@ -114,7 +114,6 @@ export default function Sidebar() {
           </div>
         ))}
       </div>
-      <GetCharacters activeTab={activeTab} />
     </div>
   );
 }
