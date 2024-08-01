@@ -9,7 +9,7 @@ export default function Navbar() {
 
       <button
         onClick={() => {
-          localStorage.clear();
+          localStorage.removeItem("characters");
           const event = new CustomEvent("localStorageCleared");
           window.dispatchEvent(event);
         }}
