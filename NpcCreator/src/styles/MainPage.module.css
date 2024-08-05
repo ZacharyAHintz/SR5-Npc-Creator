@@ -52,11 +52,10 @@
 .willpowerRow input[type="checkbox"]:checked::after {
   content: "";
   position: absolute;
-
-  top: 40%;
+  top: 35%;
   left: 50%;
   width: 5px;
-  height: 10px;
+  height: 8.5px;
   border: solid #dc4498;
   border-width: 0 2px 2px 0;
   transform: translate(-50%, -50%) rotate(45deg);
@@ -93,11 +92,10 @@
 .healthRow input[type="checkbox"]:checked::after {
   content: "";
   position: absolute;
-
-  top: 40%;
+  top: 35%;
   left: 50%;
   width: 5px;
-  height: 10px;
+  height: 8.5px;
   border: solid #dc4498;
   border-width: 0 2px 2px 0;
   transform: translate(-50%, -50%) rotate(45deg);
