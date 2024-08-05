@@ -4,9 +4,12 @@ import styles from "../styles/ToggleDialog.module.css";
 export default function ToggleDialog({ children, name }) {
   const [isVisible, setIsVisible] = useState(false);
   const [dimensions, setDimensions] = useState({ width: "50%", height: "50%" });
+  const [position, setPosition] = useState({ top: "50%", left: "50%" });
   const [isResizing, setIsResizing] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const [resizerDirection, setResizerDirection] = useState(null);
   const dialogRef = useRef(null);
+  const dragStart = useRef({ x: 0, y: 0, initialTop: 0, initialLeft: 0 });
 
   const toggleDialog = () => {
     setIsVisible(!isVisible);
@@ -17,75 +20,95 @@ export default function ToggleDialog({ children, name }) {
     setResizerDirection(direction);
   };
 
+  const onMouseDownDrag = (e) => {
+    setIsDragging(true);
+    const rect = dialogRef.current.getBoundingClientRect();
+    dragStart.current = {
+      x: e.clientX,
+      y: e.clientY,
+      initialTop: rect.top + window.scrollY,
+      initialLeft: rect.left + window.scrollX,
+    };
+  };
+
   const onMouseMove = useCallback(
     (e) => {
-      if (!isResizing) return;
+      if (isResizing) {
+        const { clientX, clientY } = e;
+        const rect = dialogRef.current.getBoundingClientRect();
 
-      const { clientX, clientY } = e;
-      const { left, top, right, bottom } =
-        dialogRef.current.getBoundingClientRect();
-
-      if (resizerDirection.includes("R")) {
-        setDimensions((prev) => ({
-          ...prev,
-          width: Math.max(clientX - left, 100),
-        }));
-      }
-      if (resizerDirection.includes("B")) {
-        setDimensions((prev) => ({
-          ...prev,
-          height: Math.max(clientY - top, 100),
-        }));
-      }
-      if (resizerDirection.includes("L")) {
-        setDimensions((prev) => ({
-          ...prev,
-          width: Math.max(right - clientX, 100),
-          left: clientX,
-        }));
-      }
-      if (resizerDirection.includes("T")) {
-        setDimensions((prev) => ({
-          ...prev,
-          height: Math.max(bottom - clientY, 100),
-          top: clientY,
-        }));
-      }
-      if (resizerDirection === "TL") {
-        setDimensions((prev) => ({
-          ...prev,
-          width: Math.max(right - clientX, 100),
-          height: Math.max(bottom - clientY, 100),
-        }));
-      }
-      if (resizerDirection === "TR") {
-        setDimensions((prev) => ({
-          ...prev,
-          width: Math.max(clientX - left, 100),
-          height: Math.max(bottom - clientY, 100),
-        }));
-      }
-      if (resizerDirection === "BL") {
-        setDimensions((prev) => ({
-          ...prev,
-          width: Math.max(right - clientX, 100),
-          height: Math.max(clientY - top, 100),
-        }));
-      }
-      if (resizerDirection === "BR") {
-        setDimensions((prev) => ({
-          ...prev,
-          width: Math.max(clientX - left, 100),
-          height: Math.max(clientY - top, 100),
-        }));
+        if (resizerDirection.includes("R")) {
+          setDimensions((prev) => ({
+            ...prev,
+            width: Math.max(clientX - rect.left, 100),
+          }));
+        }
+        if (resizerDirection.includes("B")) {
+          setDimensions((prev) => ({
+            ...prev,
+            height: Math.max(clientY - rect.top, 100),
+          }));
+        }
+        if (resizerDirection.includes("L")) {
+          setDimensions((prev) => ({
+            ...prev,
+            width: Math.max(rect.right - clientX, 100),
+            left: clientX,
+          }));
+        }
+        if (resizerDirection.includes("T")) {
+          setDimensions((prev) => ({
+            ...prev,
+            height: Math.max(rect.bottom - clientY, 100),
+            top: clientY,
+          }));
+        }
+        if (resizerDirection === "TL") {
+          setDimensions((prev) => ({
+            ...prev,
+            width: Math.max(rect.right - clientX, 100),
+            height: Math.max(rect.bottom - clientY, 100),
+          }));
+        }
+        if (resizerDirection === "TR") {
+          setDimensions((prev) => ({
+            ...prev,
+            width: Math.max(clientX - rect.left, 100),
+            height: Math.max(rect.bottom - clientY, 100),
+          }));
+        }
+        if (resizerDirection === "BL") {
+          setDimensions((prev) => ({
+            ...prev,
+            width: Math.max(rect.right - clientX, 100),
+            height: Math.max(clientY - rect.top, 100),
+          }));
+        }
+        if (resizerDirection === "BR") {
+          setDimensions((prev) => ({
+            ...prev,
+            width: Math.max(clientX - rect.left, 100),
+            height: Math.max(clientY - rect.top, 100),
+          }));
+        }
+      } else if (isDragging) {
+        const newTop =
+          dragStart.current.initialTop + (e.clientY - dragStart.current.y);
+        const newLeft =
+          dragStart.current.initialLeft + (e.clientX - dragStart.current.x);
+        setPosition({
+          top: `${newTop}px`,
+          left: `${newLeft}px`,
+        });
       }
     },
-    [isResizing, resizerDirection],
+    [isResizing, resizerDirection, isDragging],
   );
 
   const onMouseUp = () => {
     setIsResizing(false);
     setResizerDirection(null);
+    setIsDragging(false);
   };
 
   React.useEffect(() => {
@@ -106,9 +129,14 @@ export default function ToggleDialog({ children, name }) {
         <div
           ref={dialogRef}
           className={styles.popup}
-          style={{ width: dimensions.width, height: dimensions.height }}
+          style={{
+            width: dimensions.width,
+            height: dimensions.height,
+            top: position.top,
+            left: position.left,
+          }}
         >
-          <div className={styles.header}>
+          <div className={styles.header} onMouseDown={onMouseDownDrag}>
             <button className={styles.closeButton} onClick={toggleDialog}>
               x
             </button>
