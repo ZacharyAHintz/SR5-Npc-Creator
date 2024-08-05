@@ -1,58 +1,28 @@
-.nameButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #181610;
-  border: none;
-  color: rgb(49, 49, 49);
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: -7px;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-  font-family: sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.nameButton:hover {
-  background-color: #2a261e;
-  color: #fff;
-}
-
 .popup {
-  border: solid;
   position: fixed;
   z-index: 100;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(202, 191, 191);
-  padding: 20px;
-  border: 3px solid rgb(202, 191, 191);
+  border: 3px solid rgb(162, 19, 19);
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
   width: 50%;
   height: 50%;
-  resize: both;
-  overflow: auto;
 }
 
-.popup.active {
-  z-index: 110;
-}
-
-.moveableLine {
-  opacity: 0;
+.header {
+  padding: 5px;
+  border-bottom: 1px solid rgb(162, 19, 19);
+  display: flex;
+  justify-content: flex-end;
 }
 
 .closeButton {
   font-family: "Lucida Sans Unicode";
-  position: absolute;
-  top: 0;
-  right: 0;
   border: none;
   font-weight: bolder;
   font-size: 20px;
@@ -64,6 +34,78 @@
   color: rgb(112, 112, 112);
 }
 
-.overflow {
+.content {
+  flex-grow: 1;
   overflow: auto;
+  padding: 10px;
+}
+
+.resizer {
+  position: absolute;
+}
+
+.resizerL {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  cursor: ew-resize;
+}
+
+.resizerR {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  cursor: ew-resize;
+}
+
+.resizerT {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  cursor: ns-resize;
+}
+
+.resizerB {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  cursor: ns-resize;
+}
+.resizerTL {
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  cursor: nwse-resize;
+}
+
+.resizerTR {
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  cursor: nesw-resize;
+}
+
+.resizerBL {
+  bottom: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  cursor: nesw-resize;
+}
+
+.resizerBR {
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  cursor: nwse-resize;
+}
+.footer {
+  height: 30px;
 }
