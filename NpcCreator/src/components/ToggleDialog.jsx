@@ -1,6 +1,8 @@
 import React, { useState, useRef, useCallback } from "react";
 import styles from "../styles/ToggleDialog.module.css";
 
+let highestZIndex = 1;
+
 export default function ToggleDialog({ children, name }) {
   const [isVisible, setIsVisible] = useState(false);
   const [dimensions, setDimensions] = useState({ width: "50%", height: "50%" });
@@ -8,16 +10,27 @@ export default function ToggleDialog({ children, name }) {
   const [isResizing, setIsResizing] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [resizerDirection, setResizerDirection] = useState(null);
+  const [zIndex, setZIndex] = useState(1);
   const dialogRef = useRef(null);
   const dragStart = useRef({ x: 0, y: 0, initialTop: 0, initialLeft: 0 });
 
   const toggleDialog = () => {
     setIsVisible(!isVisible);
+    if (!isVisible) {
+      bringToFront();
+    }
+  };
+
+  const bringToFront = () => {
+    highestZIndex += 1;
+    setZIndex(highestZIndex);
   };
 
   const onMouseDown = (direction) => {
     setIsResizing(true);
     setResizerDirection(direction);
+    document.body.style.userSelect = "none";
+    bringToFront();
   };
 
   const onMouseDownDrag = (e) => {
@@ -29,6 +42,8 @@ export default function ToggleDialog({ children, name }) {
       initialTop: rect.top + window.scrollY,
       initialLeft: rect.left + window.scrollX,
     };
+    document.body.style.userSelect = "none";
+    bringToFront();
   };
 
   const onMouseMove = useCallback(
@@ -109,6 +124,7 @@ export default function ToggleDialog({ children, name }) {
     setIsResizing(false);
     setResizerDirection(null);
     setIsDragging(false);
+    document.body.style.userSelect = "";
   };
 
   React.useEffect(() => {
@@ -134,7 +150,9 @@ export default function ToggleDialog({ children, name }) {
             height: dimensions.height,
             top: position.top,
             left: position.left,
+            zIndex: zIndex,
           }}
+          onMouseDown={bringToFront}
         >
           <div className={styles.header} onMouseDown={onMouseDownDrag}>
             <button className={styles.closeButton} onClick={toggleDialog}>
