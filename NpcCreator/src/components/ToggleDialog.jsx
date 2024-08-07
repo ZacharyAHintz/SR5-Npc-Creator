@@ -1,18 +1,24 @@
 import React, { useState, useRef, useCallback } from "react";
 import styles from "../styles/ToggleDialog.module.css";
+import getCharacterByID from "../helperFunctions/getCharacterByID";
 
 let highestZIndex = 1;
 
-export default function ToggleDialog({ children, name }) {
+export default function ToggleDialog({ children, name, id }) {
   const [isVisible, setIsVisible] = useState(false);
   const [dimensions, setDimensions] = useState({ width: "50%", height: "50%" });
-  const [position, setPosition] = useState({ top: "50%", left: "50%" });
+  const [position, setPosition] = useState({ top: 250, left: 550 });
   const [isResizing, setIsResizing] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [startY, setStartY] = useState(0);
   const [resizerDirection, setResizerDirection] = useState(null);
   const [zIndex, setZIndex] = useState(1);
   const dialogRef = useRef(null);
-  const dragStart = useRef({ x: 0, y: 0, initialTop: 0, initialLeft: 0 });
+  const dragableRef = useRef(null);
+  // const dragStart = useRef({ x: 0, y: 0, initialTop: 0, initialLeft: 0 });
+
+  const character = getCharacterByID(id);
 
   const toggleDialog = () => {
     setIsVisible(!isVisible);
@@ -34,14 +40,14 @@ export default function ToggleDialog({ children, name }) {
   };
 
   const onMouseDownDrag = (e) => {
-    setIsDragging(true);
     const rect = dialogRef.current.getBoundingClientRect();
-    dragStart.current = {
-      x: e.clientX,
-      y: e.clientY,
-      initialTop: rect.top + window.scrollY,
-      initialLeft: rect.left + window.scrollX,
-    };
+
+    setStartY(e.pageY - rect.top);
+    setStartX(e.pageX - rect.left);
+    e.stopPropagation();
+    e.preventDefault();
+
+    setIsDragging(true);
     document.body.style.userSelect = "none";
     bringToFront();
   };
@@ -107,14 +113,15 @@ export default function ToggleDialog({ children, name }) {
           }));
         }
       } else if (isDragging) {
-        const newTop =
-          dragStart.current.initialTop + (e.clientY - dragStart.current.y);
-        const newLeft =
-          dragStart.current.initialLeft + (e.clientX - dragStart.current.x);
+        const rect = dialogRef.current.getBoundingClientRect();
+        const newTop = e.pageY;
+        const newLeft = e.pageX;
         setPosition({
-          top: `${newTop}px`,
-          left: `${newLeft}px`,
+          top: `${newTop}`,
+          left: `${newLeft}`,
         });
+        e.stopPropagation();
+        e.preventDefault();
       }
     },
     [isResizing, resizerDirection, isDragging],
@@ -148,13 +155,17 @@ export default function ToggleDialog({ children, name }) {
           style={{
             width: dimensions.width,
             height: dimensions.height,
-            top: position.top,
-            left: position.left,
+            top: position.top + "px",
+            left: position.left + "px",
             zIndex: zIndex,
+            position: "absolute",
           }}
           onMouseDown={bringToFront}
         >
           <div className={styles.header} onMouseDown={onMouseDownDrag}>
+            {/* <span className={styles.dialogName}>
+              {name} - Rating {character.rating} {character.archetype}
+            </span>{" "} */}
             <button className={styles.closeButton} onClick={toggleDialog}>
               x
             </button>

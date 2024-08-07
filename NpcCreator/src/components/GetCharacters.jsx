@@ -63,7 +63,7 @@ export default function GetCharacters({ char }) {
           checked={char.healthTracker || false}
           onChange={() => handleHealthTrackerToggle(char.id)}
         />
-        <ToggleDialog name={char.name ? char.name : "Name"}>
+        <ToggleDialog name={char.name ? char.name : "Name"} id={char.id}>
           <CharacterSheet id={char.id} />
         </ToggleDialog>
       </div>

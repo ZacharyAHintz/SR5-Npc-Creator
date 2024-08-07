@@ -5,7 +5,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(202, 191, 191);
-  border: 3px solid rgb(162, 19, 19);
+  border: 3px solid rgb(202, 191, 191);
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -14,9 +14,33 @@
   height: 50%;
 }
 
+.nameButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #181610;
+  border: none;
+  color: rgb(49, 49, 49);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: -7px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nameButton:hover {
+  background-color: #2a261e;
+  color: rgb(202, 191, 191);
+}
+
 .header {
   padding: 5px;
-  border-bottom: 1px solid rgb(162, 19, 19);
+  border-bottom: 1px solid rgb(112, 112, 112);
   display: flex;
   justify-content: flex-end;
 }
@@ -108,4 +132,12 @@
 }
 .footer {
   height: 30px;
+}
+.dialogName {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  font-weight: bold;
+  color: #333; /* Customize this color as needed */
 }

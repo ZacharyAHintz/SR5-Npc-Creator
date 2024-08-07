@@ -98,3 +98,27 @@
 .contextMenu button:hover {
   background-color: #f0f0f0;
 }
+
+.addTabButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #181610;
+  border: none;
+  color: rgb(49, 49, 49);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: -7px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.addTabButton:hover {
+  background-color: #2a261e;
+  color: rgb(202, 191, 191);
+}

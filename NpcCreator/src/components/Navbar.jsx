@@ -8,13 +8,14 @@ export default function Navbar() {
       <img className={styles.logo} src={logo} alt="" />
 
       <button
+        className={styles.button}
         onClick={() => {
           localStorage.removeItem("characters");
           const event = new CustomEvent("localStorageCleared");
           window.dispatchEvent(event);
         }}
       >
-        Clear Local Storage
+        Clear All Characters
       </button>
       <NewCharacterButton />
     </div>

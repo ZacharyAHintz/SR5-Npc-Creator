@@ -26,10 +26,12 @@ export default function MainPage() {
 
     window.addEventListener("storage", handleStorageChange);
     window.addEventListener("charactersUpdated", handleStorageChange);
+    window.addEventListener("characterAdded", handleStorageChange);
 
     return () => {
       window.removeEventListener("storage", handleStorageChange);
       window.removeEventListener("charactersUpdated", handleStorageChange);
+      window.removeEventListener("characterAdded", handleStorageChange);
     };
   }, []);
 

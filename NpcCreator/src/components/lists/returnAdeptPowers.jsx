@@ -53,7 +53,7 @@ export default function returnAdeptPowers() {
       power: "Authoritative Tone",
       prerequisite: "-",
       activation: "-",
-      cost: "0.50 PP per level (Max 3)",
+      cost: "0.50 PP per level",
       source: "SR5:SG",
     },
     berserk: {
@@ -95,7 +95,7 @@ export default function returnAdeptPowers() {
       power: "Commanding Voice (SR5:SG)",
       prerequisite: "-",
       activation: "-",
-      cost: "0.25 PP per level (Max 3)",
+      cost: "0.25 PP per level",
       source: "SR5:SG",
     },
     commandingVoiceSSo: {
@@ -221,14 +221,14 @@ export default function returnAdeptPowers() {
       power: "Flexibility",
       prerequisite: "-",
       activation: "-",
-      cost: "0.25 PP per level (Max 3)",
+      cost: "0.25 PP per level ",
       source: "SR5:SG",
     },
     focusedArchery: {
       power: "Focused Archery",
       prerequisite: "-",
       activation: "-",
-      cost: "0.25 PP per level (Max 3)",
+      cost: "0.25 PP per level ",
       source: "SR5:HT",
     },
     freefall: {
@@ -277,7 +277,7 @@ export default function returnAdeptPowers() {
       power: "Improved Reflexes",
       prerequisite: "-",
       activation: "-",
-      cost: "0.5 PP + level (Max 3)",
+      cost: "0.5 PP ",
       source: "Core",
     },
     improvedSense: {
@@ -333,7 +333,7 @@ export default function returnAdeptPowers() {
       power: "Kiai",
       prerequisite: "-",
       activation: "-",
-      cost: "0.25 PP per level (Max 6)",
+      cost: "0.25 PP ",
       source: "SR5:HT",
     },
     killingHands: {
@@ -431,7 +431,7 @@ export default function returnAdeptPowers() {
       power: "Mimic",
       prerequisite: "-",
       activation: "-",
-      cost: "0.25 PP per level (Max 6)",
+      cost: "0.25 PP per level",
       source: "SR5:SSo",
     },
     missileMastery: {
@@ -515,7 +515,7 @@ export default function returnAdeptPowers() {
       power: "Penetrating Strike",
       prerequisite: "-",
       activation: "-",
-      cost: "0.25 PP per level (Max 4)",
+      cost: "0.25 PP per level ",
       source: "SR5:SG",
     },
     piercingSenses: {
@@ -543,7 +543,7 @@ export default function returnAdeptPowers() {
       power: "Precision Throwing",
       prerequisite: "-",
       activation: "-",
-      cost: "0.25 PP per level (Max 3)",
+      cost: "0.25 PP per level ",
       source: "SR5:HT",
     },
     rapidDraw: {
@@ -612,7 +612,7 @@ export default function returnAdeptPowers() {
       power: "Stillness",
       prerequisite: "-",
       activation: "-",
-      cost: "0.25 PP per level (Max 3)",
+      cost: "0.25 PP per level ",
       source: "SR5:SG",
     },
     sustenance: {

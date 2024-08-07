@@ -1,5 +1,7 @@
 .navbar {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: rgb(46, 46, 46);
   height: 80px;
   display: flex;
@@ -14,13 +16,27 @@
   left: 0;
 }
 .button {
-  color: #e6e6e6;
-  font-size: 18px;
-
-  height: 40px;
-  border-radius: 5px;
-  background-color: hsl(0, 0%, 30%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #181610;
   border: none;
+  color: rgb(49, 49, 49);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: -7px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: #2a261e;
+  color: rgb(202, 191, 191);
 }
 .logo {
   height: 50px;
