@@ -41,22 +41,6 @@ export default function GetCharacters({ char }) {
     setCharacters(storedCharacters);
   };
 
-  const handleHealthTrackerToggle = (id) => {
-    setCharacters((prevCharacters) => {
-      const updatedCharacters = prevCharacters.map((char) =>
-        char.id === id ? { ...char, healthTracker: !char.healthTracker } : char,
-      );
-
-      localStorage.setItem("characters", JSON.stringify(updatedCharacters));
-
-      const event = new Event("charactersUpdated");
-      window.dispatchEvent(event);
-      console.log(characters);
-
-      return updatedCharacters;
-    });
-  };
-
   const handleRightClick = (e, character) => {
     e.preventDefault();
     setContextMenu({ mouseX: e.clientX, mouseY: e.clientY, character });
@@ -109,11 +93,6 @@ export default function GetCharacters({ char }) {
         className={styles.characterItem}
         onContextMenu={(e) => handleRightClick(e, char)}
       >
-        <input
-          type="checkbox"
-          checked={char.healthTracker || false}
-          onChange={() => handleHealthTrackerToggle(char.id)}
-        />
         <ToggleDialog name={char.name ? char.name : "Name"} id={char.id}>
           <CharacterSheet id={char.id} />
         </ToggleDialog>

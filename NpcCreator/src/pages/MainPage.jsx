@@ -6,7 +6,11 @@ import GetCharacters from "../components/GetCharacters";
 export default function MainPage() {
   const [characters, setCharacters] = useState([]);
   const [activeTab, setActiveTab] = useState(localStorage.getItem("activeTab"));
-  const [trackerVisibility, setTrackerVisibility] = useState({});
+  const saveCharactersToLocalStorage = () => {
+    localStorage.setItem("characters", JSON.stringify(characters));
+    const event = new Event("charactersUpdated");
+    window.dispatchEvent(event);
+  };
 
   useEffect(() => {
     const updateCharactersFromLocalStorage = () => {
@@ -47,18 +51,26 @@ export default function MainPage() {
       saveCharactersToLocalStorage();
     }
   };
+  const toggleHealthTracker = (charId) => {
+    setCharacters((prevCharacters) => {
+      return prevCharacters.map((char) => {
+        if (char.id === charId) {
+          return {
+            ...char,
+            healthTracker: !char.healthTracker,
+          };
+        }
+
+        return char;
+      });
+    });
+  };
 
   const handleDeleteCharacter = (charId) => {
     setCharacters((prevChars) =>
       prevChars.filter((char) => char.id !== charId),
     );
     saveCharactersToLocalStorage();
-  };
-
-  const saveCharactersToLocalStorage = () => {
-    localStorage.setItem("characters", JSON.stringify(characters));
-    const event = new Event("charactersUpdated");
-    window.dispatchEvent(event);
   };
 
   const calculateHealthBoxes = (bodyStats) => {
@@ -71,7 +83,7 @@ export default function MainPage() {
 
   const handleCheckboxChange = (charId, index, type) => {
     setCharacters((prevCharacters) => {
-      return prevCharacters.map((char) => {
+      const updatedCharacters = prevCharacters.map((char) => {
         if (char.id === charId) {
           const numBoxes =
             type === "health"
@@ -79,7 +91,11 @@ export default function MainPage() {
               : calculateWillpowerBoxes(char.stats.willpower.baseStats);
 
           const currentState =
-            char[`${type}BoxesState`] || Array(numBoxes).fill(false);
+            type === "health"
+              ? char.healthBoxesState || Array(numBoxes).fill(false)
+              : type === "willpower"
+                ? char.willpowerBoxesState || Array(numBoxes).fill(false)
+                : char.bodyBoxesState || Array(numBoxes).fill(false);
 
           let newCheckedState = Array(numBoxes).fill(false);
 
@@ -107,6 +123,11 @@ export default function MainPage() {
         }
         return char;
       });
+
+      // Save updated characters to local storage
+      localStorage.setItem("characters", JSON.stringify(updatedCharacters));
+
+      return updatedCharacters;
     });
   };
 
@@ -118,6 +139,13 @@ export default function MainPage() {
         .map((char) => (
           <div key={char.id} className={styles.characterContainer}>
             <div className={styles.characterHeader}>
+              <input
+                type="checkbox"
+                checked={char.healthTracker || false}
+                onChange={() => toggleHealthTracker(char.id)}
+                className={styles.healthTrackerCheckbox}
+              />
+
               <GetCharacters
                 char={char}
                 onRename={handleRenameCharacter}

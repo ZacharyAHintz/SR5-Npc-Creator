@@ -45,7 +45,22 @@
   display: flex;
   align-items: center;
 }
-
+.healthTrackerCheckbox {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #181610;
+  border: 1px solid rgb(49, 49, 49);
+  border-radius: 3px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  position: relative;
+  margin-right: 10px;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+  outline: none;
+}
 .healthBox,
 .stunBox,
 .overflowBox {
@@ -65,13 +80,14 @@
   outline: none;
 }
 
+.healthTrackerCheckbox:checked,
 .healthBox:checked,
 .stunBox:checked,
 .overflowBox:checked {
   background-color: #2a261e;
   border-color: #dc4498;
 }
-
+.healthTrackerCheckbox:checked::after,
 .healthBox:checked::after,
 .stunBox:checked::after,
 .overflowBox:checked::after {
