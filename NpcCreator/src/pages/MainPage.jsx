@@ -35,6 +35,31 @@ export default function MainPage() {
     };
   }, []);
 
+  const handleRenameCharacter = (charId) => {
+    const newName = prompt("Enter new character name:");
+    if (newName) {
+      setCharacters((prevChars) =>
+        prevChars.map((char) =>
+          char.id === charId ? { ...char, name: newName } : char,
+        ),
+      );
+      saveCharactersToLocalStorage();
+    }
+  };
+
+  const handleDeleteCharacter = (charId) => {
+    setCharacters((prevChars) =>
+      prevChars.filter((char) => char.id !== charId),
+    );
+    saveCharactersToLocalStorage();
+  };
+
+  const saveCharactersToLocalStorage = () => {
+    localStorage.setItem("characters", JSON.stringify(characters));
+    const event = new Event("charactersUpdated");
+    window.dispatchEvent(event);
+  };
+
   const calculateHealthBoxes = (bodyStats) => {
     return Math.floor(bodyStats / 2) + 8;
   };
@@ -99,11 +124,14 @@ export default function MainPage() {
         .map((char) => (
           <div key={char.id} className={styles.characterContainer}>
             <div className={styles.characterHeader}>
-              <GetCharacters char={char} />
+              <GetCharacters
+                char={char}
+                onRename={handleRenameCharacter}
+                onDelete={handleDeleteCharacter}
+              />
               <h3>
                 {" "}
-                - Rating {char.rating} {""}
-                {char.archetype}
+                - Rating {char.rating} {char.race[0].metatype} {char.archetype}
               </h3>
             </div>
 
