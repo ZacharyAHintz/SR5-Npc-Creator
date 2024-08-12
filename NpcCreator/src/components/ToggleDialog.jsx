@@ -7,7 +7,7 @@ let highestZIndex = 1;
 export default function ToggleDialog({ children, name, id }) {
   const [isVisible, setIsVisible] = useState(false);
   const [dimensions, setDimensions] = useState({ width: "50%", height: "50%" });
-  const [position, setPosition] = useState({ top: 550, left: 550 });
+  const [position, setPosition] = useState({ top: 450, left: 650 });
 
   const [isResizing, setIsResizing] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -23,7 +23,7 @@ export default function ToggleDialog({ children, name, id }) {
     if (!isVisible) {
       const rect = dialogRef.current
         ? dialogRef.current.getBoundingClientRect()
-        : { top: 550, left: 550 };
+        : { top: 450, left: 650 };
       setPosition({ top: rect.top, left: rect.left });
       bringToFront();
     }

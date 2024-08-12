@@ -1,12 +1,14 @@
 .pages {
-  margin-top: 90px;
+  margin-top: 80px; /* Adjust this value based on the height of your navbar */
   margin-right: 100px;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden; /* Prevents scrolling behind the navbar */
 }
 
 .content {
   flex: 1;
   overflow-y: auto;
+  padding-top: 20px; /* Ensures content is not hidden behind the navbar */
 }

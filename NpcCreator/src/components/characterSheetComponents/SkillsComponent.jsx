@@ -61,14 +61,26 @@ export default function SkillsComponent({ id }) {
     window.dispatchEvent(event);
   };
 
+  function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   return (
     <>
       {Object.keys(character.skills).map((key) => {
         const skill = character.skills[key];
+        const skillStat = skill.attribute;
+        const skillStatValue =
+          skillStat !== "resonance" && skillStat !== "magic"
+            ? character.stats[skillStat].total
+            : character.stats["magic"];
         const rank = skill?.rank;
         const bonus = skill?.bonus ?? 0;
         const total =
-          skill?.total ?? (rank ? parseInt(rank) + parseInt(bonus) : 0);
+          skill?.total ??
+          (rank
+            ? parseInt(rank) + parseInt(bonus) + parseInt(skillStatValue)
+            : 0);
         const editedValue = editedSkill[key]?.rank ?? rank;
         const editedBonus = editedSkill[key]?.bonus ?? bonus;
 
@@ -96,6 +108,10 @@ export default function SkillsComponent({ id }) {
                       handleSkillChange(key, editedValue, e.target.value)
                     }
                   />
+                </div>
+                <div>
+                  {" "}
+                  {capitalizeFirstLetter(skillStat)}: {skillStatValue}
                 </div>
                 <div>Total: {total}</div>
                 <LimitDiceRoller total={total} limit={skill.limit} id={id} />
