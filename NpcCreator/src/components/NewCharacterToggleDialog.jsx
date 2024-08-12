@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "../styles/NewCharacterToggleDialog.module.css";
 
 export default function NewCharacterToggleDialog({ children, name }) {
@@ -8,6 +8,8 @@ export default function NewCharacterToggleDialog({ children, name }) {
   const toggleDialog = () => {
     setIsVisible(!isVisible);
   };
+
+  window.addEventListener("characterAdded", toggleDialog);
 
   return (
     <div>

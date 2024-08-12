@@ -5,6 +5,7 @@
   background-color: rgb(46, 46, 46);
   height: 80px;
   display: flex;
+  z-index: 1000;
 
   justify-content: space-evenly;
   align-items: center;

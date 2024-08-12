@@ -33,7 +33,7 @@ import findObjectWithGivenValue from "../helperFunctions/findObjectWithGivenValu
 import getObjectByKey from "../helperFunctions/getObjectByKey";
 
 //enter need to finish the submit every time
-export default function NpcOptions({ toggleDialog }) {
+export default function NpcOptions() {
   const [name, setName] = useState("");
   const [race, setRace] = useState("Random");
   const [rating, setRating] = useState("Random");
@@ -224,7 +224,6 @@ export default function NpcOptions({ toggleDialog }) {
       <form
         onSubmit={(e) => {
           handleSubmit(e);
-          toggleDialog(e);
         }}
         className={styles.form}
       >

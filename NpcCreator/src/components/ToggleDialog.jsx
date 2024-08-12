@@ -165,6 +165,8 @@ export default function ToggleDialog({ children, name, id }) {
           onMouseDown={bringToFront}
         >
           <div className={styles.header} onMouseDown={onMouseDownDrag}>
+            {character.name} - Rank {character.rating}{" "}
+            {character.race[0].metatype} {character.archetype}
             <button className={styles.closeButton} onClick={toggleDialog}>
               x
             </button>
