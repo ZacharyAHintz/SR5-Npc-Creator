@@ -8,10 +8,7 @@ export default function ToggleDialog({ children, name, id }) {
   const [isVisible, setIsVisible] = useState(false);
   const [dimensions, setDimensions] = useState({ width: "50%", height: "50%" });
   const [position, setPosition] = useState({ top: 550, left: 550 });
-  const [initialPosition, setInitialPosition] = useState({
-    top: 550,
-    left: 550,
-  });
+
   const [isResizing, setIsResizing] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -28,7 +25,6 @@ export default function ToggleDialog({ children, name, id }) {
         ? dialogRef.current.getBoundingClientRect()
         : { top: 550, left: 550 };
       setPosition({ top: rect.top, left: rect.left });
-      setInitialPosition({ top: rect.top, left: rect.left });
       bringToFront();
     }
     setIsVisible(!isVisible);

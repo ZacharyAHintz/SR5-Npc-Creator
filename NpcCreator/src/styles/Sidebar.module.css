@@ -3,35 +3,38 @@
   color: #fff;
   width: 220px;
   position: fixed;
-  right: 0;
+  right: 10px;
   top: 0;
   bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-top: 109px;
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .sidebarTopActions {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 10px; /* Adjust padding to create space */
   background-color: rgb(46, 46, 46);
   width: 100%;
+  box-sizing: border-box; /* Ensure padding is included in the element's total width */
 }
 
 .sidebarTopActions button {
-  background-color: #505050;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
+  color: rgb(49, 49, 49);
   margin-bottom: 5px;
-  transition: background-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .sidebarTopActions button:hover {
-  background-color: #606060;
+  background-color: #2a261e;
+  color: rgb(202, 191, 191);
 }
 
 .tabs {
@@ -109,7 +112,7 @@
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: -7px;
+  margin-bottom: -7px; /* Same as navbar buttons */
   transition:
     background-color 0.3s ease,
     color 0.3s ease;

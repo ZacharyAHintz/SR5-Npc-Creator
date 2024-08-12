@@ -43,6 +43,23 @@
   text-align: center;
   -webkit-appearance: none;
   margin: 0 auto;
+  cursor: pointer;
+}
+.nameInput {
+  flex: 1;
+  color: rgb(202, 191, 191);
+  background-color: rgb(46, 46, 46);
+  width: 100px;
+  height: 20px;
+  line-height: 25px;
+  font-size: 13px;
+  font-weight: normal;
+  border-radius: 4px;
+  border: none;
+  appearance: none;
+  text-align: center;
+  -webkit-appearance: none;
+  margin: 0 auto;
 }
 .text {
   font-size: 20px;

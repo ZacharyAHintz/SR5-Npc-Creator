@@ -233,7 +233,7 @@ export default function NpcOptions({ toggleDialog }) {
             Name
           </label>
           <input
-            className={styles.input}
+            className={styles.nameInput}
             onChange={(e) => setName(e.target.value)}
             type="name"
             placeholder="Name"

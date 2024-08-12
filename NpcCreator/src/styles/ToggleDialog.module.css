@@ -12,6 +12,8 @@
   flex-direction: column;
   width: 50%;
   height: 50%;
+  min-width: 300px;
+  min-height: 300px;
 }
 
 .nameButton {
@@ -51,6 +53,7 @@
   font-weight: bolder;
   font-size: 20px;
   color: rgb(49, 49, 49);
+  cursor: pointer;
   background-color: rgb(202, 191, 191);
 }
 
@@ -139,5 +142,5 @@
   align-items: center;
   padding-left: 10px;
   font-weight: bold;
-  color: #333; /* Customize this color as needed */
+  color: #333;
 }

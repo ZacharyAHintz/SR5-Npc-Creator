@@ -1,9 +1,9 @@
 import NpcOptions from "./NpcOptions.jsx";
-import ToggleDialog from "./ToggleDialog.jsx";
-export default function NewCharacterButton({ toggleDialog }) {
+import NewCharacterToggleDialog from "./NewCharacterToggleDialog.jsx";
+export default function NewCharacterButton({}) {
   return (
-    <ToggleDialog name="New Charecter">
-      <NpcOptions toggleDialog={toggleDialog} />
-    </ToggleDialog>
+    <NewCharacterToggleDialog name="New Charecter">
+      <NpcOptions />
+    </NewCharacterToggleDialog>
   );
 }

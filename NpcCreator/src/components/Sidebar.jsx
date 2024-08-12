@@ -34,7 +34,7 @@ export default function Sidebar() {
   function saveTabs(tabs) {
     localStorage.setItem("tabs", JSON.stringify(tabs));
   }
-  console.log(tabs);
+
   const handleRightClick = (e, tab) => {
     e.preventDefault();
     setContextMenu({ mouseX: e.clientX, mouseY: e.clientY, tab });
