@@ -6,6 +6,7 @@ import GetCharacters from "../components/GetCharacters";
 export default function MainPage() {
   const [characters, setCharacters] = useState([]);
   const [activeTab, setActiveTab] = useState(localStorage.getItem("activeTab"));
+  const [trackerVisibility, setTrackerVisibility] = useState({});
 
   useEffect(() => {
     const updateCharactersFromLocalStorage = () => {
@@ -70,7 +71,7 @@ export default function MainPage() {
 
   const handleCheckboxChange = (charId, index, type) => {
     setCharacters((prevCharacters) => {
-      const updatedCharacters = prevCharacters.map((char) => {
+      return prevCharacters.map((char) => {
         if (char.id === charId) {
           const numBoxes =
             type === "health"
@@ -82,7 +83,7 @@ export default function MainPage() {
 
           let newCheckedState = Array(numBoxes).fill(false);
 
-          // Check if the clicked box is the first one
+          // Determine if the first box is checked and if it's the only one checked
           const isFirstBox = index === 0;
           const firstBoxIsChecked = currentState[0];
           const isOnlyChecked = currentState.every(
@@ -106,13 +107,6 @@ export default function MainPage() {
         }
         return char;
       });
-
-      localStorage.setItem("characters", JSON.stringify(updatedCharacters));
-
-      const event = new Event("charactersUpdated");
-      window.dispatchEvent(event);
-
-      return updatedCharacters;
     });
   };
 
@@ -136,45 +130,59 @@ export default function MainPage() {
             </div>
 
             {char.healthTracker && (
-              <>
-                <div className={styles.healthRow}>
-                  {Array.from({
-                    length: calculateHealthBoxes(char.stats.body.baseStats),
-                  }).map((_, index) => (
-                    <input
-                      key={index}
-                      type="checkbox"
-                      className={styles.healthBox}
-                      checked={
-                        char.healthBoxesState
-                          ? char.healthBoxesState[index]
-                          : false
-                      }
-                      onChange={() =>
-                        handleCheckboxChange(char.id, index, "health")
-                      }
-                    />
-                  ))}
-                  <div className={styles.gap}></div>
-                  {Array.from({ length: char.stats.body.baseStats }).map(
-                    (_, index) => (
+              <div className={styles.trackerGroup}>
+                <div className={styles.trackerSection}>
+                  <span className={styles.label}>Physical</span>
+                  <div className={styles.healthRow}>
+                    {Array.from({
+                      length: calculateHealthBoxes(char.stats.body.baseStats),
+                    }).map((_, index) => (
                       <input
                         key={index}
                         type="checkbox"
-                        className={styles.bodyBox}
+                        className={styles.healthBox}
                         checked={
-                          char.bodyBoxesState
-                            ? char.bodyBoxesState[index]
+                          char.healthBoxesState
+                            ? char.healthBoxesState[index]
                             : false
                         }
                         onChange={() =>
-                          handleCheckboxChange(char.id, index, "body")
+                          handleCheckboxChange(char.id, index, "health")
                         }
                       />
-                    ),
-                  )}
+                    ))}
+                  </div>
                 </div>
-                <div className={styles.willpowerRow}>
+
+                <div className={styles.trackerSection}>
+                  <span className={styles.label}>Overflow</span>
+                  <div className={styles.overflowRow}>
+                    {Array.from({ length: char.stats.body.baseStats }).map(
+                      (_, index) => (
+                        <input
+                          key={index}
+                          type="checkbox"
+                          className={styles.overflowBox}
+                          checked={
+                            char.bodyBoxesState
+                              ? char.bodyBoxesState[index]
+                              : false
+                          }
+                          onChange={() =>
+                            handleCheckboxChange(char.id, index, "body")
+                          }
+                        />
+                      ),
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {char.healthTracker && (
+              <div className={styles.trackerSection}>
+                <span className={styles.label}>Stun</span>
+                <div className={styles.stunRow}>
                   {Array.from({
                     length: calculateWillpowerBoxes(
                       char.stats.willpower.baseStats,
@@ -183,7 +191,7 @@ export default function MainPage() {
                     <input
                       key={index}
                       type="checkbox"
-                      className={styles.willpowerBox}
+                      className={styles.stunBox}
                       checked={
                         char.willpowerBoxesState
                           ? char.willpowerBoxesState[index]
@@ -195,7 +203,7 @@ export default function MainPage() {
                     />
                   ))}
                 </div>
-              </>
+              </div>
             )}
           </div>
         ))}
