@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import StatsComponent from "../characterSheetComponents/StatsComponent";
 import getCharacterByID from "../../helperFunctions/getCharacterByID";
+import styles from "../../styles/SharedTabs.module.css";
 
 export default function MainTab({ id }) {
   const [character, setCharacter] = useState(getCharacterByID(id));
@@ -13,9 +14,9 @@ export default function MainTab({ id }) {
   }, []);
 
   return (
-    <div>
-      <h2>Attributes</h2>
-      <hr />
+    <div className={styles.container}>
+      <h2 className={styles.header}>Attributes</h2>
+      <hr className={styles.separator} />
       <div>
         <StatsComponent id={id} />
       </div>

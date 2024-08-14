@@ -3,6 +3,7 @@ import DiceRoller from "../../helperFunctions/DiceRoller";
 import updateCharacterInLocalStorage from "../../helperFunctions/updateCharacterInLocalStorage";
 import getCharacterByID from "../../helperFunctions/getCharacterByID";
 import setLimits from "../../helperFunctions/setLimits";
+import styles from "../../styles/StatsComponent.module.css";
 
 export default function StatsComponent({ id }) {
   const [character, setCharacter] = useState(getCharacterByID(id));
@@ -73,7 +74,7 @@ export default function StatsComponent({ id }) {
     const event = new Event("characterAdded");
     window.dispatchEvent(event);
   };
-  [];
+
   const statsToRender = [
     "body",
     "charisma",
@@ -97,35 +98,39 @@ export default function StatsComponent({ id }) {
 
         return (
           <div key={key}>
-            <h3>{key.charAt(0).toUpperCase() + key.slice(1)} Stats</h3>
+            <h3 className={styles.title}>
+              {key.charAt(0).toUpperCase() + key.slice(1)} Stats
+            </h3>
             {baseStats !== undefined ? (
               <div>
-                <div>
+                <div className={styles.input}>
                   Base:
                   <input
                     type="number"
                     value={editedValue}
+                    className={styles.input}
                     onChange={(e) => {
                       handleBaseStatsChange(key, e.target.value, editedBonus);
                     }}
                   />
                 </div>
-                <div>
+                <div className={styles.input}>
                   Bonus:
                   <input
                     type="number"
                     value={editedBonus}
+                    className={styles.input}
                     onChange={(e) => {
                       handleBaseStatsChange(key, editedValue, e.target.value);
                     }}
                   />
                 </div>
-                <div>Total: {total}</div>
+                <div className={styles.result}>Total: {total}</div>
                 <DiceRoller total={total} />
               </div>
             ) : (
               <div>
-                <p>Base Stats: Not available</p>
+                <p className={styles.result}>Base Stats: Not available</p>
               </div>
             )}
           </div>

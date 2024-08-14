@@ -1,0 +1,30 @@
+.rollButton {
+  background-color: #2a261e;
+  border: 1px solid rgb(49, 49, 49);
+  color: #dc4498;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+.rollButton:hover {
+  background-color: #dc4498;
+  color: #181610;
+}
+
+.rollButton:active {
+  background-color: #dc4498;
+  border-color: #181610;
+}
+
+.results {
+  color: rgb(49, 49, 49);
+  margin-top: 10px;
+}
+
+.successes {
+  color: #dc4498;
+}

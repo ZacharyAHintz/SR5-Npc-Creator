@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SkillsComponent from "../characterSheetComponents/SkillsComponent";
 import getCharacterByID from "../../helperFunctions/getCharacterByID";
+import styles from "../../styles/SharedTabs.module.css";
 
 export default function SkillsTab({ id }) {
   const [character, setCharacter] = useState(getCharacterByID(id));
@@ -14,8 +15,8 @@ export default function SkillsTab({ id }) {
   }, []);
 
   return (
-    <div>
-      <hr />
+    <div className={styles.container}>
+      <hr className={styles.separator} />
       <div>
         <SkillsComponent id={id} />
       </div>

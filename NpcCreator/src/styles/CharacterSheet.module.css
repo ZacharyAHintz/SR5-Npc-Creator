@@ -1,56 +1,60 @@
 .container {
-  color: #181610;
+  color: rgb(49, 49, 49);
+  background-color: #181610; /* Match main page background */
   padding: 30px;
+  font-family: sans-serif; /* Match main page font */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  border-radius: 8px;
 }
+
 .blockTabs {
   flex-wrap: wrap;
   white-space: pre-wrap;
-  color: #3d382a;
+  color: rgb(49, 49, 49);
   padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  box-shadow: 2px, 4px, 4px;
-}
-.tabs {
-  flex: 1;
-  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
-  margin: 5px;
-  padding: 4px;
-  border-radius: 4px;
-  background-color: rgb(123, 109, 136);
-  transition: opacity 0.2s ease;
-}
-.tabs:hover {
-  opacity: 0.8;
-
-  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Match main page shadow */
 }
 
+.tabs,
 .activeTab {
-  border-radius: 4px;
-  margin: 5px;
-  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
   flex: 1;
-  padding: 4px;
-  background-color: rgb(117, 163, 117);
-  transition: opacity 0.2s ease;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #2a261e; /* Match initiative tracker button background */
+  border: 1px solid rgb(49, 49, 49);
+  color: #dc4498; /* Match initiative tracker button text */
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    opacity 0.2s ease;
 }
+
+.tabs:hover,
 .activeTab:hover {
   opacity: 0.8;
   cursor: pointer;
 }
-.image {
-  width: 80px;
+
+.activeTab {
+  background-color: #dc4498; /* Active tab matches hover state */
+  color: #181610; /* Invert text color for active tab */
 }
-.activecontent {
-  flex: 1;
-}
+
 .content {
   display: none;
 }
-.text {
-  color: blueviolet;
+
+.activecontent {
+  display: block;
   flex: 1;
-  white-space: pre-wrap;
+}
+
+h2 {
+  color: rgb(49, 49, 49); /* Match main page text color */
+  font-family: sans-serif; /* Match main page font */
+  font-weight: 400; /* Match main page font weight */
 }

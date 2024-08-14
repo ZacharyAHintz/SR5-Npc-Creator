@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "../styles/DiceRoller.module.css";
 
 function rollDice(total) {
   const results = [];
@@ -21,11 +22,13 @@ export default function DiceRoller({ total }) {
 
   return (
     <div>
-      <button onClick={handleRoll}>Roll {total}d6</button>
+      <button className={styles.rollButton} onClick={handleRoll}>
+        Roll {total}d6
+      </button>
       {results.length > 0 && (
-        <div>
+        <div className={styles.results}>
           <div>Results: {results.join(", ")}</div>
-          <div>Successes: {successes}</div>
+          <div className={styles.successes}>Successes: {successes}</div>
         </div>
       )}
     </div>

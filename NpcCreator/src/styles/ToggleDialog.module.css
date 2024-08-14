@@ -4,68 +4,72 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(202, 191, 191);
-  border: 3px solid rgb(202, 191, 191);
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #181610;
+  border: 3px solid rgb(49, 49, 49);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   width: 50%;
   height: 50%;
   min-width: 300px;
   min-height: 300px;
-  overflow: hidden; /* Ensure content does not overflow */
+  overflow: hidden;
 }
 
 .nameButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #181610;
+  background: none;
   border: none;
   color: rgb(49, 49, 49);
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: -7px;
+  margin-bottom: -8px;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
 }
 
 .nameButton:hover {
-  background-color: #2a261e;
-  color: rgb(202, 191, 191);
+  background-color: #dc4498;
+  color: #2a261e;
 }
 
 .header {
-  padding: 5px;
+  padding: 10px;
   border-bottom: 1px solid rgb(112, 112, 112);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .closeButton {
-  font-family: "Lucida Sans Unicode";
+  border-radius: 4px;
+  font-family: sans-serif;
   border: none;
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 20px;
-  color: rgb(49, 49, 49);
+  color: #dc4498;
   cursor: pointer;
-  background-color: rgb(202, 191, 191);
+  background-color: #181610;
 }
 
 .closeButton:hover {
-  color: rgb(112, 112, 112);
+  background-color: #dc4498;
+  color: #181610;
 }
 
 .content {
   flex-grow: 1;
   overflow: auto;
   padding: 10px;
+  color: rgb(49, 49, 49);
 }
 
 .resizer {
@@ -103,45 +107,48 @@
   height: 5px;
   cursor: ns-resize;
 }
+
 .resizerTL {
-  top: -3px;
-  left: -3px;
+  top: -4px;
+  left: -4px;
   width: 10px;
   height: 10px;
   cursor: nwse-resize;
 }
 
 .resizerTR {
-  top: -3px;
-  right: -3px;
+  top: -4px;
+  right: -4px;
   width: 10px;
   height: 10px;
   cursor: nesw-resize;
 }
 
 .resizerBL {
-  bottom: -3px;
-  left: -3px;
+  bottom: -4px;
+  left: -4px;
   width: 10px;
   height: 10px;
   cursor: nesw-resize;
 }
 
 .resizerBR {
-  bottom: -3px;
-  right: -3px;
+  bottom: -4px;
+  right: -4px;
   width: 10px;
   height: 10px;
   cursor: nwse-resize;
 }
+
 .footer {
   height: 30px;
 }
+
 .dialogName {
   flex-grow: 1;
   display: flex;
   align-items: center;
   padding-left: 10px;
   font-weight: bold;
-  color: #333;
+  color: #dc4498;
 }

@@ -37,8 +37,6 @@ export default function CharacterSheet({ id }) {
 
   return (
     <div className={styles.container}>
-      <h3>{character.name}</h3>
-      <hr />
       <div className={styles.blockTabs}>
         <div
           onClick={() => toggleTab(1)}

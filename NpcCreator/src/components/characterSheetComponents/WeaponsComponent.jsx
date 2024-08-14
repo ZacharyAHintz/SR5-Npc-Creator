@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import DiceRoller from "../../helperFunctions/DiceRoller";
-import updateCharacterInLocalStorage from "../../helperFunctions/updateCharacterInLocalStorage";
 import getCharacterByID from "../../helperFunctions/getCharacterByID";
-import setLimits from "../../helperFunctions/setLimits";
 import getRandomObjectFromDepth from "../../helperFunctions/getRandomObjectFromDepth";
+import styles from "../../styles/WeaponsComponent.module.css";
 
 export default function WeaponsComponent({ id }) {
   const [character, setCharacter] = useState(getCharacterByID(id));
@@ -57,6 +56,7 @@ export default function WeaponsComponent({ id }) {
       });
     }
   });
+
   let melee = [];
   // Flatten melee weapon objects and add parent key
   Object.keys(meleeWeapons).forEach((key) => {
@@ -81,7 +81,7 @@ export default function WeaponsComponent({ id }) {
 
   return (
     <div>
-      <h3>Guns:</h3>
+      <h3 className={styles.title}>Guns:</h3>
       {containedGuns.map((object, index) => {
         const gun = object;
         const name = gun.Name;
@@ -107,9 +107,8 @@ export default function WeaponsComponent({ id }) {
         const totalDV = parseInt(baseDV) + parseInt(ammoDV);
 
         return (
-          <div key={`gun-${index}`}>
-            <h3>{name}</h3>
-
+          <div key={`gun-${index}`} className={styles.input}>
+            <h3 className={styles.title}>{name}</h3>
             <div>Type: {type}</div>
             <div>Accuracy: {accuracy}</div>
             <div>Base Damage: {baseDV}</div>
@@ -117,11 +116,8 @@ export default function WeaponsComponent({ id }) {
             <div>Ammo: {ammoName}</div>
             <div>AP: {ammoAP}</div>
             <div>Ammo Damage: {ammoDV}</div>
-
-            <div>
-              <div>
-                <div>Damage: {totalDV}</div>
-              </div>
+            <div className={styles.result}>
+              <div>Damage: {totalDV}</div>
               <div>Skill: {skillTotal}</div>
               <div>
                 Bonus:
@@ -129,6 +125,7 @@ export default function WeaponsComponent({ id }) {
                   type="number"
                   value={bonus}
                   onChange={(e) => setBonus(Number(e.target.value))} // Update bonus state
+                  className={styles.input}
                 />
               </div>
               <DiceRoller total={hitTotal} />
@@ -137,15 +134,14 @@ export default function WeaponsComponent({ id }) {
         );
       })}
       <hr />
-      <h3>Melee:</h3>
+      <h3 className={styles.title}>Melee:</h3>
       {melee.map((object, index) => {
-        const gun = object;
-        const name = gun.Name;
-        const accuracy = gun.Accuracy;
-        const baseDV = gun.DV;
-        const modes = gun.Modes;
-        const type = gun.parentKey;
-        const ap = gun.AP;
+        const meleeWeapon = object;
+        const name = meleeWeapon.Name;
+        const accuracy = meleeWeapon.Accuracy;
+        const baseDV = meleeWeapon.DV;
+        const type = meleeWeapon.parentKey;
+        const ap = meleeWeapon.AP;
 
         let weaponSkill = 0;
         Object.keys(skills).forEach((key) => {
@@ -160,18 +156,14 @@ export default function WeaponsComponent({ id }) {
         const totalDV = parseInt(baseDV) + parseInt(strength);
 
         return (
-          <div key={`melee-${index}`}>
-            <h3>{name}</h3>
-
+          <div key={`melee-${index}`} className={styles.input}>
+            <h3 className={styles.title}>{name}</h3>
             <div>Type: {type}</div>
             <div>Accuracy: {accuracy}</div>
             <div>Base Damage: {baseDV}</div>
             <div>AP: {ap}</div>
-
-            <div>
-              <div>
-                <div>Damage: {totalDV}</div>
-              </div>
+            <div className={styles.result}>
+              <div>Damage: {totalDV}</div>
               <div>Skill: {skillTotal}</div>
               <div>
                 Bonus:
@@ -179,6 +171,7 @@ export default function WeaponsComponent({ id }) {
                   type="number"
                   value={bonus}
                   onChange={(e) => setBonus(Number(e.target.value))} // Update bonus state
+                  className={styles.input}
                 />
               </div>
               <DiceRoller total={hitTotal} />
@@ -187,7 +180,7 @@ export default function WeaponsComponent({ id }) {
         );
       })}
       <hr />
-      <h3>Explosives:</h3>
+      <h3 className={styles.title}>Explosives:</h3>
       {explosivesArray.map((object, index) => {
         const name = object.name;
         const baseDV = object.DV;
@@ -195,8 +188,8 @@ export default function WeaponsComponent({ id }) {
         const blastRadius = object.Blast;
 
         return (
-          <div key={`explosive-${index}`}>
-            <h3>{name}</h3>
+          <div key={`explosive-${index}`} className={styles.input}>
+            <h3 className={styles.title}>{name}</h3>
             <div>Damage: {baseDV}</div>
             <div>AP: {ap}</div>
             <div>Blast Radius: {blastRadius}</div>
@@ -204,7 +197,7 @@ export default function WeaponsComponent({ id }) {
         );
       })}
       <hr />
-      <h3>Armor:</h3>
+      <h3 className={styles.title}>Armor:</h3>
       {armorArray.map((object, index) => {
         const name = object.article;
         const armorRating = object.armorRating;
@@ -212,8 +205,8 @@ export default function WeaponsComponent({ id }) {
         const source = object.source;
 
         return (
-          <div key={`armor-${index}`}>
-            <h3>{name}</h3>
+          <div key={`armor-${index}`} className={styles.input}>
+            <h3 className={styles.title}>{name}</h3>
             <div>
               Armor: {armorRating} Capacity: {capacity} Book: {source}
             </div>
