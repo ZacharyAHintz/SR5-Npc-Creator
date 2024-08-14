@@ -84,10 +84,10 @@ export default function InitiativeTracker({ char }) {
 
   return (
     <div>
-      <div>InitiativeTracker</div>
-      <div>
+      <div className={styles.title}>Initiative</div>
+      <div className={styles.initiativeContainer}>
         <select
-          className={styles.input}
+          className={styles.initiativeSelecter}
           value={initiative}
           onChange={handleInitiativeSelection}
           id="initiative"
@@ -101,15 +101,16 @@ export default function InitiativeTracker({ char }) {
           <option value="matrixHotVRlInitiativeRoll">Matrix: Hot-Sim VR</option>
           <option value="riggingARlInitiativeRoll">Rigging AR</option>
         </select>
-        <button className={styles.dieButton} onClick={handleRollClick}>
+        <button className={styles.rollButton} onClick={handleRollClick}>
           Roll
         </button>
+        {initiativeResult !== null && (
+          <div className={styles.result}>
+            Result:{" "}
+            <span className={styles.resultText}>{initiativeResult}</span>
+          </div>
+        )}
       </div>
-      {initiativeResult !== null && (
-        <div className={styles.result}>
-          Initiative Result: {initiativeResult}
-        </div>
-      )}
     </div>
   );
 }

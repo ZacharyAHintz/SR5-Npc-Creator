@@ -1,5 +1,5 @@
 .characterContainer {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   display: flex;
   flex-direction: column;
@@ -8,8 +8,6 @@
 .characterHeader {
   display: flex;
   align-items: center;
-
-  margin-bottom: 10px;
 }
 
 .characterHeader h2 {
@@ -23,6 +21,8 @@
 .trackerGroup {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between; /* Adjusts spacing between elements */
+  flex-wrap: wrap; /* Allows elements to wrap if necessary */
   margin-bottom: 8px;
 }
 
@@ -108,4 +108,21 @@
 
 .willpowerBox {
   margin-right: 5px;
+}
+.initiativeTracker {
+  margin-right: 20px;
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: end;
+}
+.separator {
+  height: 1px;
+  background-color: #181610;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow:
+    inset 0px 2px 2px rgba(0, 0, 0, 0.2),
+    inset 0px -2px 2px rgba(255, 255, 255, 0.1);
+  border-radius: 1px;
 }

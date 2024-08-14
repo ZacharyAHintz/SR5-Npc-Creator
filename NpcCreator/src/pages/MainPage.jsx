@@ -205,37 +205,40 @@ export default function MainPage() {
                     )}
                   </div>
                 </div>
-                <div>
+                <div className={styles.initiativeTracker}>
                   <InitiativeTracker char={char} />
                 </div>
               </div>
             )}
 
             {char.healthTracker && (
-              <div className={styles.trackerSection}>
-                <span className={styles.label}>Stun</span>
-                <div className={styles.stunRow}>
-                  {Array.from({
-                    length: calculateWillpowerBoxes(
-                      char.stats.willpower.baseStats,
-                    ),
-                  }).map((_, index) => (
-                    <input
-                      key={index}
-                      type="checkbox"
-                      className={styles.stunBox}
-                      checked={
-                        char.willpowerBoxesState
-                          ? char.willpowerBoxesState[index]
-                          : false
-                      }
-                      onChange={() =>
-                        handleCheckboxChange(char.id, index, "willpower")
-                      }
-                    />
-                  ))}
+              <>
+                <div className={styles.trackerSection}>
+                  <span className={styles.label}>Stun</span>
+                  <div className={styles.stunRow}>
+                    {Array.from({
+                      length: calculateWillpowerBoxes(
+                        char.stats.willpower.baseStats,
+                      ),
+                    }).map((_, index) => (
+                      <input
+                        key={index}
+                        type="checkbox"
+                        className={styles.stunBox}
+                        checked={
+                          char.willpowerBoxesState
+                            ? char.willpowerBoxesState[index]
+                            : false
+                        }
+                        onChange={() =>
+                          handleCheckboxChange(char.id, index, "willpower")
+                        }
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
+                <div className={styles.separator}></div> {/* Separator line */}
+              </>
             )}
           </div>
         ))}
