@@ -1,0 +1,11 @@
+.dieButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dieIcon {
+  width: 24px;
+  height: 24px;
+}

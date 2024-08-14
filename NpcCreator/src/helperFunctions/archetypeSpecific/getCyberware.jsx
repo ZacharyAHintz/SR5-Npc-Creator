@@ -34,7 +34,7 @@ export default function getCyberware(character) {
   if (!character.currentArmor) {
     character.currentArmor = 0;
   }
-
+  // getting the stats out of cyberware that has it
   character.cyberware.forEach((ware) => {
     let addedStats = ware[Object.getOwnPropertyNames(ware)].addedStats;
     if (addedStats) {
@@ -49,6 +49,20 @@ export default function getCyberware(character) {
         }
       } else if (addedStats[0] === "stats") {
         character.stats[addedStats[1]].baseStats += addedStats[2];
+      } else if (addedStats[0] === "initiative") {
+        if (addedStats[1] === "dice") {
+          if (character.initiativeDice) {
+            character.initiativeDice += addedStats[2];
+          } else {
+            character.initiativeDice = addedStats[2];
+          }
+        } else {
+          if (character.initiativeBonus) {
+            character.initiativeBonus += addedStats[2];
+          } else {
+            character.initiativeBonus = addedStats[2];
+          }
+        }
       } else {
         character.currentArmor += addedStats[2];
       }
@@ -68,6 +82,20 @@ export default function getCyberware(character) {
         }
       } else if (addedStatsTwo[0] === "stats") {
         character.stats[addedStatsTwo[1]].baseStats += addedStatsTwo[2];
+      } else if (addedStatsTwo[0] === "initiative") {
+        if (addedStatsTwo[1] === "dice") {
+          if (character.initiativeDice) {
+            character.initiativeDice += addedStatsTwo[2];
+          } else {
+            character.initiativeDice = addedStatsTwo[2];
+          }
+        } else {
+          if (character.initiativeBonus) {
+            character.initiativeBonus += addedStatsTwo[2];
+          } else {
+            character.initiativeBonus = addedStatsTwo[2];
+          }
+        }
       } else {
         character.currentArmor += addedStatsTwo[2];
       }

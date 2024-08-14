@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PageLayout from "../components/PageLayout";
 import styles from "../styles/MainPage.module.css";
 import GetCharacters from "../components/GetCharacters";
+import InitiativeTracker from "../components/InitiativeTracker";
 
 export default function MainPage() {
   const [characters, setCharacters] = useState([]);
@@ -203,6 +204,9 @@ export default function MainPage() {
                       ),
                     )}
                   </div>
+                </div>
+                <div>
+                  <InitiativeTracker char={char} />
                 </div>
               </div>
             )}
