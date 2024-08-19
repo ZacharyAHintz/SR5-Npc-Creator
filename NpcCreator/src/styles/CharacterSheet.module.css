@@ -1,21 +1,21 @@
 .container {
-  color: rgb(49, 49, 49);
-  background-color: #181610; /* Match main page background */
+  color: rgb(65, 65, 65);
+  background-color: #181610;
   padding: 30px;
-  font-family: sans-serif; /* Match main page font */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  font-family: sans-serif;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
 .blockTabs {
   flex-wrap: wrap;
   white-space: pre-wrap;
-  color: rgb(49, 49, 49);
+  color: rgb(65, 65, 65);
   padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Match main page shadow */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .tabs,
@@ -24,9 +24,9 @@
   margin: 5px;
   padding: 10px;
   border-radius: 4px;
-  background-color: #2a261e; /* Match initiative tracker button background */
-  border: 1px solid rgb(49, 49, 49);
-  color: #dc4498; /* Match initiative tracker button text */
+  background-color: #2a261e;
+  border: 1px solid rgb(65, 65, 65);
+  color: #dc4498;
   transition:
     background-color 0.3s,
     border-color 0.3s,
@@ -40,8 +40,8 @@
 }
 
 .activeTab {
-  background-color: #dc4498; /* Active tab matches hover state */
-  color: #181610; /* Invert text color for active tab */
+  background-color: #dc4498;
+  color: #181610;
 }
 
 .content {
@@ -54,7 +54,7 @@
 }
 
 h2 {
-  color: rgb(49, 49, 49); /* Match main page text color */
+  color: rgb(65, 65, 65); /* Match main page text color */
   font-family: sans-serif; /* Match main page font */
   font-weight: 400; /* Match main page font weight */
 }

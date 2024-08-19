@@ -1,0 +1,55 @@
+.spellContainer {
+  border: 1px solid rgb(65, 65, 65);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #181610;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.spellContainer h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.spellContainer h5 {
+  margin: 5px 0;
+  font-size: 1em;
+  color: rgb(65, 65, 65);
+}
+
+.spellDetails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+.spellDetails div {
+  flex: 1;
+  min-width: 150px;
+  max-width: calc(100% / 3 - 20px);
+}
+
+.numberInput {
+  background-color: #2a261e;
+  width: 25px;
+  height: 15px;
+  border: 1px solid rgb(65, 65, 65);
+  color: #dc4498;
+  padding: 5px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.numberInput:hover,
+.numberInput:focus {
+  outline: none;
+  border-color: #dc4498;
+}
+.numberInput::-webkit-inner-spin-button,
+.numberInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}

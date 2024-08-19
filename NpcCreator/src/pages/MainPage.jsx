@@ -7,6 +7,23 @@ import InitiativeTracker from "../components/InitiativeTracker";
 export default function MainPage() {
   const [characters, setCharacters] = useState([]);
   const [activeTab, setActiveTab] = useState(localStorage.getItem("activeTab"));
+  const [tabName, setTabName] = useState("");
+
+  function findTabName(id) {
+    const tabs = JSON.parse(localStorage.getItem("tabs")) || [];
+    for (let i = 0; i < tabs.length; i++) {
+      if (tabs[i].id === id) {
+        return tabs[i].name;
+      }
+    }
+    return "Unknown Tab";
+  }
+
+  useEffect(() => {
+    const tabName = findTabName(activeTab);
+    setTabName(tabName);
+  }, [activeTab]);
+
   const saveCharactersToLocalStorage = () => {
     localStorage.setItem("characters", JSON.stringify(characters));
     const event = new Event("charactersUpdated");
@@ -52,6 +69,7 @@ export default function MainPage() {
       saveCharactersToLocalStorage();
     }
   };
+
   const toggleHealthTracker = (charId) => {
     setCharacters((prevCharacters) => {
       return prevCharacters.map((char) => {
@@ -61,7 +79,6 @@ export default function MainPage() {
             healthTracker: !char.healthTracker,
           };
         }
-
         return char;
       });
     });
@@ -134,7 +151,7 @@ export default function MainPage() {
 
   return (
     <PageLayout>
-      <h1>Main Page</h1>
+      <h1>{tabName}</h1>
       {characters
         .filter((char) => char.tab === activeTab)
         .map((char) => (
@@ -237,7 +254,7 @@ export default function MainPage() {
                     ))}
                   </div>
                 </div>
-                <div className={styles.separator}></div> {/* Separator line */}
+                <div className={styles.separator}></div>
               </>
             )}
           </div>

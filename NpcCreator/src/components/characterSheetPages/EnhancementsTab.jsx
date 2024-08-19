@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EnhancementsComponent from "../characterSheetComponents/EnhancementsComponent";
 import getCharacterByID from "../../helperFunctions/getCharacterByID";
+import styles from "../../styles/SharedTabs.module.css";
 
 export default function EnhancementsTab({ id }) {
   const [character, setCharacter] = useState(getCharacterByID(id));
@@ -13,8 +14,8 @@ export default function EnhancementsTab({ id }) {
   }, []);
 
   return (
-    <div>
-      <hr />
+    <div className={styles.container}>
+      <hr className={styles.separator} />
       <div>
         <EnhancementsComponent id={id} />
       </div>

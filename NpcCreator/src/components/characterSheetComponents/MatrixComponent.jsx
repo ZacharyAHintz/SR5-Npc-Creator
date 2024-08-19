@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import getCharacterByID from "../../helperFunctions/getCharacterByID";
+import styles from "../../styles/SharedTabs.module.css";
 
 export default function MatrixComponent({ id }) {
   const [character, setCharacter] = useState(getCharacterByID(id));
@@ -38,7 +39,7 @@ export default function MatrixComponent({ id }) {
           </div>
         );
       })}
-      <hr />
+      <hr className={styles.separator} />
 
       <h2>Cyberdecks</h2>
 
@@ -58,7 +59,7 @@ export default function MatrixComponent({ id }) {
           </div>
         );
       })}
-      <hr />
+      <hr className={styles.separator} />
 
       <h2>RCC</h2>
 

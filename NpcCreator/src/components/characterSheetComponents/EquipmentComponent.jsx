@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import getCharacterByID from "../../helperFunctions/getCharacterByID";
+import styles from "../../styles/EquipmentComponent.module.css";
 
 export default function EquipmentComponent({ id }) {
   const [character, setCharacter] = useState(getCharacterByID(id));
@@ -23,11 +24,10 @@ export default function EquipmentComponent({ id }) {
         const book = object.source;
 
         return (
-          <div key={`equipment-${index}`}>
-            <p>
-              {name}: "{type}"
-            </p>
-            <p>{book}</p>
+          <div key={`equipment-${index}`} className={styles.input}>
+            <h3 className={styles.title}>{name}</h3>
+            <div>Type: {type}</div>
+            <div>Book: {book}</div>
           </div>
         );
       })}

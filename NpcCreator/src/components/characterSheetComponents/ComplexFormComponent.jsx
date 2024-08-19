@@ -1,40 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import getCharacterByID from "../../helperFunctions/getCharacterByID";
 import updateCharacterInLocalStorage from "../../helperFunctions/updateCharacterInLocalStorage";
-import DiceRoller from "../../helperFunctions/DiceRoller";
 import LimitDiceRoller from "../../helperFunctions/LimitDiceRoller";
+import styles from "../../styles/ComplexFormComponent.module.css";
 
 export default function ComplexFormComponent({ id }) {
-  const [editedSpells, setEditedSpells] = useState({});
+  const [editedComplexForms, setEditedComplexForms] = useState({});
   const [character, setCharacter] = useState(getCharacterByID(id));
   const [limit, setLimit] = useState(0);
 
-  const characterSpells = character.spells || [];
-  const complexForms = character.complexForms || [];
-
-  let spells =
-    character.archetype === "Technomancer" ? complexForms : characterSpells;
+  const complexForms = character.complexForms || {};
 
   const handleRankChange = (key, newRank, newBonusValue) => {
-    const updatedEditedSpells = {
-      ...editedSpells,
-      [key]: {
-        rank: newRank,
-        bonus: newBonusValue,
-      },
+    const updatedEditedComplexForms = {
+      ...editedComplexForms,
+      [key]: { rank: newRank, bonus: newBonusValue },
     };
-    setEditedSpells(updatedEditedSpells);
+    setEditedComplexForms(updatedEditedComplexForms);
 
     const updatedComplexForms = {
-      ...character.complexForms,
+      ...complexForms,
       [key]: {
-        ...character.complexForms[key],
-        rank: parseInt(newRank) || 0,
-        bonus: parseInt(newBonusValue) || 0,
+        ...complexForms[key],
+        rank: Number(newRank),
+        bonus: Number(newBonusValue),
         total:
-          (parseInt(newRank) || 0) +
-            (parseInt(newBonusValue) || 0) +
-            parseInt(character.stats.magic) || 0,
+          Number(newRank) +
+          Number(newBonusValue) +
+          Number(character.stats.magic),
       },
     };
 
@@ -43,87 +36,66 @@ export default function ComplexFormComponent({ id }) {
       complexForms: updatedComplexForms,
     };
 
-    const storedCharacters = JSON.parse(localStorage.getItem("characters"));
-    const updatedCharacters = storedCharacters.map((char) =>
-      char.id === character.id ? updatedCharacter : char,
-    );
-    localStorage.setItem("characters", JSON.stringify(updatedCharacters));
-
+    updateCharacterInLocalStorage(updatedCharacter);
     setCharacter(updatedCharacter);
-    localStorage.setItem("character", JSON.stringify(updatedCharacter));
-
-    const event = new Event("characterAdded");
-    window.dispatchEvent(event);
   };
 
   return (
     <>
-      {Object.keys(spells).map((key) => {
-        const name = spells[key].name;
+      {Object.keys(complexForms).map((key) => {
+        const { name, target, fading, duration } = complexForms[key];
         const rank =
-          parseInt(character.rating) +
-          parseInt(Math.floor(Math.random() * 4) + 1);
-        const bonus = spells[key]?.bonus ?? 0;
-        const target = spells[key].target;
-        const fading = spells[key].fading;
-        const duration = spells[key].duration;
-        const magic = character.stats.magic;
-        const editedValue = editedSpells[key]?.rank ?? rank;
-        const editedBonus = editedSpells[key]?.bonus ?? bonus;
-
-        const total =
-          spells[key].total ??
-          (rank ? parseInt(rank) + parseInt(bonus) + parseInt(magic) : 0);
+          editedComplexForms[key]?.rank ||
+          Number(character.rating) + Number(Math.floor(Math.random() * 4) + 1);
+        const bonus =
+          editedComplexForms[key]?.bonus ||
+          Number(complexForms[key]?.bonus) ||
+          0;
+        const magic = Number(character.stats.magic);
+        const total = Number(rank) + Number(bonus) + Number(magic);
 
         return (
-          <div key={key}>
+          <div key={key} className={styles.complexFormContainer}>
             <h3>{name}</h3>
             <h5>
-              Fading: {fading} Duration: {duration} Target: {target}
+              Fading: {fading} | Duration: {duration} | Target: {target}
             </h5>
-            {rank !== undefined ? (
+            <div className={styles.complexFormDetails}>
               <div>
-                <div>
-                  Skill:
-                  <input
-                    type="number"
-                    value={editedValue}
-                    onChange={(e) =>
-                      handleRankChange(key, e.target.value, editedBonus)
-                    }
-                  />
-                </div>
-                <div>Resonance: {magic}</div>
-                <div>
-                  Bonus:
-                  <input
-                    type="number"
-                    value={editedBonus}
-                    onChange={(e) =>
-                      handleRankChange(key, editedValue, e.target.value)
-                    }
-                  />
-                </div>
-                <div>Total: {total}</div>
-                <div>
-                  Force:
-                  <input
-                    type="number"
-                    value={limit}
-                    onChange={(e) => setLimit(e.target.value)}
-                  />
-                </div>
-                <LimitDiceRoller
-                  total={total}
-                  limit={Number(limit)}
-                  character={character}
+                Skill:
+                <input
+                  className={styles.numberInput}
+                  type="number"
+                  value={rank}
+                  onChange={(e) => handleRankChange(key, e.target.value, bonus)}
                 />
               </div>
-            ) : (
+              <div>Resonance: {magic}</div>
               <div>
-                <p>Base Stats: Not available</p>
+                Bonus:
+                <input
+                  className={styles.numberInput}
+                  type="number"
+                  value={bonus}
+                  onChange={(e) => handleRankChange(key, rank, e.target.value)}
+                />
               </div>
-            )}
+              <div>Total: {total}</div>
+              <div>
+                Force:
+                <input
+                  className={styles.numberInput}
+                  type="number"
+                  value={limit}
+                  onChange={(e) => setLimit(Number(e.target.value))}
+                />
+              </div>
+              <LimitDiceRoller
+                total={total}
+                limit={Number(limit)}
+                character={character}
+              />
+            </div>
           </div>
         );
       })}

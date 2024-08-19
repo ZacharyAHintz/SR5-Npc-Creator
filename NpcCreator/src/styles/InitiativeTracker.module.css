@@ -1,28 +1,28 @@
 .title {
-  font-size: 16px;
-  color: rgb(49, 49, 49);
+  font-size: 17px;
+  color: rgb(65, 65, 65);
   margin-top: 7px;
 }
 
 .input {
   background-color: #181610;
-  border: 1px solid rgb(49, 49, 49);
+  border: 1px solid rgb(65, 65, 65);
   padding: 15px;
   border-radius: 8px;
-  color: rgb(49, 49, 49);
+  color: rgb(65, 65, 65);
   font-family: sans-serif;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .result {
   font-size: 13px;
-  color: rgb(49, 49, 49);
+  color: rgb(65, 65, 65);
   margin-top: 5px;
 }
 
 .initiativeSelecter {
   background-color: #2a261e;
-  border: 1px solid rgb(49, 49, 49);
+  border: 1px solid rgb(65, 65, 65);
   color: #dc4498;
   padding: 5px;
   border-radius: 4px;
@@ -31,7 +31,7 @@
 
 .rollButton {
   background-color: #2a261e;
-  border: 1px solid rgb(49, 49, 49);
+  border: 1px solid rgb(65, 65, 65);
   color: #dc4498;
   padding: 5px 10px;
   border-radius: 4px;

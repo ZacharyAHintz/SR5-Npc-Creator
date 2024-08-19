@@ -27,7 +27,19 @@ export default function DiceRoller({ total }) {
       </button>
       {results.length > 0 && (
         <div className={styles.results}>
-          <div>Results: {results.join(", ")}</div>
+          <div>
+            Results:{" "}
+            {results.map((result, index) => (
+              <React.Fragment key={index}>
+                <span className={result >= 5 ? styles.success : styles.fail}>
+                  {result}
+                </span>
+                {index < results.length - 1 && (
+                  <span className={styles.comma}>, </span>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
           <div className={styles.successes}>Successes: {successes}</div>
         </div>
       )}

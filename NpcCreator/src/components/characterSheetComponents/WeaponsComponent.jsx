@@ -133,7 +133,7 @@ export default function WeaponsComponent({ id }) {
           </div>
         );
       })}
-      <hr />
+      <hr className={styles.separator} />
       <h3 className={styles.title}>Melee:</h3>
       {melee.map((object, index) => {
         const meleeWeapon = object;
@@ -179,7 +179,7 @@ export default function WeaponsComponent({ id }) {
           </div>
         );
       })}
-      <hr />
+      <hr className={styles.separator} />
       <h3 className={styles.title}>Explosives:</h3>
       {explosivesArray.map((object, index) => {
         const name = object.name;
@@ -196,7 +196,7 @@ export default function WeaponsComponent({ id }) {
           </div>
         );
       })}
-      <hr />
+      <hr className={styles.separator} />
       <h3 className={styles.title}>Armor:</h3>
       {armorArray.map((object, index) => {
         const name = object.article;

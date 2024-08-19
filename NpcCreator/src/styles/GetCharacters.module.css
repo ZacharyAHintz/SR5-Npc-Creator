@@ -12,7 +12,7 @@
   appearance: none;
   -webkit-appearance: none;
   background-color: #181610;
-  border: 1px solid rgb(49, 49, 49);
+  border: 1px solid rgb(65, 65, 65);
   border-radius: 3px;
   width: 16px;
   height: 16px;
@@ -48,8 +48,8 @@
   align-items: center;
   justify-content: center;
   background-color: #181610;
-  border: 1px solid rgb(49, 49, 49);
-  color: rgb(49, 49, 49);
+  border: 1px solid rgb(65, 65, 65);
+  color: rgb(65, 65, 65);
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;

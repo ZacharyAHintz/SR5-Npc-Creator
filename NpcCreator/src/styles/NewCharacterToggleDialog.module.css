@@ -1,18 +1,19 @@
 .popup {
   position: fixed;
+  z-index: 100;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(202, 191, 191);
-  border: 3px solid rgb(202, 191, 191);
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 20%;
-  min-width: 300px;
-  min-height: 300px;
-  max-height: 80vh;
-  overflow: auto;
-  z-index: 10000;
+  background-color: rgb(65, 65, 65);
+  border: 3px solid rgb(65, 65, 65);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 70%;
+
+  overflow: hidden;
 }
 
 .nameButton {
@@ -21,7 +22,7 @@
   justify-content: center;
   background-color: #181610;
   border: none;
-  color: rgb(49, 49, 49);
+  color: rgb(45, 45, 45);
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -40,26 +41,40 @@
 }
 
 .closeButton {
-  font-family: "Lucida Sans Unicode";
+  border-radius: 4px;
+  font-family: sans-serif;
   border: none;
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 20px;
-  color: rgb(49, 49, 49);
+  color: #dc4498;
   cursor: pointer;
-  background-color: rgb(202, 191, 191);
-  cursor: pointer;
-
+  background: none;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
 }
 
 .closeButton:hover {
-  color: rgb(112, 112, 112);
+  background-color: #dc4498;
+  color: #181610;
 }
 
 .content {
   flex-grow: 1;
   overflow: auto;
   padding: 10px;
+  color: rgb(65, 65, 65);
+}
+
+.footer {
+  height: 30px;
+}
+
+.dialogName {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  font-weight: bold;
+  color: #dc4498;
 }

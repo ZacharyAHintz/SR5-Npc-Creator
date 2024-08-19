@@ -25,6 +25,7 @@ export default function CharacterSheet({ id }) {
     };
 
     window.addEventListener("characterAdded", handleStorageChange);
+    window.addEventListener("characterChanged", handleStorageChange);
     window.addEventListener("localStorageCleared", handleStorageChange);
     window.addEventListener("storage", handleStorageChange);
 

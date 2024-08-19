@@ -36,6 +36,7 @@ export default function StatsComponent({ id }) {
           parseInt(character.stats[stat]?.bonus);
     });
   };
+
   setBaseStats(character);
   updateCharacterInLocalStorage(id, character);
   setLimits(id);
@@ -69,9 +70,8 @@ export default function StatsComponent({ id }) {
     updateCharacterInLocalStorage(id, updatedCharacter);
     setCharacter(updatedCharacter);
     setLimits(id);
-    console.log(character);
 
-    const event = new Event("characterAdded");
+    const event = new Event("characterChanged");
     window.dispatchEvent(event);
   };
 
@@ -88,6 +88,19 @@ export default function StatsComponent({ id }) {
 
   return (
     <div>
+      <div className={styles.summary}>
+        {statsToRender.map((key) => {
+          const stat = character.stats[key];
+          const total =
+            stat?.total ?? parseInt(stat?.baseStats) + parseInt(stat?.bonus);
+          return (
+            <span key={key} className={styles.summaryItem}>
+              {key.charAt(0).toUpperCase() + key.slice(1)}: {total}
+            </span>
+          );
+        })}
+      </div>
+
       {statsToRender.map((key) => {
         const stat = character.stats[key];
         const baseStats = stat?.baseStats;
@@ -102,8 +115,8 @@ export default function StatsComponent({ id }) {
               {key.charAt(0).toUpperCase() + key.slice(1)} Stats
             </h3>
             {baseStats !== undefined ? (
-              <div>
-                <div className={styles.input}>
+              <div className={styles.input}>
+                <div>
                   Base:
                   <input
                     type="number"
@@ -114,7 +127,7 @@ export default function StatsComponent({ id }) {
                     }}
                   />
                 </div>
-                <div className={styles.input}>
+                <div>
                   Bonus:
                   <input
                     type="number"

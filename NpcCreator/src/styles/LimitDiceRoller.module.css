@@ -1,4 +1,6 @@
-.rollButton {
+/* LimitDiceRoller.module.css */
+
+.button {
   background-color: #2a261e;
   border: 1px solid rgb(65, 65, 65);
   color: #dc4498;
@@ -10,26 +12,29 @@
     border-color 0.3s;
 }
 
-.rollButton:hover {
+.button:hover {
   background-color: #dc4498;
   color: #181610;
 }
 
-.rollButton:active {
+.button:active {
   background-color: #dc4498;
   border-color: #181610;
 }
 
 .results {
+  font-size: 13px;
   color: rgb(65, 65, 65);
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .successes {
+  font-size: 13px;
   color: #dc4498;
+  margin-top: 5px;
 }
 
-.fail {
+.rolls {
   color: rgb(65, 65, 65);
 }
 
@@ -38,6 +43,6 @@
   font-weight: bold;
 }
 
-.comma {
+.fail {
   color: rgb(65, 65, 65);
 }

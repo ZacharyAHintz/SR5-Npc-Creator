@@ -6,7 +6,7 @@ export default function InitiativeTracker({ char }) {
   const id = char.id;
   const [character, setCharacter] = useState(getCharacterByID(id));
   const [initiative, setInitiative] = useState("physicalInitiativeRoll");
-  const [initiativeResult, setInitiativeResult] = useState(null); // State to hold the result
+  const [initiativeResult, setInitiativeResult] = useState(null);
 
   const reaction = character.stats.reaction.total
     ? character.stats.reaction.total

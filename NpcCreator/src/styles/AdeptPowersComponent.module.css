@@ -1,0 +1,25 @@
+.adeptPowersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.adeptPower {
+  border: 1px solid rgb(65, 65, 65);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #181610;
+  max-width: 100%;
+}
+
+.adeptPower h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.adeptPower p {
+  margin: 5px 0;
+  font-size: 1em;
+  color: rgb(65, 65, 65);
+}

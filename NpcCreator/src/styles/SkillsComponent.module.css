@@ -1,70 +1,61 @@
+.container {
+  padding: 10px;
+}
+
 .title {
   font-size: 16px;
   color: rgb(65, 65, 65);
   margin-top: 7px;
-}
-.summary {
-  font-size: 14px;
-  color: #dc4498;
-  margin-bottom: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
 }
 
-.summaryItem {
-  background-color: #2a261e;
-  padding: 5px 10px;
-  border-radius: 5px;
+.title:hover {
+  color: #dc4498;
+  background-color: rgba(220, 68, 152, 0.1);
+}
+
+.skillContainer {
+  margin-bottom: 15px;
 }
 
 .input {
   background-color: #181610;
   border: 1px solid rgb(65, 65, 65);
   padding: 15px;
+  margin-bottom: 10px;
   border-radius: 8px;
   color: rgb(65, 65, 65);
   font-family: sans-serif;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
 }
 
-.result {
+.text {
   font-size: 13px;
   color: rgb(65, 65, 65);
   margin-top: 5px;
 }
 
-.resultText {
-  color: #dc4498;
-}
-
 .input input {
   background-color: #2a261e;
+  width: 25px;
+  height: 15px;
   border: 1px solid rgb(65, 65, 65);
   color: #dc4498;
   padding: 5px;
   text-align: center;
   border-radius: 4px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  width: 25px;
-  height: 15px;
-  font-size: 14px;
 }
 .input input:hover,
 .input input:focus {
   outline: none;
   border-color: #dc4498;
 }
-
 .input input::-webkit-inner-spin-button,
 .input input::-webkit-outer-spin-button {
   -webkit-appearance: none;
-  margin: 0;
-  color: #dc4498;
-}
-
-.input input {
-  -moz-appearance: textfield;
-  color: #dc4498;
 }
