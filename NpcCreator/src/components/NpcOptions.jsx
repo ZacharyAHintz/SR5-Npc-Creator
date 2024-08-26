@@ -298,7 +298,6 @@ export default function NpcOptions() {
             <option value="Dryad">Dryad</option>
             <option value="Nocturna">Nocturna</option>
             <option value="Wakyambi">Wakyambi</option>
-            <option value="Xapiri Thëpë">Xapiri Thëpë</option>
             <option value="Nartaki">Nartaki</option>
             <option value="Hobgoblin">Hobgoblin</option>
             <option value="Ogre">Ogre</option>
@@ -316,18 +315,10 @@ export default function NpcOptions() {
           >
             <option value="Bandersnatch">Bandersnatch</option>
             <option value="Banshee">Banshee</option>
-            <option value="Dzoo-noo-qua">Dzoo-noo-qua</option>
             <option value="Fomóraig">Fomóraig</option>
-            <option value="Ghoul (Dwarf)">Ghoul (Dwarf)</option>
-            <option value="Ghoul (Elf)">Ghoul (Elf)</option>
-            <option value="Ghoul (Human)">Ghoul (Human)</option>
-            <option value="Ghoul (Ork)">Ghoul (Ork)</option>
-            <option value="Ghoul (Sasquatch)">Ghoul (Sasquatch)</option>
-            <option value="Ghoul (Troll)">Ghoul (Troll)</option>
             <option value="Goblin">Goblin</option>
             <option value="Grendel">Grendel</option>
             <option value="Harvester">Harvester</option>
-            <option value="Loup-garou">Loup-garou</option>
             <option value="Mutaqua">Mutaqua</option>
             <option value="Nosferatu">Nosferatu</option>
             <option value="Vampire">Vampire</option>

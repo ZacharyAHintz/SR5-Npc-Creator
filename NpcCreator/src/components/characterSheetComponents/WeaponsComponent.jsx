@@ -6,7 +6,8 @@ import styles from "../../styles/WeaponsComponent.module.css";
 
 export default function WeaponsComponent({ id }) {
   const [character, setCharacter] = useState(getCharacterByID(id));
-  const [bonus, setBonus] = useState(0); // State for the bonus value
+  const [bonus, setBonus] = useState(0);
+  const [selectedAmmo, setSelectedAmmo] = useState(null);
 
   useEffect(() => {
     const handleCharacterAdded = () => {
@@ -20,6 +21,15 @@ export default function WeaponsComponent({ id }) {
       window.removeEventListener("characterAdded", handleCharacterAdded);
     };
   }, [id]);
+
+  // Set the initial ammo when the character is first loaded
+  useEffect(() => {
+    const ammunition = character.ammunition || {};
+    if (Object.keys(ammunition).length > 0) {
+      const initialAmmo = getRandomObjectFromDepth(ammunition, 1, 1)[0];
+      setSelectedAmmo(initialAmmo);
+    }
+  }, [character]);
 
   function getRandomItemFromArray(array) {
     const randomIndex = Math.floor(Math.random() * array.length);
@@ -89,10 +99,11 @@ export default function WeaponsComponent({ id }) {
         const baseDV = gun.DV;
         const modes = gun.Modes;
         const type = gun.parentKey;
-        const currentAmmo = getRandomObjectFromDepth(ammo, 1, 1)[0];
-        const ammoDV = currentAmmo.DV;
-        const ammoAP = currentAmmo.AP;
-        const ammoName = currentAmmo.name;
+
+        const currentAmmo = selectedAmmo || {}; // Use selected ammo
+        const ammoDV = currentAmmo.DV || 0;
+        const ammoAP = currentAmmo.AP || 0;
+        const ammoName = currentAmmo.name || "No ammo";
 
         let weaponSkill = 0;
         Object.keys(skills).forEach((key) => {

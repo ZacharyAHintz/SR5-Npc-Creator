@@ -439,7 +439,7 @@ export default function returnRaces() {
         intuition: "1/7",
         charisma: "1/4",
       },
-      fomoraig: {
+      fomóraig: {
         metatype: "Fomóraig",
         body: "5/13",
         agility: "1/5",
