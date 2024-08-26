@@ -79,7 +79,7 @@ export default function SkillsComponent({ id }) {
         const skillStat = skill.attribute;
         const skillStatValue =
           skillStat !== "resonance" && skillStat !== "magic"
-            ? character.stats[skillStat].total
+            ? character.stats[skillStat]?.total ?? 0
             : character.stats["magic"];
         const rank = skill?.rank;
         const bonus = skill?.bonus ?? 0;
